@@ -6,6 +6,8 @@
 #define NULL            (0U)
 #define NULL_PTR        NULL
 
+#define LENGTH(array)   (sizeof(array) / sizeof(array[0]))
+
 typedef enum  {
     HAL_OK = 0x00U,
     HAL_ERROR = 0x01U,
