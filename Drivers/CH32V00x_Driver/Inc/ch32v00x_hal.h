@@ -3,6 +3,9 @@
 
 #include "ch32v00x.h"
 
+#define NULL            (0U)
+#define NULL_PTR        NULL
+
 typedef enum  {
     HAL_OK = 0x00U,
     HAL_ERROR = 0x01U,
@@ -38,5 +41,6 @@ private:
 #include "ch32v00x_hal_afio.h"
 #include "ch32v00x_hal_exti.h"
 #include "ch32v00x_hal_flash.h"
+#include "ch32v00x_hal_spi.h"
 
 #endif /* __CH32V00x_HAL_H */
