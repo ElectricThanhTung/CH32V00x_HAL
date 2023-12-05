@@ -120,10 +120,12 @@ SPI_DataSizeTypeDef SPI_TypeDef::GetDataSize(void) {
 }
 
 /**
- * @brief  Transmit an amount of data in blocking mode.
+ * @brief  Transmit an amount of uint8_t data in blocking mode.
  * @param  txData pointer to transmission data buffer.
  * @param  txLength the length of the data array to be transmitted.
  * @param  timeout timeout duration.
+ * @note   The data size for SPI must be set to SPI_DATAWIDTH_8BIT. Otherwise,
+ *         this function cannot be executed and will return HAL_ERROR.
  * @retval HAL status.
  */
 HAL_StatusTypeDef SPI_TypeDef::Transmit(uint8_t *txData, uint16_t txLength, uint32_t timeout) {
@@ -131,10 +133,12 @@ HAL_StatusTypeDef SPI_TypeDef::Transmit(uint8_t *txData, uint16_t txLength, uint
 }
 
 /**
- * @brief  Transmit an amount of data in blocking mode.
+ * @brief  Transmit an amount of uint16_t data in blocking mode.
  * @param  txData pointer to transmission data buffer.
  * @param  txLength the length of the data array to be transmitted.
  * @param  timeout timeout duration.
+ * @note   The data size for SPI must be set to SPI_DATAWIDTH_16BIT. Otherwise,
+ *         this function cannot be executed and will return HAL_ERROR.
  * @retval HAL status.
  */
 HAL_StatusTypeDef SPI_TypeDef::Transmit(uint16_t *txData, uint16_t txLength, uint32_t timeout) {
@@ -142,12 +146,14 @@ HAL_StatusTypeDef SPI_TypeDef::Transmit(uint16_t *txData, uint16_t txLength, uin
 }
 
 /**
- * @brief  Transmit and receive an amount of data in blocking mode.
+ * @brief  Transmit and receive an amount of uint8_t data in blocking mode.
  * @param  txData pointer to transmission data buffer.
  * @param  txLength the length of the data array to be transmitted.
  * @param  rxData pointer to reception data buffer.
  * @param  rxLength the length of the data array to be received.
  * @param  timeout timeout duration.
+ * @note   The data size for SPI must be set to SPI_DATAWIDTH_8BIT. Otherwise,
+ *         this function cannot be executed and will return HAL_ERROR.
  * @retval HAL status.
  */
 HAL_StatusTypeDef SPI_TypeDef::Transmit(uint8_t *txData, uint16_t txLength, uint8_t *rxData, uint16_t rxLength, uint32_t timeout) {
@@ -180,12 +186,14 @@ HAL_StatusTypeDef SPI_TypeDef::Transmit(uint8_t *txData, uint16_t txLength, uint
 }
 
 /**
- * @brief  Transmit and receive an amount of data in blocking mode.
+ * @brief  Transmit and receive an amount of uint16_t data in blocking mode.
  * @param  txData pointer to transmission data buffer.
  * @param  txLength the length of the data array to be transmitted.
  * @param  rxData pointer to reception data buffer.
  * @param  rxLength the length of the data array to be received.
  * @param  timeout timeout duration.
+ * @note   The data size for SPI must be set to SPI_DATAWIDTH_16BIT. Otherwise,
+ *         this function cannot be executed and will return HAL_ERROR.
  * @retval HAL status.
  */
 HAL_StatusTypeDef SPI_TypeDef::Transmit(uint16_t *txData, uint16_t txLength, uint16_t *rxData, uint16_t rxLength, uint32_t timeout) {
@@ -211,6 +219,23 @@ HAL_StatusTypeDef SPI_TypeDef::Transmit(uint16_t *txData, uint16_t txLength, uin
             rxData++;
             rxLength--;
         }
+        if((HAL.GetTickMs() - startTick) >= timeout)
+            return HAL_TIMEOUT;
+    }
+    return HAL_OK;
+}
+
+/**
+ * @brief  Transmit data in blocking mode.
+ * @param  data data to be transmitted.
+ * @param  timeout timeout duration.
+ * @retval HAL status.
+ */
+HAL_StatusTypeDef SPI_TypeDef::Transmit(uint16_t data, uint32_t timeout) {
+    uint32_t startTick = HAL.GetTickMs();
+    while(1U) {
+        if(REGS.STATR & SPI_STATR_TXE)
+            REGS.DATAR = data;
         if((HAL.GetTickMs() - startTick) >= timeout)
             return HAL_TIMEOUT;
     }
