@@ -234,12 +234,13 @@ HAL_StatusTypeDef SPI_TypeDef::Transmit(uint16_t *txData, uint16_t txLength, uin
 HAL_StatusTypeDef SPI_TypeDef::Transmit(uint16_t data, uint32_t timeout) {
     uint32_t startTick = HAL.GetTickMs();
     while(1U) {
-        if(REGS.STATR & SPI_STATR_TXE)
+        if(REGS.STATR & SPI_STATR_TXE) {
             REGS.DATAR = data;
+            return HAL_OK;
+        }
         if((HAL.GetTickMs() - startTick) >= timeout)
             return HAL_TIMEOUT;
     }
-    return HAL_OK;
 }
 
 /**
