@@ -76,6 +76,32 @@ void GPIO_TypeDef::WritePin(uint32_t pin, GPIO_StateTypeDef state) {
 }
 
 /**
+ * @brief  Set the selected data port bit.
+ * @note   This function uses GPIOx_BSHR register to allow atomic read/modify
+ *         accesses. In this way, there is no risk of an IRQ occurring between
+ *         the read and the modify access.
+ * @param  pin specifies the port bit to be written.
+ *         This parameter can be one of GPIO_PIN_x where x can be (0..15).
+ * @retval None.
+ */
+void GPIO_TypeDef::SetPin(uint32_t pin) {
+    REGS.BSHR = pin;
+}
+
+/**
+ * @brief  Clear the selected data port bit.
+ * @note   This function uses GPIOx_BCR register to allow atomic read/modify
+ *         accesses. In this way, there is no risk of an IRQ occurring between
+ *         the read and the modify access.
+ * @param  pin specifies the port bit to be written.
+ *         This parameter can be one of GPIO_PIN_x where x can be (0..15).
+ * @retval None.
+ */
+void GPIO_TypeDef::ResetPin(uint32_t pin) {
+    REGS.BCR = pin;
+}
+
+/**
  * @brief  Toggle the specified GPIO pin.
  * @param  pin specifies the pin to be toggled.
  * @retval None.

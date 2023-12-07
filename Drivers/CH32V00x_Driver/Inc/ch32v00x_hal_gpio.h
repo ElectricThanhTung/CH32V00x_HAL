@@ -42,6 +42,8 @@ public:
     void SetMode(uint32_t pin, GPIO_ModeTypeDef mode, GPIO_SpeedTypeDef speed = GPIO_SPEED_50MHZ);
     GPIO_StateTypeDef ReadPin(uint32_t pin);
     void WritePin(uint32_t pin, GPIO_StateTypeDef state);
+    void SetPin(uint32_t pin);
+    void ResetPin(uint32_t pin);
     void TogglePin(uint32_t pin);
     void LockPin(uint32_t pin);
     void DeInit(uint32_t pin);
