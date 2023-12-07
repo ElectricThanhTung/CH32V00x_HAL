@@ -45,5 +45,6 @@ private:
 #include "ch32v00x_hal_flash.h"
 #include "ch32v00x_hal_usart.h"
 #include "ch32v00x_hal_spi.h"
+#include "ch32v00x_hal_dma.h"
 
 #endif /* __CH32V00x_HAL_H */

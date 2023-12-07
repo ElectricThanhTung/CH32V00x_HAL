@@ -577,376 +577,58 @@ typedef enum IRQn {
 #define DMA_INTFCR_CTEIF7_Msk                   (0x01UL << DMA_INTFCR_CTEIF7_Pos)
 #define DMA_INTFCR_CTEIF7                       DMA_INTFCR_CTEIF7_Msk
 
-/******************  Bit definition for DMA_CFGR1 register  *******************/
-#define DMA_CFGR1_EN_Pos                        (0U)
-#define DMA_CFGR1_EN_Msk                        (0x01UL << DMA_CFGR1_EN_Pos)
-#define DMA_CFGR1_EN                            DMA_CFGR1_EN_Msk
-#define DMA_CFGR1_TCIE_Pos                      (1U)
-#define DMA_CFGR1_TCIE_Msk                      (0x01UL << DMA_CFGR1_TCIE_Pos)
-#define DMA_CFGR1_TCIE                          DMA_CFGR1_TCIE_Msk
-#define DMA_CFGR1_HTIE_Pos                      (2U)
-#define DMA_CFGR1_HTIE_Msk                      (0x01UL << DMA_CFGR1_HTIE_Pos)
-#define DMA_CFGR1_HTIE                          DMA_CFGR1_HTIE_Msk
-#define DMA_CFGR1_TEIE_Pos                      (3U)
-#define DMA_CFGR1_TEIE_Msk                      (0x01UL << DMA_CFGR1_TEIE_Pos)
-#define DMA_CFGR1_TEIE                          DMA_CFGR1_TEIE_Msk
-#define DMA_CFGR1_DIR_Pos                       (4U)
-#define DMA_CFGR1_DIR_Msk                       (0x01UL << DMA_CFGR1_DIR_Pos)
-#define DMA_CFGR1_DIR                           DMA_CFGR1_DIR_Msk
-#define DMA_CFGR1_CIRC_Pos                      (5U)
-#define DMA_CFGR1_CIRC_Msk                      (0x01UL << DMA_CFGR1_CIRC_Pos)
-#define DMA_CFGR1_CIRC                          DMA_CFGR1_CIRC_Msk
-#define DMA_CFGR1_PINC_Pos                      (6U)
-#define DMA_CFGR1_PINC_Msk                      (0x01UL << DMA_CFGR1_PINC_Pos)
-#define DMA_CFGR1_PINC                          DMA_CFGR1_PINC_Msk
-#define DMA_CFGR1_MINC_Pos                      (7U)
-#define DMA_CFGR1_MINC_Msk                      (0x01UL << DMA_CFGR1_MINC_Pos)
-#define DMA_CFGR1_MINC                          DMA_CFGR1_MINC_Msk
-#define DMA_CFGR1_PSIZE_Pos                     (8U)
-#define DMA_CFGR1_PSIZE_Msk                     (0x03UL << DMA_CFGR1_PSIZE_Pos)
-#define DMA_CFGR1_PSIZE                         DMA_CFGR1_PSIZE_Msk
-#define DMA_CFGR1_MSIZE_Pos                     (10U)
-#define DMA_CFGR1_MSIZE_Msk                     (0x03UL << DMA_CFGR1_MSIZE_Pos)
-#define DMA_CFGR1_MSIZE                         DMA_CFGR1_MSIZE_Msk
-#define DMA_CFGR1_PL_Pos                        (12U)
-#define DMA_CFGR1_PL_Msk                        (0x03UL << DMA_CFGR1_PL_Pos)
-#define DMA_CFGR1_PL                            DMA_CFGR1_PL_Msk
-#define DMA_CFGR1_MEM2MEM_Pos                   (14U)
-#define DMA_CFGR1_MEM2MEM_Msk                   (0x01UL << DMA_CFGR1_MEM2MEM_Pos)
-#define DMA_CFGR1_MEM2MEM                       DMA_CFGR1_MEM2MEM_Msk
+/******************  Bit definition for DMA_CFGRx register  *******************/
+#define DMA_CFGR_EN_Pos                         (0U)
+#define DMA_CFGR_EN_Msk                         (0x01UL << DMA_CFGR_EN_Pos)
+#define DMA_CFGR_EN                             DMA_CFGR_EN_Msk
+#define DMA_CFGR_TCIE_Pos                       (1U)
+#define DMA_CFGR_TCIE_Msk                       (0x01UL << DMA_CFGR_TCIE_Pos)
+#define DMA_CFGR_TCIE                           DMA_CFGR_TCIE_Msk
+#define DMA_CFGR_HTIE_Pos                       (2U)
+#define DMA_CFGR_HTIE_Msk                       (0x01UL << DMA_CFGR_HTIE_Pos)
+#define DMA_CFGR_HTIE                           DMA_CFGR_HTIE_Msk
+#define DMA_CFGR_TEIE_Pos                       (3U)
+#define DMA_CFGR_TEIE_Msk                       (0x01UL << DMA_CFGR_TEIE_Pos)
+#define DMA_CFGR_TEIE                           DMA_CFGR_TEIE_Msk
+#define DMA_CFGR_DIR_Pos                        (4U)
+#define DMA_CFGR_DIR_Msk                        (0x01UL << DMA_CFGR_DIR_Pos)
+#define DMA_CFGR_DIR                            DMA_CFGR_DIR_Msk
+#define DMA_CFGR_CIRC_Pos                       (5U)
+#define DMA_CFGR_CIRC_Msk                       (0x01UL << DMA_CFGR_CIRC_Pos)
+#define DMA_CFGR_CIRC                           DMA_CFGR_CIRC_Msk
+#define DMA_CFGR_PINC_Pos                       (6U)
+#define DMA_CFGR_PINC_Msk                       (0x01UL << DMA_CFGR_PINC_Pos)
+#define DMA_CFGR_PINC                           DMA_CFGR_PINC_Msk
+#define DMA_CFGR_MINC_Pos                       (7U)
+#define DMA_CFGR_MINC_Msk                       (0x01UL << DMA_CFGR_MINC_Pos)
+#define DMA_CFGR_MINC                           DMA_CFGR_MINC_Msk
+#define DMA_CFGR_PSIZE_Pos                      (8U)
+#define DMA_CFGR_PSIZE_Msk                      (0x03UL << DMA_CFGR_PSIZE_Pos)
+#define DMA_CFGR_PSIZE                          DMA_CFGR_PSIZE_Msk
+#define DMA_CFGR_MSIZE_Pos                      (10U)
+#define DMA_CFGR_MSIZE_Msk                      (0x03UL << DMA_CFGR_MSIZE_Pos)
+#define DMA_CFGR_MSIZE                          DMA_CFGR_MSIZE_Msk
+#define DMA_CFGR_PL_Pos                         (12U)
+#define DMA_CFGR_PL_Msk                         (0x03UL << DMA_CFGR_PL_Pos)
+#define DMA_CFGR_PL                             DMA_CFGR_PL_Msk
+#define DMA_CFGR_MEM2MEM_Pos                    (14U)
+#define DMA_CFGR_MEM2MEM_Msk                    (0x01UL << DMA_CFGR_MEM2MEM_Pos)
+#define DMA_CFGR_MEM2MEM                        DMA_CFGR_MEM2MEM_Msk
 
-/******************  Bit definition for DMA_CFGR2 register  *******************/
-#define DMA_CFGR2_EN_Pos                        (0U)
-#define DMA_CFGR2_EN_Msk                        (0x01UL << DMA_CFGR2_EN_Pos)
-#define DMA_CFGR2_EN                            DMA_CFGR2_EN_Msk
-#define DMA_CFGR2_TCIE_Pos                      (1U)
-#define DMA_CFGR2_TCIE_Msk                      (0x01UL << DMA_CFGR2_TCIE_Pos)
-#define DMA_CFGR2_TCIE                          DMA_CFGR2_TCIE_Msk
-#define DMA_CFGR2_HTIE_Pos                      (2U)
-#define DMA_CFGR2_HTIE_Msk                      (0x01UL << DMA_CFGR2_HTIE_Pos)
-#define DMA_CFGR2_HTIE                          DMA_CFGR2_HTIE_Msk
-#define DMA_CFGR2_TEIE_Pos                      (3U)
-#define DMA_CFGR2_TEIE_Msk                      (0x01UL << DMA_CFGR2_TEIE_Pos)
-#define DMA_CFGR2_TEIE                          DMA_CFGR2_TEIE_Msk
-#define DMA_CFGR2_DIR_Pos                       (4U)
-#define DMA_CFGR2_DIR_Msk                       (0x01UL << DMA_CFGR2_DIR_Pos)
-#define DMA_CFGR2_DIR                           DMA_CFGR2_DIR_Msk
-#define DMA_CFGR2_CIRC_Pos                      (5U)
-#define DMA_CFGR2_CIRC_Msk                      (0x01UL << DMA_CFGR2_CIRC_Pos)
-#define DMA_CFGR2_CIRC                          DMA_CFGR2_CIRC_Msk
-#define DMA_CFGR2_PINC_Pos                      (6U)
-#define DMA_CFGR2_PINC_Msk                      (0x01UL << DMA_CFGR2_PINC_Pos)
-#define DMA_CFGR2_PINC                          DMA_CFGR2_PINC_Msk
-#define DMA_CFGR2_MINC_Pos                      (7U)
-#define DMA_CFGR2_MINC_Msk                      (0x01UL << DMA_CFGR2_MINC_Pos)
-#define DMA_CFGR2_MINC                          DMA_CFGR2_MINC_Msk
-#define DMA_CFGR2_PSIZE_Pos                     (8U)
-#define DMA_CFGR2_PSIZE_Msk                     (0x03UL << DMA_CFGR2_PSIZE_Pos)
-#define DMA_CFGR2_PSIZE                         DMA_CFGR2_PSIZE_Msk
-#define DMA_CFGR2_MSIZE_Pos                     (10U)
-#define DMA_CFGR2_MSIZE_Msk                     (0x03UL << DMA_CFGR2_MSIZE_Pos)
-#define DMA_CFGR2_MSIZE                         DMA_CFGR2_MSIZE_Msk
-#define DMA_CFGR2_PL_Pos                        (12U)
-#define DMA_CFGR2_PL_Msk                        (0x03UL << DMA_CFGR2_PL_Pos)
-#define DMA_CFGR2_PL                            DMA_CFGR2_PL_Msk
-#define DMA_CFGR2_MEM2MEM_Pos                   (14U)
-#define DMA_CFGR2_MEM2MEM_Msk                   (0x01UL << DMA_CFGR2_MEM2MEM_Pos)
-#define DMA_CFGR2_MEM2MEM                       DMA_CFGR2_MEM2MEM_Msk
+/******************  Bit definition for DMA_CNTRx register  *******************/
+#define DMA_CNTR_NDT_Pos                        (0U)
+#define DMA_CNTR_NDT_Msk                        (0xFFFFUL << DMA_CNTR_NDT_Pos)
+#define DMA_CNTR_NDT                            DMA_CNTR_NDT_Msk
 
-/******************  Bit definition for DMA_CFGR3 register  *******************/
-#define DMA_CFGR3_EN_Pos                        (0U)
-#define DMA_CFGR3_EN_Msk                        (0x01UL << DMA_CFGR3_EN_Pos)
-#define DMA_CFGR3_EN                            DMA_CFGR3_EN_Msk
-#define DMA_CFGR3_TCIE_Pos                      (1U)
-#define DMA_CFGR3_TCIE_Msk                      (0x01UL << DMA_CFGR3_TCIE_Pos)
-#define DMA_CFGR3_TCIE                          DMA_CFGR3_TCIE_Msk
-#define DMA_CFGR3_HTIE_Pos                      (2U)
-#define DMA_CFGR3_HTIE_Msk                      (0x01UL << DMA_CFGR3_HTIE_Pos)
-#define DMA_CFGR3_HTIE                          DMA_CFGR3_HTIE_Msk
-#define DMA_CFGR3_TEIE_Pos                      (3U)
-#define DMA_CFGR3_TEIE_Msk                      (0x01UL << DMA_CFGR3_TEIE_Pos)
-#define DMA_CFGR3_TEIE                          DMA_CFGR3_TEIE_Msk
-#define DMA_CFGR3_DIR_Pos                       (4U)
-#define DMA_CFGR3_DIR_Msk                       (0x01UL << DMA_CFGR3_DIR_Pos)
-#define DMA_CFGR3_DIR                           DMA_CFGR3_DIR_Msk
-#define DMA_CFGR3_CIRC_Pos                      (5U)
-#define DMA_CFGR3_CIRC_Msk                      (0x01UL << DMA_CFGR3_CIRC_Pos)
-#define DMA_CFGR3_CIRC                          DMA_CFGR3_CIRC_Msk
-#define DMA_CFGR3_PINC_Pos                      (6U)
-#define DMA_CFGR3_PINC_Msk                      (0x01UL << DMA_CFGR3_PINC_Pos)
-#define DMA_CFGR3_PINC                          DMA_CFGR3_PINC_Msk
-#define DMA_CFGR3_MINC_Pos                      (7U)
-#define DMA_CFGR3_MINC_Msk                      (0x01UL << DMA_CFGR3_MINC_Pos)
-#define DMA_CFGR3_MINC                          DMA_CFGR3_MINC_Msk
-#define DMA_CFGR3_PSIZE_Pos                     (8U)
-#define DMA_CFGR3_PSIZE_Msk                     (0x03UL << DMA_CFGR3_PSIZE_Pos)
-#define DMA_CFGR3_PSIZE                         DMA_CFGR3_PSIZE_Msk
-#define DMA_CFGR3_MSIZE_Pos                     (10U)
-#define DMA_CFGR3_MSIZE_Msk                     (0x03UL << DMA_CFGR3_MSIZE_Pos)
-#define DMA_CFGR3_MSIZE                         DMA_CFGR3_MSIZE_Msk
-#define DMA_CFGR3_PL_Pos                        (12U)
-#define DMA_CFGR3_PL_Msk                        (0x03UL << DMA_CFGR3_PL_Pos)
-#define DMA_CFGR3_PL                            DMA_CFGR3_PL_Msk
-#define DMA_CFGR3_MEM2MEM_Pos                   (14U)
-#define DMA_CFGR3_MEM2MEM_Msk                   (0x01UL << DMA_CFGR3_MEM2MEM_Pos)
-#define DMA_CFGR3_MEM2MEM                       DMA_CFGR3_MEM2MEM_Msk
+/******************  Bit definition for DMA_PADDRx register  ******************/
+#define DMA_PADDR_PA_Pos                        (0U)
+#define DMA_PADDR_PA_Msk                        (0xFFFFFFFFUL << DMA_PADDR_PA_Pos)
+#define DMA_PADDR_PA                            DMA_PADDR_PA_Msk
 
-/******************  Bit definition for DMA_CFGR4 register  *******************/
-#define DMA_CFGR4_EN_Pos                        (0U)
-#define DMA_CFGR4_EN_Msk                        (0x01UL << DMA_CFGR4_EN_Pos)
-#define DMA_CFGR4_EN                            DMA_CFGR4_EN_Msk
-#define DMA_CFGR4_TCIE_Pos                      (1U)
-#define DMA_CFGR4_TCIE_Msk                      (0x01UL << DMA_CFGR4_TCIE_Pos)
-#define DMA_CFGR4_TCIE                          DMA_CFGR4_TCIE_Msk
-#define DMA_CFGR4_HTIE_Pos                      (2U)
-#define DMA_CFGR4_HTIE_Msk                      (0x01UL << DMA_CFGR4_HTIE_Pos)
-#define DMA_CFGR4_HTIE                          DMA_CFGR4_HTIE_Msk
-#define DMA_CFGR4_TEIE_Pos                      (3U)
-#define DMA_CFGR4_TEIE_Msk                      (0x01UL << DMA_CFGR4_TEIE_Pos)
-#define DMA_CFGR4_TEIE                          DMA_CFGR4_TEIE_Msk
-#define DMA_CFGR4_DIR_Pos                       (4U)
-#define DMA_CFGR4_DIR_Msk                       (0x01UL << DMA_CFGR4_DIR_Pos)
-#define DMA_CFGR4_DIR                           DMA_CFGR4_DIR_Msk
-#define DMA_CFGR4_CIRC_Pos                      (5U)
-#define DMA_CFGR4_CIRC_Msk                      (0x01UL << DMA_CFGR4_CIRC_Pos)
-#define DMA_CFGR4_CIRC                          DMA_CFGR4_CIRC_Msk
-#define DMA_CFGR4_PINC_Pos                      (6U)
-#define DMA_CFGR4_PINC_Msk                      (0x01UL << DMA_CFGR4_PINC_Pos)
-#define DMA_CFGR4_PINC                          DMA_CFGR4_PINC_Msk
-#define DMA_CFGR4_MINC_Pos                      (7U)
-#define DMA_CFGR4_MINC_Msk                      (0x01UL << DMA_CFGR4_MINC_Pos)
-#define DMA_CFGR4_MINC                          DMA_CFGR4_MINC_Msk
-#define DMA_CFGR4_PSIZE_Pos                     (8U)
-#define DMA_CFGR4_PSIZE_Msk                     (0x03UL << DMA_CFGR4_PSIZE_Pos)
-#define DMA_CFGR4_PSIZE                         DMA_CFGR4_PSIZE_Msk
-#define DMA_CFGR4_MSIZE_Pos                     (10U)
-#define DMA_CFGR4_MSIZE_Msk                     (0x03UL << DMA_CFGR4_MSIZE_Pos)
-#define DMA_CFGR4_MSIZE                         DMA_CFGR4_MSIZE_Msk
-#define DMA_CFGR4_PL_Pos                        (12U)
-#define DMA_CFGR4_PL_Msk                        (0x03UL << DMA_CFGR4_PL_Pos)
-#define DMA_CFGR4_PL                            DMA_CFGR4_PL_Msk
-#define DMA_CFGR4_MEM2MEM_Pos                   (14U)
-#define DMA_CFGR4_MEM2MEM_Msk                   (0x01UL << DMA_CFGR4_MEM2MEM_Pos)
-#define DMA_CFGR4_MEM2MEM                       DMA_CFGR4_MEM2MEM_Msk
-
-/******************  Bit definition for DMA_CFGR5 register  *******************/
-#define DMA_CFGR5_EN_Pos                        (0U)
-#define DMA_CFGR5_EN_Msk                        (0x01UL << DMA_CFGR5_EN_Pos)
-#define DMA_CFGR5_EN                            DMA_CFGR5_EN_Msk
-#define DMA_CFGR5_TCIE_Pos                      (1U)
-#define DMA_CFGR5_TCIE_Msk                      (0x01UL << DMA_CFGR5_TCIE_Pos)
-#define DMA_CFGR5_TCIE                          DMA_CFGR5_TCIE_Msk
-#define DMA_CFGR5_HTIE_Pos                      (2U)
-#define DMA_CFGR5_HTIE_Msk                      (0x01UL << DMA_CFGR5_HTIE_Pos)
-#define DMA_CFGR5_HTIE                          DMA_CFGR5_HTIE_Msk
-#define DMA_CFGR5_TEIE_Pos                      (3U)
-#define DMA_CFGR5_TEIE_Msk                      (0x01UL << DMA_CFGR5_TEIE_Pos)
-#define DMA_CFGR5_TEIE                          DMA_CFGR5_TEIE_Msk
-#define DMA_CFGR5_DIR_Pos                       (4U)
-#define DMA_CFGR5_DIR_Msk                       (0x01UL << DMA_CFGR5_DIR_Pos)
-#define DMA_CFGR5_DIR                           DMA_CFGR5_DIR_Msk
-#define DMA_CFGR5_CIRC_Pos                      (5U)
-#define DMA_CFGR5_CIRC_Msk                      (0x01UL << DMA_CFGR5_CIRC_Pos)
-#define DMA_CFGR5_CIRC                          DMA_CFGR5_CIRC_Msk
-#define DMA_CFGR5_PINC_Pos                      (6U)
-#define DMA_CFGR5_PINC_Msk                      (0x01UL << DMA_CFGR5_PINC_Pos)
-#define DMA_CFGR5_PINC                          DMA_CFGR5_PINC_Msk
-#define DMA_CFGR5_MINC_Pos                      (7U)
-#define DMA_CFGR5_MINC_Msk                      (0x01UL << DMA_CFGR5_MINC_Pos)
-#define DMA_CFGR5_MINC                          DMA_CFGR5_MINC_Msk
-#define DMA_CFGR5_PSIZE_Pos                     (8U)
-#define DMA_CFGR5_PSIZE_Msk                     (0x03UL << DMA_CFGR5_PSIZE_Pos)
-#define DMA_CFGR5_PSIZE                         DMA_CFGR5_PSIZE_Msk
-#define DMA_CFGR5_MSIZE_Pos                     (10U)
-#define DMA_CFGR5_MSIZE_Msk                     (0x03UL << DMA_CFGR5_MSIZE_Pos)
-#define DMA_CFGR5_MSIZE                         DMA_CFGR5_MSIZE_Msk
-#define DMA_CFGR5_PL_Pos                        (12U)
-#define DMA_CFGR5_PL_Msk                        (0x03UL << DMA_CFGR5_PL_Pos)
-#define DMA_CFGR5_PL                            DMA_CFGR5_PL_Msk
-#define DMA_CFGR5_MEM2MEM_Pos                   (14U)
-#define DMA_CFGR5_MEM2MEM_Msk                   (0x01UL << DMA_CFGR5_MEM2MEM_Pos)
-#define DMA_CFGR5_MEM2MEM                       DMA_CFGR5_MEM2MEM_Msk
-
-/******************  Bit definition for DMA_CFGR6 register  *******************/
-#define DMA_CFGR6_EN_Pos                        (0U)
-#define DMA_CFGR6_EN_Msk                        (0x01UL << DMA_CFGR6_EN_Pos)
-#define DMA_CFGR6_EN                            DMA_CFGR6_EN_Msk
-#define DMA_CFGR6_TCIE_Pos                      (1U)
-#define DMA_CFGR6_TCIE_Msk                      (0x01UL << DMA_CFGR6_TCIE_Pos)
-#define DMA_CFGR6_TCIE                          DMA_CFGR6_TCIE_Msk
-#define DMA_CFGR6_HTIE_Pos                      (2U)
-#define DMA_CFGR6_HTIE_Msk                      (0x01UL << DMA_CFGR6_HTIE_Pos)
-#define DMA_CFGR6_HTIE                          DMA_CFGR6_HTIE_Msk
-#define DMA_CFGR6_TEIE_Pos                      (3U)
-#define DMA_CFGR6_TEIE_Msk                      (0x01UL << DMA_CFGR6_TEIE_Pos)
-#define DMA_CFGR6_TEIE                          DMA_CFGR6_TEIE_Msk
-#define DMA_CFGR6_DIR_Pos                       (4U)
-#define DMA_CFGR6_DIR_Msk                       (0x01UL << DMA_CFGR6_DIR_Pos)
-#define DMA_CFGR6_DIR                           DMA_CFGR6_DIR_Msk
-#define DMA_CFGR6_CIRC_Pos                      (5U)
-#define DMA_CFGR6_CIRC_Msk                      (0x01UL << DMA_CFGR6_CIRC_Pos)
-#define DMA_CFGR6_CIRC                          DMA_CFGR6_CIRC_Msk
-#define DMA_CFGR6_PINC_Pos                      (6U)
-#define DMA_CFGR6_PINC_Msk                      (0x01UL << DMA_CFGR6_PINC_Pos)
-#define DMA_CFGR6_PINC                          DMA_CFGR6_PINC_Msk
-#define DMA_CFGR6_MINC_Pos                      (7U)
-#define DMA_CFGR6_MINC_Msk                      (0x01UL << DMA_CFGR6_MINC_Pos)
-#define DMA_CFGR6_MINC                          DMA_CFGR6_MINC_Msk
-#define DMA_CFGR6_PSIZE_Pos                     (8U)
-#define DMA_CFGR6_PSIZE_Msk                     (0x03UL << DMA_CFGR6_PSIZE_Pos)
-#define DMA_CFGR6_PSIZE                         DMA_CFGR6_PSIZE_Msk
-#define DMA_CFGR6_MSIZE_Pos                     (10U)
-#define DMA_CFGR6_MSIZE_Msk                     (0x03UL << DMA_CFGR6_MSIZE_Pos)
-#define DMA_CFGR6_MSIZE                         DMA_CFGR6_MSIZE_Msk
-#define DMA_CFGR6_PL_Pos                        (12U)
-#define DMA_CFGR6_PL_Msk                        (0x03UL << DMA_CFGR6_PL_Pos)
-#define DMA_CFGR6_PL                            DMA_CFGR6_PL_Msk
-#define DMA_CFGR6_MEM2MEM_Pos                   (14U)
-#define DMA_CFGR6_MEM2MEM_Msk                   (0x01UL << DMA_CFGR6_MEM2MEM_Pos)
-#define DMA_CFGR6_MEM2MEM                       DMA_CFGR6_MEM2MEM_Msk
-
-/******************  Bit definition for DMA_CFGR7 register  *******************/
-#define DMA_CFGR7_EN_Pos                        (0U)
-#define DMA_CFGR7_EN_Msk                        (0x01UL << DMA_CFGR7_EN_Pos)
-#define DMA_CFGR7_EN                            DMA_CFGR7_EN_Msk
-#define DMA_CFGR7_TCIE_Pos                      (1U)
-#define DMA_CFGR7_TCIE_Msk                      (0x01UL << DMA_CFGR7_TCIE_Pos)
-#define DMA_CFGR7_TCIE                          DMA_CFGR7_TCIE_Msk
-#define DMA_CFGR7_HTIE_Pos                      (2U)
-#define DMA_CFGR7_HTIE_Msk                      (0x01UL << DMA_CFGR7_HTIE_Pos)
-#define DMA_CFGR7_HTIE                          DMA_CFGR7_HTIE_Msk
-#define DMA_CFGR7_TEIE_Pos                      (3U)
-#define DMA_CFGR7_TEIE_Msk                      (0x01UL << DMA_CFGR7_TEIE_Pos)
-#define DMA_CFGR7_TEIE                          DMA_CFGR7_TEIE_Msk
-#define DMA_CFGR7_DIR_Pos                       (4U)
-#define DMA_CFGR7_DIR_Msk                       (0x01UL << DMA_CFGR7_DIR_Pos)
-#define DMA_CFGR7_DIR                           DMA_CFGR7_DIR_Msk
-#define DMA_CFGR7_CIRC_Pos                      (5U)
-#define DMA_CFGR7_CIRC_Msk                      (0x01UL << DMA_CFGR7_CIRC_Pos)
-#define DMA_CFGR7_CIRC                          DMA_CFGR7_CIRC_Msk
-#define DMA_CFGR7_PINC_Pos                      (6U)
-#define DMA_CFGR7_PINC_Msk                      (0x01UL << DMA_CFGR7_PINC_Pos)
-#define DMA_CFGR7_PINC                          DMA_CFGR7_PINC_Msk
-#define DMA_CFGR7_MINC_Pos                      (7U)
-#define DMA_CFGR7_MINC_Msk                      (0x01UL << DMA_CFGR7_MINC_Pos)
-#define DMA_CFGR7_MINC                          DMA_CFGR7_MINC_Msk
-#define DMA_CFGR7_PSIZE_Pos                     (8U)
-#define DMA_CFGR7_PSIZE_Msk                     (0x03UL << DMA_CFGR7_PSIZE_Pos)
-#define DMA_CFGR7_PSIZE                         DMA_CFGR7_PSIZE_Msk
-#define DMA_CFGR7_MSIZE_Pos                     (10U)
-#define DMA_CFGR7_MSIZE_Msk                     (0x03UL << DMA_CFGR7_MSIZE_Pos)
-#define DMA_CFGR7_MSIZE                         DMA_CFGR7_MSIZE_Msk
-#define DMA_CFGR7_PL_Pos                        (12U)
-#define DMA_CFGR7_PL_Msk                        (0x03UL << DMA_CFGR7_PL_Pos)
-#define DMA_CFGR7_PL                            DMA_CFGR7_PL_Msk
-#define DMA_CFGR7_MEM2MEM_Pos                   (14U)
-#define DMA_CFGR7_MEM2MEM_Msk                   (0x01UL << DMA_CFGR7_MEM2MEM_Pos)
-#define DMA_CFGR7_MEM2MEM                       DMA_CFGR7_MEM2MEM_Msk
-
-/******************  Bit definition for DMA_CNTR1 register  *******************/
-#define DMA_CNTR1_NDT_Pos                       (0U)
-#define DMA_CNTR1_NDT_Msk                       (0xFFFFUL << DMA_CNTR1_NDT_Pos)
-#define DMA_CNTR1_NDT                           DMA_CNTR1_NDT_Msk
-
-/******************  Bit definition for DMA_CNTR2 register  *******************/
-#define DMA_CNTR2_NDT_Pos                       (0U)
-#define DMA_CNTR2_NDT_Msk                       (0xFFFFUL << DMA_CNTR2_NDT_Pos)
-#define DMA_CNTR2_NDT                           DMA_CNTR2_NDT_Msk
-
-/******************  Bit definition for DMA_CNTR3 register  *******************/
-#define DMA_CNTR3_NDT_Pos                       (0U)
-#define DMA_CNTR3_NDT_Msk                       (0xFFFFUL << DMA_CNTR3_NDT_Pos)
-#define DMA_CNTR3_NDT                           DMA_CNTR3_NDT_Msk
-
-/******************  Bit definition for DMA_CNTR4 register  *******************/
-#define DMA_CNTR4_NDT_Pos                       (0U)
-#define DMA_CNTR4_NDT_Msk                       (0xFFFFUL << DMA_CNTR4_NDT_Pos)
-#define DMA_CNTR4_NDT                           DMA_CNTR4_NDT_Msk
-
-/******************  Bit definition for DMA_CNTR5 register  *******************/
-#define DMA_CNTR5_NDT_Pos                       (0U)
-#define DMA_CNTR5_NDT_Msk                       (0xFFFFUL << DMA_CNTR5_NDT_Pos)
-#define DMA_CNTR5_NDT                           DMA_CNTR5_NDT_Msk
-
-/******************  Bit definition for DMA_CNTR6 register  *******************/
-#define DMA_CNTR6_NDT_Pos                       (0U)
-#define DMA_CNTR6_NDT_Msk                       (0xFFFFUL << DMA_CNTR6_NDT_Pos)
-#define DMA_CNTR6_NDT                           DMA_CNTR6_NDT_Msk
-
-/******************  Bit definition for DMA_CNTR7 register  *******************/
-#define DMA_CNTR7_NDT_Pos                       (0U)
-#define DMA_CNTR7_NDT_Msk                       (0xFFFFUL << DMA_CNTR7_NDT_Pos)
-#define DMA_CNTR7_NDT                           DMA_CNTR7_NDT_Msk
-
-/******************  Bit definition for DMA_PADDR1 register  ******************/
-#define DMA_PADDR1_PA_Pos                       (0U)
-#define DMA_PADDR1_PA_Msk                       (0xFFFFFFFFUL << DMA_PADDR1_PA_Pos)
-#define DMA_PADDR1_PA                           DMA_PADDR1_PA_Msk
-
-/******************  Bit definition for DMA_PADDR2 register  ******************/
-#define DMA_PADDR2_PA_Pos                       (0U)
-#define DMA_PADDR2_PA_Msk                       (0xFFFFFFFFUL << DMA_PADDR2_PA_Pos)
-#define DMA_PADDR2_PA                           DMA_PADDR2_PA_Msk
-
-/******************  Bit definition for DMA_PADDR3 register  ******************/
-#define DMA_PADDR3_PA_Pos                       (0U)
-#define DMA_PADDR3_PA_Msk                       (0xFFFFFFFFUL << DMA_PADDR3_PA_Pos)
-#define DMA_PADDR3_PA                           DMA_PADDR3_PA_Msk
-
-/******************  Bit definition for DMA_PADDR4 register  ******************/
-#define DMA_PADDR4_PA_Pos                       (0U)
-#define DMA_PADDR4_PA_Msk                       (0xFFFFFFFFUL << DMA_PADDR4_PA_Pos)
-#define DMA_PADDR4_PA                           DMA_PADDR4_PA_Msk
-
-/******************  Bit definition for DMA_PADDR5 register  ******************/
-#define DMA_PADDR5_PA_Pos                       (0U)
-#define DMA_PADDR5_PA_Msk                       (0xFFFFFFFFUL << DMA_PADDR5_PA_Pos)
-#define DMA_PADDR5_PA                           DMA_PADDR5_PA_Msk
-
-/******************  Bit definition for DMA_PADDR6 register  ******************/
-#define DMA_PADDR6_PA_Pos                       (0U)
-#define DMA_PADDR6_PA_Msk                       (0xFFFFFFFFUL << DMA_PADDR6_PA_Pos)
-#define DMA_PADDR6_PA                           DMA_PADDR6_PA_Msk
-
-/******************  Bit definition for DMA_PADDR7 register  ******************/
-#define DMA_PADDR7_PA_Pos                       (0U)
-#define DMA_PADDR7_PA_Msk                       (0xFFFFFFFFUL << DMA_PADDR7_PA_Pos)
-#define DMA_PADDR7_PA                           DMA_PADDR7_PA_Msk
-
-/******************  Bit definition for DMA_MADDR1 register  ******************/
-#define DMA_MADDR1_MA_Pos                       (0U)
-#define DMA_MADDR1_MA_Msk                       (0xFFFFFFFFUL << DMA_MADDR1_MA_Pos)
-#define DMA_MADDR1_MA                           DMA_MADDR1_MA_Msk
-
-/******************  Bit definition for DMA_MADDR2 register  ******************/
-#define DMA_MADDR2_MA_Pos                       (0U)
-#define DMA_MADDR2_MA_Msk                       (0xFFFFFFFFUL << DMA_MADDR2_MA_Pos)
-#define DMA_MADDR2_MA                           DMA_MADDR2_MA_Msk
-
-/******************  Bit definition for DMA_MADDR3 register  ******************/
-#define DMA_MADDR3_MA_Pos                       (0U)
-#define DMA_MADDR3_MA_Msk                       (0xFFFFFFFFUL << DMA_MADDR3_MA_Pos)
-#define DMA_MADDR3_MA                           DMA_MADDR3_MA_Msk
-
-/******************  Bit definition for DMA_MADDR4 register  ******************/
-#define DMA_MADDR4_MA_Pos                       (0U)
-#define DMA_MADDR4_MA_Msk                       (0xFFFFFFFFUL << DMA_MADDR4_MA_Pos)
-#define DMA_MADDR4_MA                           DMA_MADDR4_MA_Msk
-
-/******************  Bit definition for DMA_MADDR5 register  ******************/
-#define DMA_MADDR5_MA_Pos                       (0U)
-#define DMA_MADDR5_MA_Msk                       (0xFFFFFFFFUL << DMA_MADDR5_MA_Pos)
-#define DMA_MADDR5_MA                           DMA_MADDR5_MA_Msk
-
-/******************  Bit definition for DMA_MADDR6 register  ******************/
-#define DMA_MADDR6_MA_Pos                       (0U)
-#define DMA_MADDR6_MA_Msk                       (0xFFFFFFFFUL << DMA_MADDR6_MA_Pos)
-#define DMA_MADDR6_MA                           DMA_MADDR6_MA_Msk
-
-/******************  Bit definition for DMA_MADDR7 register  ******************/
-#define DMA_MADDR7_MA_Pos                       (0U)
-#define DMA_MADDR7_MA_Msk                       (0xFFFFFFFFUL << DMA_MADDR7_MA_Pos)
-#define DMA_MADDR7_MA                           DMA_MADDR7_MA_Msk
+/******************  Bit definition for DMA_MADDRx register  ******************/
+#define DMA_MADDR_MA_Pos                        (0U)
+#define DMA_MADDR_MA_Msk                        (0xFFFFFFFFUL << DMA_MADDR_MA_Pos)
+#define DMA_MADDR_MA                            DMA_MADDR_MA_Msk
 
 /******************************************************************************/
 /*                    External Interrupt/Event Controller                     */
