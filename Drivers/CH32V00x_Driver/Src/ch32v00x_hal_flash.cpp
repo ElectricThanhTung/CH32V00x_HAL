@@ -72,7 +72,7 @@ HAL_StatusTypeDef FLASH_TypeDef::BuffReset(void) {
 /**
  * @brief  Load a word to BUF.
  * @param  address specifies address to be loaded.
- * @param  data - specifies data to be loaded.
+ * @param  data specifies data to be loaded.
  * @retval HAL status.
  */
 HAL_StatusTypeDef FLASH_TypeDef::LoadWord(uint32_t address, uint32_t data) {
@@ -145,6 +145,7 @@ HAL_StatusTypeDef FLASH_TypeDef::ErasePage(uint32_t address, FLASH_EraseModeType
  * @brief  Erases a specified FLASH page 64B or 1KB depending on the mode specified in eraseMode.
  * @param  address specifies the starting address where FLASH is written.
  * @param  data pointer to data that needs to be written to FLASH.
+ * @param  size size of data to write.
  * @retval HAL status.
  */
 HAL_StatusTypeDef FLASH_TypeDef::WriteData(uint32_t address, void *data, uint32_t size) {
