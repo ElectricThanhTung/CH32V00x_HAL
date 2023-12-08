@@ -55,25 +55,6 @@ typedef enum {
     RCC_OUTPUTCLK_PLL = 0x07
 } RCC_OutputClkTypeDef;
 
-typedef enum {
-    RCC_PERIPHCLK_DMA1EN = (0UL << 30U) | RCC_AHBPCENR_DMA1EN,
-    RCC_PERIPHCLK_SRAMEN = (0UL << 30U) | RCC_AHBPCENR_SRAMEN,
-
-    RCC_PERIPHCLK_AFIOEN = (1UL << 30U) | RCC_APB2PCENR_AFIOEN,
-    RCC_PERIPHCLK_IOPAEN = (1UL << 30U) | RCC_APB2PCENR_IOPAEN,
-    RCC_PERIPHCLK_IOPCEN = (1UL << 30U) | RCC_APB2PCENR_IOPCEN,
-    RCC_PERIPHCLK_IOPDEN = (1UL << 30U) | RCC_APB2PCENR_IOPDEN,
-    RCC_PERIPHCLK_ADC1EN = (1UL << 30U) | RCC_APB2PCENR_ADC1EN,
-    RCC_PERIPHCLK_TIM1EN = (1UL << 30U) | RCC_APB2PCENR_TIM1EN,
-    RCC_PERIPHCLK_SPI1EN = (1UL << 30U) | RCC_APB2PCENR_SPI1EN,
-    RCC_PERIPHCLK_USART1EN = (1UL << 30U) | RCC_APB2PCENR_USART1EN,
-
-    RCC_PERIPHCLK_TIM2EN = (2UL << 30U) | RCC_APB1PCENR_TIM2EN,
-    RCC_PERIPHCLK_WWDGEN = (2UL << 30U) | RCC_APB1PCENR_WWDGEN,
-    RCC_PERIPHCLK_I2C1EN = (2UL << 30U) | RCC_APB1PCENR_I2C1EN,
-    RCC_PERIPHCLK_PWREN = (2UL << 30U) | RCC_APB1PCENR_PWREN
-} RCC_PeriphClkTypeDef;
-
 class RCC_TypeDef {
 public:
     struct {
@@ -98,12 +79,10 @@ public:
     HAL_StatusTypeDef SetSysClock(RCC_SysClkSrcTypeDef source, RCC_SysClkDivTypeDef div = RCC_SYSCLK_DIV1);
     void SetADCCLKDivider(RCC_AdcClkDivTypeDef div);
     void SetOutputClockSource(RCC_OutputClkTypeDef source);
-    void SetPeriphClockState(RCC_PeriphClkTypeDef peripheral, HAL_StateTypeDef state);
     HAL_StateTypeDef GetHSIState(void);
     HAL_StateTypeDef GetHSEState(void);
     RCC_PllSrcTypeDef GetPLLSource(void);
     RCC_OutputClkTypeDef GetOutputClockSource(void);
-    HAL_StateTypeDef GetPeriphClockState(RCC_PeriphClkTypeDef peripheral);
     uint32_t GetSysClockFreq(void);
     uint32_t GetHCLKFreq(void);
     uint32_t GetOutputClockFreq(void);

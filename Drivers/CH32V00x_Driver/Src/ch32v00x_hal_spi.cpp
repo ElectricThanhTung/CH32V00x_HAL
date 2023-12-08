@@ -2,6 +2,26 @@
 #include "ch32v00x_hal_spi.h"
 
 /**
+ * @brief  Enable the SPI peripheral clock.
+ * @note   This function will use RCC module to enable clock for SPI peripheral.
+ * @retval None.
+ */
+void SPI_TypeDef::EnableClock(void) {
+    if(this == &SPI1)
+        RCC.REGS.APB2PCENR |= RCC_APB2PCENR_SPI1EN;
+}
+
+/**
+ * @brief  Disable the SPI peripheral clock.
+ * @note   This function will use RCC module to disable clock for SPI peripheral.
+ * @retval None.
+ */
+void SPI_TypeDef::DisableClock(void) {
+    if(this == &SPI1)
+        RCC.REGS.APB2PCENR &= ~RCC_APB2PCENR_SPI1EN;
+}
+
+/**
  * @brief  Set mode for SPI according to the specified parameters in the mode.
  * @param  mode specifies the mode to be set for SPI.
  * @retval None.

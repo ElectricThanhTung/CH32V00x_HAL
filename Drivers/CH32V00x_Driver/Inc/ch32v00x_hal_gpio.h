@@ -39,6 +39,8 @@ public:
         __IO uint32_t LCKR;
     } REGS;
 public:
+    void EnableClock(void);
+    void DisableClock(void);
     void SetMode(uint32_t pin, GPIO_ModeTypeDef mode, GPIO_SpeedTypeDef speed = GPIO_SPEED_50MHZ);
     GPIO_StateTypeDef ReadPin(uint32_t pin);
     void WritePin(uint32_t pin, GPIO_StateTypeDef state);

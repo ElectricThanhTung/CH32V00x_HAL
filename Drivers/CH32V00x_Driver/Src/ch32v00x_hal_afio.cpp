@@ -2,6 +2,26 @@
 #include "ch32v00x_hal_afio.h"
 
 /**
+ * @brief  Enable the AFIO peripheral clock.
+ * @note   This function will use RCC module to enable clock for AFIO peripheral.
+ * @retval None.
+ */
+void AFIO_TypeDef::EnableClock(void) {
+    if(this == &AFIO)
+        RCC.REGS.APB2PCENR |= RCC_APB2PCENR_AFIOEN;
+}
+
+/**
+ * @brief  Disable the AFIO peripheral clock.
+ * @note   This function will use RCC module to disable clock for AFIO peripheral.
+ * @retval None.
+ */
+void AFIO_TypeDef::DisableClock(void) {
+    if(this == &AFIO)
+        RCC.REGS.APB2PCENR &= ~RCC_APB2PCENR_AFIOEN;
+}
+
+/**
  * @brief  Disable or enable the remapping of SPI1.
  * @param  remap: DISABLE (NSS/PC1, CK/PC5, MISO/PC7, MOSI/PC6).
  *                ENABLE (NSS/PC0, CK/PC5, MISO/PC7, MOSI/PC6).

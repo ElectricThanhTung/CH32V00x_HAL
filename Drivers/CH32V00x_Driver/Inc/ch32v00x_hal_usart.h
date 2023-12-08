@@ -54,6 +54,8 @@ public:
         __IO uint16_t RESERVED6;
     } REGS;
 public:
+    void EnableClock(void);
+    void DisableClock(void);
     void SetMode(USART_ModeTypeDef mode);
     uint32_t SetBaudRate(uint32_t baudRate);
     void SetWordLength(USART_WordLengthTypeDef wordLength);

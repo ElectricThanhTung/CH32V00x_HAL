@@ -94,6 +94,8 @@ public:
         __IO uint16_t RESERVED9;
     } REGS;
 public:
+    void EnableClock(void);
+    void DisableClock(void);
     void SetMode(SPI_ModeTypeDef mode);
     void SetDataSize(SPI_DataSizeTypeDef dataSize);
     void SetCLK(SPI_PolarityTypeDef polarity, SPI_PhaseTypeDef phase, SPI_BaudRateTypeDef baudRate = SPI_BAUDRATE_HCLK_DIV2);

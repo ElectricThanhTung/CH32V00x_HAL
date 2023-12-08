@@ -41,6 +41,8 @@ public:
         __IO uint32_t EXTICR;
     } REGS;
 public:
+    void EnableClock(void);
+    void DisableClock(void);
     void RemapSPI1(HAL_StateTypeDef remap);
     void RemapI2C1(AFIO_RemapI2C1TypeDef remap);
     void RemapUSART1(AFIO_RemapUSART1TypeDef remap);

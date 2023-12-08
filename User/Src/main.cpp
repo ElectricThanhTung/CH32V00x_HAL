@@ -9,7 +9,7 @@ void RCC_Init(void) {
 }
 
 void GPIO_Init(void) {
-    RCC.SetPeriphClockState(RCC_PERIPHCLK_IOPCEN, ENABLE);
+    GPIOC.EnableClock();
     GPIOC.SetMode(GPIO_PIN_ALL, GPIO_MODE_OUTPUT_PP);
     GPIOC.WritePin(GPIO_PIN_ALL, GPIO_STATE_SET);
 }

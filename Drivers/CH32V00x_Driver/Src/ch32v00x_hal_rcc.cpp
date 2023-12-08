@@ -148,37 +148,6 @@ void RCC_TypeDef::SetOutputClockSource(RCC_OutputClkTypeDef source) {
 }
 
 /**
- * @brief  Enable or disable the peripheral clock.
- * @param  peripheral specifies the peripheral that need to enable or disable.
- * @retval None.
- */
-void RCC_TypeDef::SetPeriphClockState(RCC_PeriphClkTypeDef peripheral, HAL_StateTypeDef state) {
-    uint32_t temp = peripheral & 0x3FFFFFFF;
-    switch((peripheral >> 30U) & 0x03) {
-        case 0:
-            if(state == ENABLE)
-                REGS.AHBPCENR |= temp;
-            else
-                REGS.AHBPCENR &= ~temp;
-            break;
-        case 1:
-            if(state == ENABLE)
-                REGS.APB2PCENR |= temp;
-            else
-                REGS.APB2PCENR &= ~temp;
-            break;
-        case 2:
-            if(state == ENABLE)
-                REGS.APB1PCENR |= temp;
-            else
-                REGS.APB1PCENR &= ~temp;
-            break;
-        default:
-            break;
-    }
-}
-
-/**
  * @brief  Get the current HSI state configuration according to the
  *         internal RCC configuration registers.
  * @retval Current HSI state.
@@ -214,25 +183,6 @@ RCC_PllSrcTypeDef RCC_TypeDef::GetPLLSource(void) {
  */
 RCC_OutputClkTypeDef RCC_TypeDef::GetOutputClockSource(void) {
     return (RCC_OutputClkTypeDef)((REGS.CFGR0 & ~RCC_CFGR0_MCO) >> RCC_CFGR0_MCO_Pos);
-}
-
-/**
- * @brief  Return RCC peripheral clock status.
- * @param  peripheral specifies the peripheral that need to get status.
- * @retval None.
- */
-HAL_StateTypeDef RCC_TypeDef::GetPeriphClockState(RCC_PeriphClkTypeDef peripheral) {
-    uint32_t temp = peripheral & 0x3FFFFFFF;
-    switch((peripheral >> 30U) & 0x03) {
-        case 0:
-            return (REGS.AHBPCENR & temp) ? ENABLE : DISABLE;
-        case 1:
-            return (REGS.APB2PCENR & temp) ? ENABLE : DISABLE;
-        case 2:
-            return (REGS.APB1PCENR & temp) ? ENABLE : DISABLE;
-        default:
-            return DISABLE;
-    }
 }
 
 /**

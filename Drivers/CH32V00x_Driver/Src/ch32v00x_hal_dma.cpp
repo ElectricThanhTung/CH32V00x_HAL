@@ -236,6 +236,26 @@ void DMA_ChannelTypeDef::DeInit(void) {
 }
 
 /**
+ * @brief  Enable the DMA peripheral clock.
+ * @note   This function will use RCC module to enable clock for DMA peripheral.
+ * @retval None.
+ */
+void DMA_TypeDef::EnableClock(void) {
+    if(this == &DMA1)
+        RCC.REGS.AHBPCENR |= RCC_AHBPCENR_DMA1EN;
+}
+
+/**
+ * @brief  Disable the DMA peripheral clock.
+ * @note   This function will use RCC module to disable clock for DMA peripheral.
+ * @retval None.
+ */
+void DMA_TypeDef::DisableClock(void) {
+    if(this == &DMA1)
+        RCC.REGS.AHBPCENR &= ~RCC_AHBPCENR_DMA1EN;
+}
+
+/**
  * @brief  Automatically selects a free DMA channel to perform data copying.
  * @note   This function will return used DMA channel. If no DMA is available,
  *         the function will return a null pointer.

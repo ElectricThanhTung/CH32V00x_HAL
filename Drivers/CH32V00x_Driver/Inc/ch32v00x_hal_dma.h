@@ -64,6 +64,8 @@ public:
     DMA_ChannelTypeDef CHANNEL6;
     DMA_ChannelTypeDef CHANNEL7;
 public:
+    void EnableClock(void);
+    void DisableClock(void);
     DMA_ChannelTypeDef *MemCopy(void *src, void *dest, uint32_t size, DMA_CopyModeTypeDef copyMode = DMA_COPYMODE_BLOCKING);
     void DeInit(void);
 private:

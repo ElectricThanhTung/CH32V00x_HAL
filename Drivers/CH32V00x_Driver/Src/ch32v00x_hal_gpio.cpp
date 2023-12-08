@@ -18,6 +18,34 @@ static uint32_t HAL_GPIO_GetCfgMask(uint32_t pin) {
 }
 
 /**
+ * @brief  Enable the GPIO peripheral clock.
+ * @note   This function will use RCC module to enable clock for GPIO peripheral.
+ * @retval None.
+ */
+void GPIO_TypeDef::EnableClock(void) {
+    if(this == &GPIOA)
+        RCC.REGS.APB2PCENR |= RCC_APB2PCENR_IOPAEN;
+    else if(this == &GPIOC)
+        RCC.REGS.APB2PCENR |= RCC_APB2PCENR_IOPCEN;
+    else if(this == &GPIOD)
+        RCC.REGS.APB2PCENR |= RCC_APB2PCENR_IOPDEN;
+}
+
+/**
+ * @brief  Disable the GPIO peripheral clock.
+ * @note   This function will use RCC module to disable clock for GPIO peripheral.
+ * @retval None.
+ */
+void GPIO_TypeDef::DisableClock(void) {
+    if(this == &GPIOA)
+        RCC.REGS.APB2PCENR &= ~RCC_APB2PCENR_IOPAEN;
+    else if(this == &GPIOC)
+        RCC.REGS.APB2PCENR &= ~RCC_APB2PCENR_IOPCEN;
+    else if(this == &GPIOD)
+        RCC.REGS.APB2PCENR &= ~RCC_APB2PCENR_IOPDEN;
+}
+
+/**
  * @brief  Initialize the GPIO peripheral according to the specified parameters in the mode and speed.
  * @param  pin specifies the port bit to be written.
  *         This parameter can be one of GPIO_PIN_x where x can be (0..15).

@@ -1,6 +1,26 @@
 
 #include "ch32v00x_hal_usart.h"
 
+/**
+ * @brief  Enable the USART1 peripheral clock.
+ * @note   This function will use RCC module to enable clock for USART1 peripheral.
+ * @retval None.
+ */
+void USART_TypeDef::EnableClock(void) {
+    if(this == &USART1)
+        RCC.REGS.APB2PCENR |= RCC_APB2PCENR_USART1EN;
+}
+
+/**
+ * @brief  Disable the USART1 peripheral clock.
+ * @note   This function will use RCC module to disable clock for USART1 peripheral.
+ * @retval None.
+ */
+void USART_TypeDef::DisableClock(void) {
+    if(this == &USART1)
+        RCC.REGS.APB2PCENR &= ~RCC_APB2PCENR_USART1EN;
+}
+
 void USART_TypeDef::SetMode(USART_ModeTypeDef mode) {
     REGS.CTLR1 = (REGS.CTLR1 & ~(USART_CTLR1_TE | USART_CTLR1_RE)) | mode;
 }
