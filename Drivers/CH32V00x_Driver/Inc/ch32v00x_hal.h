@@ -43,6 +43,7 @@ private:
 #include "ch32v00x_hal_afio.h"
 #include "ch32v00x_hal_exti.h"
 #include "ch32v00x_hal_flash.h"
+#include "ch32v00x_hal_sram.h"
 #include "ch32v00x_hal_usart.h"
 #include "ch32v00x_hal_spi.h"
 #include "ch32v00x_hal_dma.h"
