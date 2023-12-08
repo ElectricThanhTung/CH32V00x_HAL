@@ -14,6 +14,7 @@
 #define EXTI_LINE_7     (1UL << 7U)
 #define EXTI_LINE_8     (1UL << 8U)
 #define EXTI_LINE_9     (1UL << 9U)
+#define EXTI_LINE_ALL   (0x03FF)
 
 typedef enum {
     EXTI_MODE_NONE = 0x00,
@@ -48,7 +49,7 @@ public:
     } REGS;
 public:
     void Init(EXTI_PortTypeDef port, uint32_t line, EXTI_ModeTypeDef mode = EXTI_MODE_INTERRUPT, EXTI_TriggerTypeDef trigger = EXTI_TRIGGER_CHANGE);
-    void DeInit(uint32_t line);
+    void DeInit(uint32_t line = EXTI_LINE_ALL);
 private:
     EXTI_TypeDef(void);
     EXTI_TypeDef(EXTI_TypeDef &);

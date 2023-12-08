@@ -287,12 +287,11 @@ HAL_StatusTypeDef SPI_TypeDef::Receive(uint16_t *rxData, uint16_t rxLength, uint
 
 /**
  * @brief  De-Initialize the SPI peripheral.
- * @retval HAL status.
+ * @retval None.
  */
 void SPI_TypeDef::DeInit(void) {
-    REGS.CTLR1 = 0x00;
-    REGS.CTLR2 = 0x00;
-    REGS.CRCR = 0x07;
-    REGS.DATAR;
-    REGS.STATR = 0x00;
+    if(this == &SPI1) {
+        RCC.REGS.APB2PRSTR |= RCC_APB2PRSTR_SPI1RST;
+        RCC.REGS.APB2PRSTR &= ~RCC_APB2PRSTR_SPI1RST;
+    }
 }

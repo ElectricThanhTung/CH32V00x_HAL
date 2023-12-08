@@ -135,3 +135,14 @@ HAL_StatusTypeDef USART_TypeDef::Transmit(uint16_t txData, uint32_t timeout) {
             return HAL_TIMEOUT;
     }
 }
+
+/**
+ * @brief  De-Initialize the USART peripheral.
+ * @retval None.
+ */
+void USART_TypeDef::DeInit(void) {
+    if(this == &USART1) {
+        RCC.REGS.APB2PRSTR |= RCC_APB2PRSTR_USART1RST;
+        RCC.REGS.APB2PRSTR &= ~RCC_APB2PRSTR_USART1RST;
+    }
+}

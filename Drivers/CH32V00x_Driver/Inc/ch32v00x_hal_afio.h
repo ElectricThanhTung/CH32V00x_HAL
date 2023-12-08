@@ -51,6 +51,7 @@ public:
     void RemapADCETRGINJ(HAL_StateTypeDef remap);
     void RemapADCETRGREG(HAL_StateTypeDef remap);
     void RemapSWD(HAL_StateTypeDef remap);
+    void DeInit(void);
 private:
     AFIO_TypeDef(void);
     AFIO_TypeDef(AFIO_TypeDef &);

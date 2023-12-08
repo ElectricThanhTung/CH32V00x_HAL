@@ -4,6 +4,27 @@
 
 #include "ch32v00x_hal.h"
 
+/**
+ * @brief  Definition for GPIO PIN
+ */
+#define GPIO_PIN_0      (1UL << 0U)
+#define GPIO_PIN_1      (1UL << 1U)
+#define GPIO_PIN_2      (1UL << 2U)
+#define GPIO_PIN_3      (1UL << 3U)
+#define GPIO_PIN_4      (1UL << 4U)
+#define GPIO_PIN_5      (1UL << 5U)
+#define GPIO_PIN_6      (1UL << 6U)
+#define GPIO_PIN_7      (1UL << 7U)
+#define GPIO_PIN_8      (1UL << 8U)
+#define GPIO_PIN_9      (1UL << 9U)
+#define GPIO_PIN_10     (1UL << 10U)
+#define GPIO_PIN_11     (1UL << 11U)
+#define GPIO_PIN_12     (1UL << 12U)
+#define GPIO_PIN_13     (1UL << 13U)
+#define GPIO_PIN_14     (1UL << 14U)
+#define GPIO_PIN_15     (1UL << 15U)
+#define GPIO_PIN_ALL    (0xFFFF)
+
 typedef enum {
     GPIO_MODE_ANALOG_IN = 0x00,
     GPIO_MODE_INPUT = 0x04,
@@ -48,32 +69,11 @@ public:
     void ResetPin(uint32_t pin);
     void TogglePin(uint32_t pin);
     void LockPin(uint32_t pin);
-    void DeInit(uint32_t pin);
+    void DeInit(uint32_t pin = GPIO_PIN_ALL);
 private:
     GPIO_TypeDef(void);
     GPIO_TypeDef(GPIO_TypeDef &);
 };
-
-/**
- * @brief  Definition for GPIO PIN
- */
-#define GPIO_PIN_0      (1UL << 0U)
-#define GPIO_PIN_1      (1UL << 1U)
-#define GPIO_PIN_2      (1UL << 2U)
-#define GPIO_PIN_3      (1UL << 3U)
-#define GPIO_PIN_4      (1UL << 4U)
-#define GPIO_PIN_5      (1UL << 5U)
-#define GPIO_PIN_6      (1UL << 6U)
-#define GPIO_PIN_7      (1UL << 7U)
-#define GPIO_PIN_8      (1UL << 8U)
-#define GPIO_PIN_9      (1UL << 9U)
-#define GPIO_PIN_10     (1UL << 10U)
-#define GPIO_PIN_11     (1UL << 11U)
-#define GPIO_PIN_12     (1UL << 12U)
-#define GPIO_PIN_13     (1UL << 13U)
-#define GPIO_PIN_14     (1UL << 14U)
-#define GPIO_PIN_15     (1UL << 15U)
-#define GPIO_PIN_ALL    (0xFFFF)
 
 #define GPIOA           (*(GPIO_TypeDef *)GPIOA_BASE)
 #define GPIOC           (*(GPIO_TypeDef *)GPIOC_BASE)

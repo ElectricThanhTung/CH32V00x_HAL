@@ -63,6 +63,7 @@ public:
     HAL_StatusTypeDef Transmit(uint8_t *txData, uint16_t txLength, uint32_t timeout = 0xFFFFFFFF);
     HAL_StatusTypeDef Transmit(uint16_t *txData, uint16_t txLength, uint32_t timeout = 0xFFFFFFFF);
     HAL_StatusTypeDef Transmit(uint16_t txData, uint32_t timeout = 0xFFFFFFFF);
+    void DeInit(void);
 private:
     USART_TypeDef(void);
     USART_TypeDef(USART_TypeDef &);

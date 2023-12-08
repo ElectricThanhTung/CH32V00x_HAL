@@ -118,3 +118,14 @@ void AFIO_TypeDef::RemapSWD(HAL_StateTypeDef remap) {
     else
         REGS.PCFR1 = (REGS.PCFR1 & ~AFIO_PCFR1_SWCFG_RM) | (4UL << AFIO_PCFR1_SWCFG_RM_Pos);
 }
+
+/**
+ * @brief  De-Initialize the AFIO peripheral.
+ * @retval None.
+ */
+void AFIO_TypeDef::DeInit(void) {
+    if(this == &AFIO) {
+        RCC.REGS.APB2PRSTR |= RCC_APB2PRSTR_AFIORST;
+        RCC.REGS.APB2PRSTR &= ~RCC_APB2PRSTR_AFIORST;
+    }
+}
