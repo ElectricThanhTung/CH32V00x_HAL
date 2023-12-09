@@ -17,6 +17,8 @@ typedef enum  {
 
 typedef FunctionalState HAL_StateTypeDef;
 
+typedef FlagStatus HAL_FlagStatusTypeDef;
+
 class HAL_TypeDef {
 public:
     void Init(void);
@@ -40,6 +42,7 @@ private:
 
 #include "ch32v00x_hal_rcc.h"
 #include "ch32v00x_hal_gpio.h"
+#include "ch32v00x_hal_adc.h"
 #include "ch32v00x_hal_afio.h"
 #include "ch32v00x_hal_exti.h"
 #include "ch32v00x_hal_flash.h"

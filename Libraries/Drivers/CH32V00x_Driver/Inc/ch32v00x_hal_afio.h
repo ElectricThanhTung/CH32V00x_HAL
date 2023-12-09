@@ -35,7 +35,7 @@ class AFIO_TypeDef {
 public:
     struct {
     private:
-        uint32_t RESERVED0;
+        __IO uint32_t RESERVED0;
     public:
         __IO uint32_t PCFR1;
         __IO uint32_t EXTICR;
