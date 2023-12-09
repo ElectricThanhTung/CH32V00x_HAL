@@ -56,48 +56,90 @@ typedef struct {
     uint32_t RESERVED1;
 } SysTick_Type;
 
-#define PFIC                    ((PFIC_Type *)0xE000E000)
-#define NVIC                    PFIC
-#define NVIC_KEY1               ((uint32_t)0xFA050000)
-#define	NVIC_KEY2               ((uint32_t)0xBCAF0000)
-#define	NVIC_KEY3               ((uint32_t)0xBEEF0000)
+#define PFIC                            ((PFIC_Type *)0xE000E000)
+#define NVIC                            PFIC
+#define NVIC_KEY1                       ((uint32_t)0xFA050000)
+#define	NVIC_KEY2                       ((uint32_t)0xBCAF0000)
+#define	NVIC_KEY3                       ((uint32_t)0xBEEF0000)
 
-#define SysTick                 ((SysTick_Type *) 0xE000F000)
+#define SysTick                         ((SysTick_Type *) 0xE000F000)
 
 /******************************************************************************/
 /*                                System Timer                                */
 /******************************************************************************/
 /******************  Bit definition for STK_CTLR register  ********************/
-#define STK_CTLR_STE_Pos        (0U)
-#define STK_CTLR_STE_Msk        (0x01UL << STK_CTLR_STE_Pos)
-#define STK_CTLR_STE            STK_CTLR_STE_Msk
-#define STK_CTLR_STIE_Pos       (1U)
-#define STK_CTLR_STIE_Msk       (0x01UL << STK_CTLR_STIE_Pos)
-#define STK_CTLR_STIE           STK_CTLR_STIE_Msk
-#define STK_CTLR_STCLK_Pos      (2U)
-#define STK_CTLR_STCLK_Msk      (0x01UL << STK_CTLR_STCLK_Pos)
-#define STK_CTLR_STCLK          STK_CTLR_STCLK_Msk
-#define STK_CTLR_STRE_Pos       (3U)
-#define STK_CTLR_STRE_Msk       (0x01UL << STK_CTLR_STRE_Pos)
-#define STK_CTLR_STRE           STK_CTLR_STRE_Msk
-#define STK_CTLR_SWIE_Pos       (31U)
-#define STK_CTLR_SWIE_Msk       (0x01UL << STK_CTLR_SWIE_Pos)
-#define STK_CTLR_SWIE           STK_CTLR_SWIE_Msk
+#define STK_CTLR_STE_Pos                (0U)
+#define STK_CTLR_STE_Msk                (0x01UL << STK_CTLR_STE_Pos)
+#define STK_CTLR_STE                    STK_CTLR_STE_Msk
+#define STK_CTLR_STIE_Pos               (1U)
+#define STK_CTLR_STIE_Msk               (0x01UL << STK_CTLR_STIE_Pos)
+#define STK_CTLR_STIE                   STK_CTLR_STIE_Msk
+#define STK_CTLR_STCLK_Pos              (2U)
+#define STK_CTLR_STCLK_Msk              (0x01UL << STK_CTLR_STCLK_Pos)
+#define STK_CTLR_STCLK                  STK_CTLR_STCLK_Msk
+#define STK_CTLR_STRE_Pos               (3U)
+#define STK_CTLR_STRE_Msk               (0x01UL << STK_CTLR_STRE_Pos)
+#define STK_CTLR_STRE                   STK_CTLR_STRE_Msk
+#define STK_CTLR_SWIE_Pos               (31U)
+#define STK_CTLR_SWIE_Msk               (0x01UL << STK_CTLR_SWIE_Pos)
+#define STK_CTLR_SWIE                   STK_CTLR_SWIE_Msk
 
 /******************  Bit definition for STK_SR register  **********************/
-#define STK_SR_CNTIF_Pos        (0U)
-#define STK_SR_CNTIF_Msk        (0x01UL << STK_SR_CNTIF_Pos)
-#define STK_SR_CNTIF            STK_SR_CNTIF_Msk
+#define STK_SR_CNTIF_Pos                (0U)
+#define STK_SR_CNTIF_Msk                (0x01UL << STK_SR_CNTIF_Pos)
+#define STK_SR_CNTIF                    STK_SR_CNTIF_Msk
 
 /******************  Bit definition for STK_CNTR register  ********************/
-#define STK_CNTR_CNTR_Pos       (0U)
-#define STK_CNTR_CNTR_Msk       (0xFFFFFFFFUL << STK_CNTR_CNTR_Pos)
-#define STK_CNTR_CNTR           STK_CNTR_CNTR_Msk
+#define STK_CNTR_CNTR_Pos               (0U)
+#define STK_CNTR_CNTR_Msk               (0xFFFFFFFFUL << STK_CNTR_CNTR_Pos)
+#define STK_CNTR_CNTR                   STK_CNTR_CNTR_Msk
 
 /******************  Bit definition for STK_CMPR register  ********************/
-#define STK_CMPR_CMPR_Pos       (0U)
-#define STK_CMPR_CMPR_Msk       (0xFFFFFFFFUL << STK_CMPR_CMPR_Pos)
-#define STK_CMPR_CMPR           STK_CMPR_CMPR_Msk
+#define STK_CMPR_CMPR_Pos               (0U)
+#define STK_CMPR_CMPR_Msk               (0xFFFFFFFFUL << STK_CMPR_CMPR_Pos)
+#define STK_CMPR_CMPR                   STK_CMPR_CMPR_Msk
+
+/******************************************************************************/
+/*                         PFIC and Interrupt Control                         */
+/******************************************************************************/
+/******************  Bit definition for PFIC_CFGR register  *******************/
+#define PFIC_CFGR_SYSRESET_Pos          (7U)
+#define PFIC_CFGR_SYSRESET_Msk          (0x01UL << PFIC_CFGR_SYSRESET_Pos)
+#define PFIC_CFGR_SYSRESET              PFIC_CFGR_SYSRESET_Msk
+#define PFIC_CFGR_KEYCODE_Pos           (16U)
+#define PFIC_CFGR_KEYCODE_Msk           (0xFFFFUL << PFIC_CFGR_KEYCODE_Pos)
+#define PFIC_CFGR_KEYCODE               PFIC_CFGR_KEYCODE_Msk
+
+/******************  Bit definition for PFIC_GISR register  *******************/
+#define PFIC_GISR_NESTSTA_Pos           (0U)
+#define PFIC_GISR_NESTSTA_Msk           (0xFFUL << PFIC_GISR_NESTSTA_Pos)
+#define PFIC_GISR_NESTSTA               PFIC_GISR_NESTSTA_Msk
+#define PFIC_GISR_GACTSTA_Pos           (8U)
+#define PFIC_GISR_GACTSTA_Msk           (0x01UL << PFIC_GISR_GACTSTA_Pos)
+#define PFIC_GISR_GACTSTA               PFIC_GISR_GACTSTA_Msk
+#define PFIC_GISR_GPENDSTA_Pos          (9U)
+#define PFIC_GISR_GPENDSTA_Msk          (0x01UL << PFIC_GISR_GPENDSTA_Pos)
+#define PFIC_GISR_GPENDSTA              PFIC_GISR_GPENDSTA_Msk
+
+/******************  Bit definition for PFIC_SCTLR register  ******************/
+#define PFIC_SCTLR_SLEEPONEXIT_Pos      (1U)
+#define PFIC_SCTLR_SLEEPONEXIT_Msk      (0x01UL << PFIC_SCTLR_SLEEPONEXIT_Pos)
+#define PFIC_SCTLR_SLEEPONEXIT          PFIC_SCTLR_SLEEPONEXIT_Msk
+#define PFIC_SCTLR_SLEEPDEEP_Pos        (2U)
+#define PFIC_SCTLR_SLEEPDEEP_Msk        (0x01UL << PFIC_SCTLR_SLEEPDEEP_Pos)
+#define PFIC_SCTLR_SLEEPDEEP            PFIC_SCTLR_SLEEPDEEP_Msk
+#define PFIC_SCTLR_WFITOWFE_Pos         (3U)
+#define PFIC_SCTLR_WFITOWFE_Msk         (0x01UL << PFIC_SCTLR_WFITOWFE_Pos)
+#define PFIC_SCTLR_WFITOWFE             PFIC_SCTLR_WFITOWFE_Msk
+#define PFIC_SCTLR_SEVONPEND_Pos        (4U)
+#define PFIC_SCTLR_SEVONPEND_Msk        (0x01UL << PFIC_SCTLR_SEVONPEND_Pos)
+#define PFIC_SCTLR_SEVONPEND            PFIC_SCTLR_SEVONPEND_Msk
+#define PFIC_SCTLR_SETEVENT_Pos         (5U)
+#define PFIC_SCTLR_SETEVENT_Msk         (0x01UL << PFIC_SCTLR_SETEVENT_Pos)
+#define PFIC_SCTLR_SETEVENT             PFIC_SCTLR_SETEVENT_Msk
+#define PFIC_SCTLR_SYSRESET_Pos         (31U)
+#define PFIC_SCTLR_SYSRESET_Msk         (0x01UL << PFIC_SCTLR_SYSRESET_Pos)
+#define PFIC_SCTLR_SYSRESET             PFIC_SCTLR_SYSRESET_Msk
 
 /**
  * @brief  Enable global interrupt.

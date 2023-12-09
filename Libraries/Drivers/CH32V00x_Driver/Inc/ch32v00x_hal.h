@@ -50,5 +50,6 @@ private:
 #include "ch32v00x_hal_usart.h"
 #include "ch32v00x_hal_spi.h"
 #include "ch32v00x_hal_dma.h"
+#include "ch32v00x_hal_pwr.h"
 
 #endif /* __CH32V00x_HAL_H */
