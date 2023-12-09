@@ -33,21 +33,6 @@ typedef enum {
 } RCC_SysClkDivTypeDef;
 
 typedef enum {
-    RCC_AHBCLK_DIV2 = 0x00,
-    RCC_AHBCLK_DIV4 = 0x08,
-    RCC_AHBCLK_DIV6 = 0x10,
-    RCC_AHBCLK_DIV8 = 0x18,
-    RCC_AHBCLK_DIV12 = 0x14,
-    RCC_AHBCLK_DIV16 = 0x1C,
-    RCC_AHBCLK_DIV24 = 0x15,
-    RCC_AHBCLK_DIV32 = 0x1D,
-    RCC_AHBCLK_DIV48 = 0x16,
-    RCC_AHBCLK_DIV64 = 0x1E,
-    RCC_AHBCLK_DIV96 = 0x17,
-    RCC_AHBCLK_DIV128 = 0x1F
-} RCC_AdcClkDivTypeDef;
-
-typedef enum {
     RCC_OUTPUTCLK_DISABLE = 0x00,
     RCC_OUTPUTCLK_SYSCLK = 0x04,
     RCC_OUTPUTCLK_HSI = 0x05,
@@ -77,7 +62,6 @@ public:
     HAL_StatusTypeDef SetHSEState(HAL_StateTypeDef state);
     HAL_StatusTypeDef SetPLLSource(RCC_PllSrcTypeDef source);
     HAL_StatusTypeDef SetSysClock(RCC_SysClkSrcTypeDef source, RCC_SysClkDivTypeDef div = RCC_SYSCLK_DIV1);
-    void SetADCCLKDivider(RCC_AdcClkDivTypeDef div);
     void SetOutputClockSource(RCC_OutputClkTypeDef source);
     HAL_StateTypeDef GetHSIState(void);
     HAL_StateTypeDef GetHSEState(void);

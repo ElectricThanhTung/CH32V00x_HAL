@@ -130,15 +130,6 @@ HAL_StatusTypeDef RCC_TypeDef::SetSysClock(RCC_SysClkSrcTypeDef source, RCC_SysC
 }
 
 /**
- * @brief  Set ADC clock source prescaler value.
- * @param  div ADC clock source prescaler value.
- * @retval None.
- */
-void RCC_TypeDef::SetADCCLKDivider(RCC_AdcClkDivTypeDef div) {
-    REGS.CFGR0 = (REGS.CFGR0 & RCC_CFGR0_ADCPRE) | (div << RCC_CFGR0_ADCPRE_Pos);
-}
-
-/**
  * @brief  Set output clock source according to the specified parameters in the value.
  * @param  value specifies value for output clock source.
  * @retval None.

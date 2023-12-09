@@ -14,9 +14,9 @@ PROJECT_DIR     =   .
 BUILD_DIR       =   Build
 
 SOURCE_DIRS     =   User                                                    \
-                    Drivers/Core                                            \
-                    Drivers/Device                                          \
-                    Drivers/CH32V00x_Driver
+                    Libraries/Drivers/Core                                  \
+                    Libraries/Drivers/Device                                \
+                    Libraries/Drivers/CH32V00x_Driver
 
 OBJECT_DIR      = 	$(BUILD_DIR)/Obj
 BIN_DIR         = 	$(BUILD_DIR)/Bin
