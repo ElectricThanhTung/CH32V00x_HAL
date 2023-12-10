@@ -1,11 +1,13 @@
 
 #include "ch32v00x_hal.h"
+#include "stopwatch.h"
 
 void RCC_Init(void) {
-    RCC.SetHSIState(ENABLE);
-    RCC.SetPLLSource(RCC_PLLSRC_HSI);
-    RCC.SetHSEState(DISABLE);
-    RCC.SetSysClock(RCC_SYSCLKSRC_PLL);
+    RCC.HSI.Enable();
+    RCC.PLL.SetSource(RCC_PLLSRC_HSI);
+    RCC.HSE.Disable();
+    RCC.SysClk.SetSource(RCC_SYSCLKSRC_PLL);
+    RCC.HCLK.SetDiv(RCC_SYSCLK_DIV1);
 }
 
 void GPIO_Init(void) {

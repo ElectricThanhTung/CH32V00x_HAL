@@ -42,7 +42,7 @@ uint32_t Stopwatch::ElapsedTicks(void) {
  */
 uint32_t Stopwatch::ElapsedMilliseconds(void) {
     if(enabled == true)
-        return (SysTick->CNT - startTick) / (RCC.GetHCLKFreq() / 8000U);
+        return (SysTick->CNT - startTick) / (RCC.HCLK.GetFreq() / 8000U);
     return 0U;
 }
 
@@ -52,6 +52,6 @@ uint32_t Stopwatch::ElapsedMilliseconds(void) {
  */
 uint32_t Stopwatch::ElapsedMicroseconds(void) {
     if(enabled == true)
-        return (SysTick->CNT - startTick) / (RCC.GetHCLKFreq() / 8000000U);
+        return (SysTick->CNT - startTick) / (RCC.HCLK.GetFreq() / 8000000U);
     return 0U;
 }

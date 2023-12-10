@@ -38,44 +38,116 @@ typedef enum {
     RCC_OUTPUTCLK_HSI = 0x05,
     RCC_OUTPUTCLK_HSE = 0x06,
     RCC_OUTPUTCLK_PLL = 0x07
-} RCC_OutputClkTypeDef;
+} RCC_OutputSourceTypeDef;
+
+typedef struct {
+public:
+    __IO uint32_t CTLR;
+    __IO uint32_t CFGR0;
+    __IO uint32_t INTR;
+    __IO uint32_t APB2PRSTR;
+    __IO uint32_t APB1PRSTR;
+    __IO uint32_t AHBPCENR;
+    __IO uint32_t APB2PCENR;
+    __IO uint32_t APB1PCENR;
+private:
+    __IO uint32_t RESERVED0;
+public:
+    __IO uint32_t RSTSCKR;
+} RCC_RegsTypeDef;
+
+class RCC_HsiTypeDef {
+private:
+    RCC_RegsTypeDef REGS;
+public:
+    HAL_StatusTypeDef Enable(void);
+    HAL_StatusTypeDef Disable(void);
+    HAL_StateTypeDef GetState(void);
+    uint32_t GetFreq(void);
+private:
+    RCC_HsiTypeDef(void);
+    RCC_HsiTypeDef(RCC_HsiTypeDef &);
+};
+
+class RCC_HseTypeDef {
+private:
+    RCC_RegsTypeDef REGS;
+public:
+    HAL_StatusTypeDef Enable(void);
+    HAL_StatusTypeDef Disable(void);
+    HAL_StateTypeDef GetState(void);
+    uint32_t GetFreq(void);
+private:
+    RCC_HseTypeDef(void);
+    RCC_HseTypeDef(RCC_HseTypeDef &);
+};
+
+class RCC_PllTypeDef {
+private:
+    RCC_RegsTypeDef REGS;
+public:
+    HAL_StatusTypeDef SetSource(RCC_PllSrcTypeDef source);
+    RCC_PllSrcTypeDef GetSource(void);
+    uint32_t GetFreq(void);
+private:
+    RCC_PllTypeDef(void);
+    RCC_PllTypeDef(RCC_PllTypeDef &);
+
+    HAL_StatusTypeDef SetState(HAL_StateTypeDef state);
+};
+
+class RCC_SysClkTypeDef {
+private:
+    RCC_RegsTypeDef REGS;
+public:
+    HAL_StatusTypeDef SetSource(RCC_SysClkSrcTypeDef source);
+    RCC_SysClkSrcTypeDef GetSource(void);
+    uint32_t GetFreq(void);
+private:
+    RCC_SysClkTypeDef(void);
+    RCC_SysClkTypeDef(RCC_SysClkTypeDef &);
+};
+
+class RCC_HclkTypeDef {
+private:
+    RCC_RegsTypeDef REGS;
+public:
+    void SetDiv(RCC_SysClkDivTypeDef div);
+    RCC_SysClkDivTypeDef GetDiv(void);
+    uint32_t GetFreq(void);
+private:
+    RCC_HclkTypeDef(void);
+    RCC_HclkTypeDef(RCC_HclkTypeDef &);
+};
+
+class RCC_OutClkTypeDef {
+private:
+    RCC_RegsTypeDef REGS;
+public:
+    void SetSource(RCC_OutputSourceTypeDef source);
+    RCC_OutputSourceTypeDef GetSource(void);
+    uint32_t GetFreq(void);
+private:
+    RCC_OutClkTypeDef(void);
+    RCC_OutClkTypeDef(RCC_OutClkTypeDef &);
+};
 
 class RCC_TypeDef {
 public:
-    struct {
-    public:
-        __IO uint32_t CTLR;
-        __IO uint32_t CFGR0;
-        __IO uint32_t INTR;
-        __IO uint32_t APB2PRSTR;
-        __IO uint32_t APB1PRSTR;
-        __IO uint32_t AHBPCENR;
-        __IO uint32_t APB2PCENR;
-        __IO uint32_t APB1PCENR;
-    private:
-        __IO uint32_t RESERVED0;
-    public:
-        __IO uint32_t RSTSCKR;
-    } REGS;
+    union {
+        RCC_RegsTypeDef REGS;
+        RCC_HsiTypeDef HSI;
+        RCC_HseTypeDef HSE;
+        RCC_PllTypeDef PLL;
+        RCC_SysClkTypeDef SysClk;
+        RCC_HclkTypeDef HCLK;
+        RCC_OutClkTypeDef OutClk;
+    };
 public:
-    HAL_StatusTypeDef SetHSIState(HAL_StateTypeDef state);
-    HAL_StatusTypeDef SetHSEState(HAL_StateTypeDef state);
-    HAL_StatusTypeDef SetPLLSource(RCC_PllSrcTypeDef source);
-    HAL_StatusTypeDef SetSysClock(RCC_SysClkSrcTypeDef source, RCC_SysClkDivTypeDef div = RCC_SYSCLK_DIV1);
-    void SetOutputClock(RCC_OutputClkTypeDef source);
-    HAL_StateTypeDef GetHSIState(void);
-    HAL_StateTypeDef GetHSEState(void);
-    RCC_PllSrcTypeDef GetPLLSource(void);
-    RCC_OutputClkTypeDef GetOutputClock(void);
-    uint32_t GetSysClockFreq(void);
-    uint32_t GetHCLKFreq(void);
-    uint32_t GetOutputClockFreq(void);
     void DeInit(void);
 private:
     RCC_TypeDef(void);
     RCC_TypeDef(RCC_TypeDef &);
-    HAL_StatusTypeDef SetPLLState(HAL_StateTypeDef state);
-    void CoreClockUpdate(void);
 };
 
 #define RCC             (*(RCC_TypeDef *)RCC_BASE)

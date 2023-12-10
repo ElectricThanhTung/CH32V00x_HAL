@@ -39,7 +39,7 @@ void USART_TypeDef::SetMode(USART_ModeTypeDef mode) {
  * @retval Actual baudrate value.
  */
 uint32_t USART_TypeDef::SetBaudRate(uint32_t baudRate) {
-    uint32_t hclk = RCC.GetHCLKFreq();
+    uint32_t hclk = RCC.HCLK.GetFreq();
     uint32_t brr = (hclk + (baudRate / 2)) / baudRate;
     REGS.BRR = brr;
     return hclk / brr;

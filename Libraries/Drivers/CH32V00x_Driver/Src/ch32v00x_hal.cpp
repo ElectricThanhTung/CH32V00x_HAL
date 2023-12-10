@@ -1,7 +1,7 @@
 
 #include "ch32v00x_hal.h"
 
-#define __HAL_GetTickInterval()                 ((RCC.GetHCLKFreq() / 8000U) * TickIntervalMs)
+#define __HAL_GetTickInterval()                 ((RCC.HCLK.GetFreq() / 8000U) * TickIntervalMs)
 
 static uint32_t TickIntervalMs = 1;
 
@@ -23,7 +23,7 @@ void HAL_TypeDef::Init(void) {
  * @retval Tick value in microseconds.
  */
 uint32_t HAL_TypeDef::GetTickUs(void) {
-    return SysTick->CNT / (RCC.GetHCLKFreq() / 8000000U);
+    return SysTick->CNT / (RCC.HCLK.GetFreq() / 8000000U);
 }
 
 /**
@@ -31,7 +31,7 @@ uint32_t HAL_TypeDef::GetTickUs(void) {
  * @retval Tick value in milliseconds.
  */
 uint32_t HAL_TypeDef::GetTickMs(void) {
-    return SysTick->CNT / (RCC.GetHCLKFreq() / 8000U);
+    return SysTick->CNT / (RCC.HCLK.GetFreq() / 8000U);
 }
 
 /**
@@ -41,7 +41,7 @@ uint32_t HAL_TypeDef::GetTickMs(void) {
  */
 void HAL_TypeDef::DelayUs(uint32_t time) {
     uint32_t tickstart = SysTick->CNT;
-    time *= RCC.GetHCLKFreq() / 8000000U;
+    time *= RCC.HCLK.GetFreq() / 8000000U;
     while((uint32_t)(SysTick->CNT - tickstart) < time);
 }
 
@@ -52,7 +52,7 @@ void HAL_TypeDef::DelayUs(uint32_t time) {
  */
 void HAL_TypeDef::DelayMs(uint32_t time) {
     uint32_t tickstart = SysTick->CNT;
-    time *= RCC.GetHCLKFreq() / 8000U;
+    time *= RCC.HCLK.GetFreq() / 8000U;
     while((uint32_t)(SysTick->CNT - tickstart) < time);
 }
 
