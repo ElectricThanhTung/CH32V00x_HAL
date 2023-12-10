@@ -24,7 +24,7 @@ BIN_DIR         = 	$(BUILD_DIR)/Bin
 
 C_INCLUDES      =   $(addprefix -I,$(addsuffix /Inc,$(SOURCE_DIRS)))
 
-A_SOURCES       =   $(foreach dir,$(SOURCE_DIRS),$(wildcard $(dir)/Src/*.S))
+A_SOURCES       =   $(foreach dir,$(SOURCE_DIRS),$(wildcard $(dir)/Src/*.s))
 
 C_SOURCES       =   $(foreach dir,$(SOURCE_DIRS),$(wildcard $(dir)/Src/*.c))
 
@@ -52,7 +52,7 @@ LDFLAGS         =   -march=rv32ec                                           \
                     --specs=nano.specs                                      \
                     -T$(LDSCRIPT) $(LIBS) $(OPT)
 
-OBJECTS         +=  $(addprefix $(OBJECT_DIR)/,$(A_SOURCES:.S=.o))
+OBJECTS         +=  $(addprefix $(OBJECT_DIR)/,$(A_SOURCES:.s=.o))
 vpath %.s $(sort $(dir $(A_SOURCES)))
 
 OBJECTS         +=  $(addprefix $(OBJECT_DIR)/,$(C_SOURCES:.c=.o))

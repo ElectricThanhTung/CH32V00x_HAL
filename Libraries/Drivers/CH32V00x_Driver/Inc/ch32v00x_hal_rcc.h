@@ -62,11 +62,11 @@ public:
     HAL_StatusTypeDef SetHSEState(HAL_StateTypeDef state);
     HAL_StatusTypeDef SetPLLSource(RCC_PllSrcTypeDef source);
     HAL_StatusTypeDef SetSysClock(RCC_SysClkSrcTypeDef source, RCC_SysClkDivTypeDef div = RCC_SYSCLK_DIV1);
-    void SetOutputClockSource(RCC_OutputClkTypeDef source);
+    void SetOutputClock(RCC_OutputClkTypeDef source);
     HAL_StateTypeDef GetHSIState(void);
     HAL_StateTypeDef GetHSEState(void);
     RCC_PllSrcTypeDef GetPLLSource(void);
-    RCC_OutputClkTypeDef GetOutputClockSource(void);
+    RCC_OutputClkTypeDef GetOutputClock(void);
     uint32_t GetSysClockFreq(void);
     uint32_t GetHCLKFreq(void);
     uint32_t GetOutputClockFreq(void);

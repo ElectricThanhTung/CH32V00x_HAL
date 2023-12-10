@@ -134,7 +134,7 @@ HAL_StatusTypeDef RCC_TypeDef::SetSysClock(RCC_SysClkSrcTypeDef source, RCC_SysC
  * @param  value specifies value for output clock source.
  * @retval None.
  */
-void RCC_TypeDef::SetOutputClockSource(RCC_OutputClkTypeDef source) {
+void RCC_TypeDef::SetOutputClock(RCC_OutputClkTypeDef source) {
     REGS.CFGR0 = (REGS.CFGR0 & ~RCC_CFGR0_MCO) | (source << RCC_CFGR0_MCO_Pos);
 }
 
@@ -172,7 +172,7 @@ RCC_PllSrcTypeDef RCC_TypeDef::GetPLLSource(void) {
  *         internal RCC configuration registers.
  * @retval Output clock source configuration.
  */
-RCC_OutputClkTypeDef RCC_TypeDef::GetOutputClockSource(void) {
+RCC_OutputClkTypeDef RCC_TypeDef::GetOutputClock(void) {
     return (RCC_OutputClkTypeDef)((REGS.CFGR0 & ~RCC_CFGR0_MCO) >> RCC_CFGR0_MCO_Pos);
 }
 
@@ -212,7 +212,7 @@ uint32_t RCC_TypeDef::GetHCLKFreq(void) {
  * @retval Output clock frequency (in Hz).
  */
 uint32_t RCC_TypeDef::GetOutputClockFreq(void) {
-    switch(GetOutputClockSource()) {
+    switch(GetOutputClock()) {
         case RCC_OUTPUTCLK_SYSCLK:
             return GetSysClockFreq();
         case RCC_OUTPUTCLK_HSI:

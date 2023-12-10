@@ -23,60 +23,82 @@ typedef enum {
 } ADC_InjectedIndexTypeDef;
 
 typedef enum {
-    ADC_AHBCLK_DIV2 = 0x00,
-    ADC_AHBCLK_DIV4 = 0x08,
-    ADC_AHBCLK_DIV6 = 0x10,
-    ADC_AHBCLK_DIV8 = 0x18,
-    ADC_AHBCLK_DIV12 = 0x14,
-    ADC_AHBCLK_DIV16 = 0x1C,
-    ADC_AHBCLK_DIV24 = 0x15,
-    ADC_AHBCLK_DIV32 = 0x1D,
-    ADC_AHBCLK_DIV48 = 0x16,
-    ADC_AHBCLK_DIV64 = 0x1E,
-    ADC_AHBCLK_DIV96 = 0x17,
-    ADC_AHBCLK_DIV128 = 0x1F
+    ADC_CLK_NONE = 0xFF,
+    ADC_CLK_AHB_DIV2 = 0x00,
+    ADC_CLK_AHB_DIV4 = 0x08,
+    ADC_CLK_AHB_DIV6 = 0x10,
+    ADC_CLK_AHB_DIV8 = 0x18,
+    ADC_CLK_AHB_DIV12 = 0x14,
+    ADC_CLK_AHB_DIV16 = 0x1C,
+    ADC_CLK_AHB_DIV24 = 0x15,
+    ADC_CLK_AHB_DIV32 = 0x1D,
+    ADC_CLK_AHB_DIV48 = 0x16,
+    ADC_CLK_AHB_DIV64 = 0x1E,
+    ADC_CLK_AHB_DIV96 = 0x17,
+    ADC_CLK_AHB_DIV128 = 0x1F
 } ADC_ClkDivTypeDef;
+
+typedef struct {
+public:
+    __IO uint32_t STATR;
+    __IO uint32_t CTLR1;
+    __IO uint32_t CTLR2;
+    __IO uint32_t SAMPTR1;
+    __IO uint32_t SAMPTR2;
+    __IO uint32_t IOFR1;
+    __IO uint32_t IOFR2;
+    __IO uint32_t IOFR3;
+    __IO uint32_t IOFR4;
+    __IO uint32_t WDHTR;
+    __IO uint32_t WDLTR;
+    __IO uint32_t RSQR1;
+    __IO uint32_t RSQR2;
+    __IO uint32_t RSQR3;
+    __IO uint32_t ISQR;
+    __IO uint32_t IDATAR1;
+    __IO uint32_t IDATAR2;
+    __IO uint32_t IDATAR3;
+    __IO uint32_t IDATAR4;
+    __IO uint32_t RDATAR;
+    __IO uint32_t DLYR;
+} ADC_RegsTypeDef;
+
+class ADC_InjectedTypeDef {
+private:
+    ADC_RegsTypeDef REGS;
+public:
+    void SetSequence(ADC_ChannelTypeDef ch1th);
+    void SetSequence(ADC_ChannelTypeDef ch1th, ADC_ChannelTypeDef ch2th);
+    void SetSequence(ADC_ChannelTypeDef ch1th, ADC_ChannelTypeDef ch2th, ADC_ChannelTypeDef ch3th);
+    void SetSequence(ADC_ChannelTypeDef ch1th, ADC_ChannelTypeDef ch2th, ADC_ChannelTypeDef ch3th, ADC_ChannelTypeDef ch4th);
+    void SoftwareStart(void);
+    HAL_FlagStatusTypeDef GetStatus(void);
+    int16_t GetValue(ADC_InjectedIndexTypeDef index);
+private:
+    ADC_InjectedTypeDef(void);
+    ADC_InjectedTypeDef(ADC_InjectedTypeDef &);
+};
+
+class ADC_RegularTypeDef {
+private:
+    ADC_RegsTypeDef REGS;
+public:
+    int16_t Convert(ADC_ChannelTypeDef channel);
+private:
+    ADC_RegularTypeDef(void);
+    ADC_RegularTypeDef(ADC_InjectedTypeDef &);
+};
 
 class ADC_TypeDef {
 public:
-    struct {
-    public:
-        __IO uint32_t STATR;
-        __IO uint32_t CTLR1;
-        __IO uint32_t CTLR2;
-        __IO uint32_t SAMPTR1;
-        __IO uint32_t SAMPTR2;
-        __IO uint32_t IOFR1;
-        __IO uint32_t IOFR2;
-        __IO uint32_t IOFR3;
-        __IO uint32_t IOFR4;
-        __IO uint32_t WDHTR;
-        __IO uint32_t WDLTR;
-        __IO uint32_t RSQR1;
-        __IO uint32_t RSQR2;
-        __IO uint32_t RSQR3;
-        __IO uint32_t ISQR;
-        __IO uint32_t IDATAR1;
-        __IO uint32_t IDATAR2;
-        __IO uint32_t IDATAR3;
-        __IO uint32_t IDATAR4;
-        __IO uint32_t RDATAR;
-        __IO uint32_t DLYR;
-    } REGS;
+    union {
+        ADC_RegsTypeDef REGS;
+        ADC_InjectedTypeDef Injected;
+    };
 public:
     void EnableClock(void);
     void DisableClock(void);
-    void Enable(void);
-    void Disable(void);
-    void SetCLK(ADC_ClkDivTypeDef div = ADC_AHBCLK_DIV2);
-    void SetInjectedSequence(ADC_ChannelTypeDef ch1th);
-    void SetInjectedSequence(ADC_ChannelTypeDef ch1th, ADC_ChannelTypeDef ch2th);
-    void SetInjectedSequence(ADC_ChannelTypeDef ch1th, ADC_ChannelTypeDef ch2th, ADC_ChannelTypeDef ch3th);
-    void SetInjectedSequence(ADC_ChannelTypeDef ch1th, ADC_ChannelTypeDef ch2th, ADC_ChannelTypeDef ch3th, ADC_ChannelTypeDef ch4th);
-    void SoftwareStartInjected(void);
-    HAL_FlagStatusTypeDef GetInjectedStatus(void);
-    int16_t GetInjectedValue(ADC_InjectedIndexTypeDef index);
-    int16_t RegularConvert(ADC_ChannelTypeDef channel);
+    void SetCLK(ADC_ClkDivTypeDef div);
     void DeInit(void);
 private:
     ADC_TypeDef(void);

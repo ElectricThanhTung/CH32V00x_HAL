@@ -22,31 +22,22 @@ void ADC_TypeDef::DisableClock(void) {
 }
 
 /**
- * @brief  Enable the ADC module.
- * @retval None.
- */
-void ADC_TypeDef::Enable(void) {
-    REGS.CTLR2 |= ADC_CTLR2_ADON;
-}
-
-/**
- * @brief  Disable the ADC module.
- * @retval None.
- */
-void ADC_TypeDef::Disable(void) {
-    REGS.CTLR2 &= ~ADC_CTLR2_ADON;
-}
-
-/**
- * @brief  Set ADC clock source prescaler value.
- * @param  div ADC clock source prescaler value.
+ * @brief  Disable or enable and set ADC clock source prescaler value.
+ * @param  div ADC clock source prescaler value. If div parameter is
+ *         ADC_DIV_NONE it mean ADC is disabled.
  * @note   This function will use RCC module to set clock source prescaler
  *         for ADC peripheral.
  * @retval None.
  */
 void ADC_TypeDef::SetCLK(ADC_ClkDivTypeDef div) {
-    if(this == &ADC1)
-        RCC.REGS.CFGR0 = (RCC.REGS.CFGR0 & RCC_CFGR0_ADCPRE) | (div << RCC_CFGR0_ADCPRE_Pos);
+    if(this == &ADC1) {
+        if(div <= ADC_CLK_AHB_DIV128) {
+            RCC.REGS.CFGR0 = (RCC.REGS.CFGR0 & ~RCC_CFGR0_ADCPRE) | (div << RCC_CFGR0_ADCPRE_Pos);
+            REGS.CTLR2 |= ADC_CTLR2_ADON;
+        }
+        else
+            REGS.CTLR2 &= ~ADC_CTLR2_ADON;
+    }
 }
 
 /**
@@ -54,7 +45,7 @@ void ADC_TypeDef::SetCLK(ADC_ClkDivTypeDef div) {
  * @param  ch1th Specifies the first channel of the sequence.
  * @retval None.
  */
-void ADC_TypeDef::SetInjectedSequence(ADC_ChannelTypeDef ch1th) {
+void ADC_InjectedTypeDef::SetSequence(ADC_ChannelTypeDef ch1th) {
     REGS.ISQR = (ch1th << ADC_ISQR_JSQ1_Pos) | (0U << ADC_ISQR_JL_Pos);
 }
 
@@ -64,7 +55,7 @@ void ADC_TypeDef::SetInjectedSequence(ADC_ChannelTypeDef ch1th) {
  * @param  ch2th Specifies the seconds channel of the sequence.
  * @retval None.
  */
-void ADC_TypeDef::SetInjectedSequence(ADC_ChannelTypeDef ch1th, ADC_ChannelTypeDef ch2th) {
+void ADC_InjectedTypeDef::SetSequence(ADC_ChannelTypeDef ch1th, ADC_ChannelTypeDef ch2th) {
     REGS.ISQR = (ch1th << ADC_ISQR_JSQ1_Pos) | (1U << ADC_ISQR_JL_Pos);
     REGS.ISQR |= (ch2th << ADC_ISQR_JSQ2_Pos);
 }
@@ -76,7 +67,7 @@ void ADC_TypeDef::SetInjectedSequence(ADC_ChannelTypeDef ch1th, ADC_ChannelTypeD
  * @param  ch3th Specifies the third channel of the sequence.
  * @retval None.
  */
-void ADC_TypeDef::SetInjectedSequence(ADC_ChannelTypeDef ch1th, ADC_ChannelTypeDef ch2th, ADC_ChannelTypeDef ch3th) {
+void ADC_InjectedTypeDef::SetSequence(ADC_ChannelTypeDef ch1th, ADC_ChannelTypeDef ch2th, ADC_ChannelTypeDef ch3th) {
     REGS.ISQR = (ch1th << ADC_ISQR_JSQ1_Pos) | (2U << ADC_ISQR_JL_Pos);
     REGS.ISQR |= (ch2th << ADC_ISQR_JSQ2_Pos);
     REGS.ISQR |= (ch3th << ADC_ISQR_JSQ3_Pos);
@@ -90,7 +81,7 @@ void ADC_TypeDef::SetInjectedSequence(ADC_ChannelTypeDef ch1th, ADC_ChannelTypeD
  * @param  ch4th Specifies the fourth channel of the sequence.
  * @retval None.
  */
-void ADC_TypeDef::SetInjectedSequence(ADC_ChannelTypeDef ch1th, ADC_ChannelTypeDef ch2th, ADC_ChannelTypeDef ch3th, ADC_ChannelTypeDef ch4th) {
+void ADC_InjectedTypeDef::SetSequence(ADC_ChannelTypeDef ch1th, ADC_ChannelTypeDef ch2th, ADC_ChannelTypeDef ch3th, ADC_ChannelTypeDef ch4th) {
     REGS.ISQR = (ch1th << ADC_ISQR_JSQ1_Pos) | (3U << ADC_ISQR_JL_Pos);
     REGS.ISQR |= (ch2th << ADC_ISQR_JSQ2_Pos);
     REGS.ISQR |= (ch3th << ADC_ISQR_JSQ3_Pos);
@@ -102,7 +93,7 @@ void ADC_TypeDef::SetInjectedSequence(ADC_ChannelTypeDef ch1th, ADC_ChannelTypeD
  * @note   This function will also clear the JEOC bit.
  * @retval None.
  */
-void ADC_TypeDef::SoftwareStartInjected(void) {
+void ADC_InjectedTypeDef::SoftwareStart(void) {
     REGS.STATR &= ~ADC_STATR_JEOC;
     REGS.CTLR2 |= ADC_CTLR2_JSWSTART;
 }
@@ -111,7 +102,7 @@ void ADC_TypeDef::SoftwareStartInjected(void) {
  * @brief  Return the injected conversion status.
  * @retval HAL flag status.
  */
-HAL_FlagStatusTypeDef ADC_TypeDef::GetInjectedStatus(void) {
+HAL_FlagStatusTypeDef ADC_InjectedTypeDef::GetStatus(void) {
     return (REGS.STATR & ADC_STATR_JEOC) ? SET : RESET;
 }
 
@@ -120,7 +111,7 @@ HAL_FlagStatusTypeDef ADC_TypeDef::GetInjectedStatus(void) {
  * @param  index Specifies index of IDATARx register.
  * @retval IDATARx value.
  */
-int16_t ADC_TypeDef::GetInjectedValue(ADC_InjectedIndexTypeDef index) {
+int16_t ADC_InjectedTypeDef::GetValue(ADC_InjectedIndexTypeDef index) {
     return ((uint32_t *)&REGS.IDATAR1)[index];
 }
 
@@ -130,7 +121,7 @@ int16_t ADC_TypeDef::GetInjectedValue(ADC_InjectedIndexTypeDef index) {
  * @param  channel Specify the channel to be converted.
  * @retval ADC value from RDATAR register.
  */
-int16_t ADC_TypeDef::RegularConvert(ADC_ChannelTypeDef channel) {
+int16_t ADC_RegularTypeDef::Convert(ADC_ChannelTypeDef channel) {
     if(REGS.CTLR2 & ADC_CTLR2_ADON) {
         REGS.RSQR3 = (channel << ADC_RSQR3_SQ1_Pos);
         REGS.RSQR1 = (0U << ADC_RSQR1_L_Pos);

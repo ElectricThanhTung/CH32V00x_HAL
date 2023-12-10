@@ -39,11 +39,11 @@ void SPI_TypeDef::SetMode(SPI_ModeTypeDef mode) {
  * @retval None.
  */
 void SPI_TypeDef::SetDataSize(SPI_DataSizeTypeDef dataSize) {
-    REGS.CTLR1 = (REGS.CTLR1 & ~SPI_CTLR1_DFF) | ((dataSize << SPI_CTLR1_DFF_Pos) & SPI_CTLR1_DFF);
+    REGS.CTLR1 = (REGS.CTLR1 & ~SPI_CTLR1_DFF) | (dataSize << SPI_CTLR1_DFF_Pos);
 }
 
 /**
- * @brief  Set parameters for SPI Clock signal.
+ * @brief  Set parameters for SPI clock signal.
  * @param  polarity specifies the polarity (CLK idle state) to be set for SPI.
  * @param  phase specifies the phase (sampling point) to be set for SPI.
  * @param  baudRate specifies the baudRate to be set for SPI.
@@ -83,7 +83,7 @@ void SPI_TypeDef::SetNSS(SPI_NSSTypeDef nss) {
  * @retval None.
  */
 void SPI_TypeDef::SetFirstBit(SPI_FirstBitTypeDef firstBit) {
-    REGS.CTLR1 = (REGS.CTLR1 & ~SPI_CTLR1_LSBFIRST) | ((firstBit << SPI_CTLR1_LSBFIRST_Pos) & SPI_CTLR1_LSBFIRST);
+    REGS.CTLR1 = (REGS.CTLR1 & ~SPI_CTLR1_LSBFIRST) | (firstBit << SPI_CTLR1_LSBFIRST_Pos);
 }
 
 /**

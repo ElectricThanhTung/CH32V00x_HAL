@@ -3,8 +3,13 @@
 
 #include "ch32v00x.h"
 
+#ifndef NULL
 #define NULL            (0U)
+#endif /* NULL */
+
+#ifndef NULL_PTR
 #define NULL_PTR        NULL
+#endif /* NULL_PTR */
 
 #define LENGTH(array)   (sizeof(array) / sizeof(array[0]))
 
