@@ -102,8 +102,8 @@ public:
     void SetNSS(SPI_NSSTypeDef nss);
     void SetFirstBit(SPI_FirstBitTypeDef firstBit);
     void SetCRC(HAL_StateTypeDef state, uint32_t polynomial = 0U);
-    void Enabled(void);
-    void Disabled(void);
+    void Enable(void);
+    void Disable(void);
     SPI_StateTypeDef GetState(void);
     HAL_StatusTypeDef Transmit(uint8_t *txData, uint16_t txLength, uint8_t *rxData, uint16_t rxLength, uint32_t timeout = 0xFFFFFFFF);
     HAL_StatusTypeDef Transmit(uint16_t *txData, uint16_t txLength, uint16_t *rxData, uint16_t rxLength, uint32_t timeout = 0xFFFFFFFF);

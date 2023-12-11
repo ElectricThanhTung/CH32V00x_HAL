@@ -106,7 +106,7 @@ void SPI_TypeDef::SetCRC(HAL_StateTypeDef state, uint32_t polynomial) {
  * @note   To be able to transmit and receive data, SPI must be enabled.
  * @retval None.
  */
-void SPI_TypeDef::Enabled(void) {
+void SPI_TypeDef::Enable(void) {
     REGS.CTLR1 |= SPI_CTLR1_SPE;
 }
 
@@ -114,8 +114,8 @@ void SPI_TypeDef::Enabled(void) {
  * @brief  Disable SPI.
  * @retval None.
  */
-void SPI_TypeDef::Disabled(void) {
-    REGS.CTLR1 &= SPI_CTLR1_SPE;
+void SPI_TypeDef::Disable(void) {
+    REGS.CTLR1 &= ~SPI_CTLR1_SPE;
 }
 
 /**

@@ -54,7 +54,7 @@ void PWR_TypeDef::SetAWU(PWR_AwuDivTypeDef div, uint8_t windowValue) {
         REGS.AWUCSR |= PWR_AWUCSR_AWUEN;
     }
     else
-        REGS.AWUCSR &= PWR_AWUCSR_AWUEN;
+        REGS.AWUCSR &= ~PWR_AWUCSR_AWUEN;
 }
 
 /**
