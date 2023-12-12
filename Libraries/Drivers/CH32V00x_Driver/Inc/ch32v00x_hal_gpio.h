@@ -23,17 +23,17 @@
 #define GPIO_PIN_13     (1UL << 13U)
 #define GPIO_PIN_14     (1UL << 14U)
 #define GPIO_PIN_15     (1UL << 15U)
-#define GPIO_PIN_ALL    (0xFFFF)
+#define GPIO_PIN_ALL    (0xFFFFU)
 
 typedef enum {
-    GPIO_MODE_ANALOG_IN = 0x00,
-    GPIO_MODE_INPUT = 0x04,
-    GPIO_MODE_INPUT_PD = 0x28,
-    GPIO_MODE_INPUT_PU = 0x48,
-    GPIO_MODE_OUTPUT_OD = 0x14,
-    GPIO_MODE_OUTPUT_PP = 0x10,
-    GPIO_MODE_AF_OD = 0x1C,
-    GPIO_MODE_AF_PP = 0x18
+    GPIO_MODE_ANALOG_IN = 0x00U,
+    GPIO_MODE_INPUT = 0x04U,
+    GPIO_MODE_INPUT_PD = 0x28U,
+    GPIO_MODE_INPUT_PU = 0x48U,
+    GPIO_MODE_OUTPUT_OD = 0x14U,
+    GPIO_MODE_OUTPUT_PP = 0x10U,
+    GPIO_MODE_AF_OD = 0x1CU,
+    GPIO_MODE_AF_PP = 0x18U
 } GPIO_ModeTypeDef;
 
 typedef enum {

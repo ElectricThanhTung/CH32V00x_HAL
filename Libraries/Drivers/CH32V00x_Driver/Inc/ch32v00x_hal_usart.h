@@ -60,9 +60,9 @@ public:
     uint32_t SetBaudRate(uint32_t baudRate);
     void SetWordLength(USART_WordLengthTypeDef wordLength);
     void SetParity(USART_ParityTypeDef parity);
-    HAL_StatusTypeDef Transmit(uint8_t *txData, uint16_t txLength, uint32_t timeout = 0xFFFFFFFF);
-    HAL_StatusTypeDef Transmit(uint16_t *txData, uint16_t txLength, uint32_t timeout = 0xFFFFFFFF);
-    HAL_StatusTypeDef Transmit(uint16_t txData, uint32_t timeout = 0xFFFFFFFF);
+    HAL_StatusTypeDef Transmit(uint8_t *txData, uint16_t txLength, uint32_t timeout = 0xFFFFFFFFUL);
+    HAL_StatusTypeDef Transmit(uint16_t *txData, uint16_t txLength, uint32_t timeout = 0xFFFFFFFFUL);
+    HAL_StatusTypeDef Transmit(uint16_t txData, uint32_t timeout = 0xFFFFFFFFUL);
     void DeInit(void);
 private:
     USART_TypeDef(void);

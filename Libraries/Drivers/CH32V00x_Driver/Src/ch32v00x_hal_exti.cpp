@@ -8,9 +8,9 @@
  * @retval AFIO mask for the corresponding line.
  */
 static uint32_t HAL_EXTI_GetAFIOMask(uint32_t line) {
-    uint32_t afioMask = ((line & 0xF0) << 4U) | (line & 0x0F);
-    afioMask = ((afioMask & 0x0C0C) << 2U) | (afioMask & 0x0303);
-    afioMask = ((afioMask & 0x2222) << 1U) | (afioMask & 0x1111);
+    uint32_t afioMask = ((line & 0xF0U) << 4U) | (line & 0x0FU);
+    afioMask = ((afioMask & 0x0C0CU) << 2U) | (afioMask & 0x0303U);
+    afioMask = ((afioMask & 0x2222U) << 1U) | (afioMask & 0x1111U);
     afioMask |= afioMask << 1U;
     return afioMask;
 }

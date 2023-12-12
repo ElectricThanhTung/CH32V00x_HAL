@@ -9,11 +9,11 @@
  */
 static uint32_t HAL_GPIO_GetCfgMask(uint32_t pin) {
     static const uint16_t gpioCfgMask[] = {
-        0x0000, 0x000F, 0x00F0, 0x00FF, 0x0F00, 0x0F0F, 0x0FF0, 0x0FFF,
-        0xF000, 0xF00F, 0xF0F0, 0xF0FF, 0xFF00, 0xFF0F, 0xFFF0, 0xFFFF
+        0x0000U, 0x000FU, 0x00F0U, 0x00FFU, 0x0F00U, 0x0F0FU, 0x0FF0U, 0x0FFFU,
+        0xF000U, 0xF00FU, 0xF0F0U, 0xF0FFU, 0xFF00U, 0xFF0FU, 0xFFF0U, 0xFFFFU
     };
-    uint32_t mask = gpioCfgMask[pin & 0x0F];
-    mask |= gpioCfgMask[(pin >> 4U) & 0x0F];
+    uint32_t mask = gpioCfgMask[pin & 0x0FU];
+    mask |= gpioCfgMask[(pin >> 4U) & 0x0FU];
     return mask;
 }
 
@@ -54,8 +54,8 @@ void GPIO_TypeDef::DisableClock(void) {
  * @retval None.
  */
 void GPIO_TypeDef::SetMode(uint32_t pin, GPIO_ModeTypeDef mode, GPIO_SpeedTypeDef speed) {
-    uint32_t pinMode = mode & 0x0F;
-    if(mode & 0x10)
+    uint32_t pinMode = mode & 0x0FU;
+    if(mode & 0x10U)
         pinMode |= speed + 1U;
     pinMode |= pinMode << 4U;
     pinMode |= pinMode << 8U;
@@ -65,11 +65,11 @@ void GPIO_TypeDef::SetMode(uint32_t pin, GPIO_ModeTypeDef mode, GPIO_SpeedTypeDe
     else if(mode == GPIO_MODE_INPUT_PU)
         REGS.BSHR = pin;
 
-    if(pin & 0xFF) {
+    if(pin & 0xFFU) {
         uint32_t mask = HAL_GPIO_GetCfgMask(pin);
         REGS.CFGLR = (REGS.CFGLR & ~mask) | (pinMode & mask);
     }
-    else if(pin & 0xFF00) {
+    else if(pin & 0xFF00U) {
         uint32_t mask = HAL_GPIO_GetCfgMask(pin >> 8U);
         REGS.CFGHR = (REGS.CFGHR & ~mask) | (pinMode & mask);
     }
@@ -149,7 +149,7 @@ void GPIO_TypeDef::TogglePin(uint32_t pin) {
  * @retval None.
  */
 void GPIO_TypeDef::LockPin(uint32_t pin) {
-    uint32_t tmp = 0x00010000;
+    uint32_t tmp = 0x00010000UL;
 
     tmp |= pin;
     REGS.LCKR = tmp;
@@ -166,12 +166,12 @@ void GPIO_TypeDef::LockPin(uint32_t pin) {
  * @retval None.
  */
 void GPIO_TypeDef::DeInit(uint32_t pin) {
-    if(pin & 0xFF) {
+    if(pin & 0xFFU) {
         uint32_t mask = HAL_GPIO_GetCfgMask(pin);
-        REGS.CFGLR = (REGS.CFGLR & ~mask) | (0x44444444 & mask);
+        REGS.CFGLR = (REGS.CFGLR & ~mask) | (0x44444444UL & mask);
     }
-    else if(pin & 0xFF00) {
+    else if(pin & 0xFF00U) {
         uint32_t mask = HAL_GPIO_GetCfgMask(pin >> 8U);
-        REGS.CFGHR = (REGS.CFGHR & ~mask) | (0x44444444 & mask);
+        REGS.CFGHR = (REGS.CFGHR & ~mask) | (0x44444444UL & mask);
     }
 }

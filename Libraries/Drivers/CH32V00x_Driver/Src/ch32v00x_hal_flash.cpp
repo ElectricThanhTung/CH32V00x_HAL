@@ -118,12 +118,12 @@ HAL_StatusTypeDef FLASH_TypeDef::ErasePage(uint32_t address, FLASH_EraseModeType
     HAL_StatusTypeDef status;
     uint32_t ctlr;
     if(eraseMode == FLASH_ERASE_1KB) {
-        if(address & 0x03FF)
+        if(address & 0x03FFU)
             return HAL_ERROR;
         ctlr = FLASH_CTLR_PER;
     }
     else {
-        if(address & 0x3F)
+        if(address & 0x3FU)
             return HAL_ERROR;
         ctlr = FLASH_CTLR_FTER;
     }
@@ -151,7 +151,7 @@ HAL_StatusTypeDef FLASH_TypeDef::ErasePage(uint32_t address, FLASH_EraseModeType
 HAL_StatusTypeDef FLASH_TypeDef::WriteData(uint32_t address, void *data, uint32_t size) {
     HAL_StatusTypeDef status = HAL_OK;
     uint32_t addrEnd = address + size;
-    uint32_t temp = 0xFFFFFFFF;
+    uint32_t temp = 0xFFFFFFFFUL;
     uint8_t *buff = (uint8_t *)data;
 
     if((status = Unlock()) == HAL_OK) {
@@ -170,7 +170,7 @@ HAL_StatusTypeDef FLASH_TypeDef::WriteData(uint32_t address, void *data, uint32_
                     if((status = StartFastProgram(address - 64U)) != HAL_OK)
                         break;
                 }
-                temp = 0xFFFFFFFF;
+                temp = 0xFFFFFFFFUL;
             }
             if(((uint32_t)buff % 4U) == 0U) {
                 while((address + 4U) <= addrEnd) {
@@ -197,16 +197,16 @@ HAL_StatusTypeDef FLASH_TypeDef::WriteData(uint32_t address, void *data, uint32_
                                 break;
                             BuffReset();
                         }
-                        temp = 0xFFFFFFFF;
+                        temp = 0xFFFFFFFFUL;
                     }
                     buff++;
                 }
                 if(status == HAL_OK) {
                     if(address % 4U)
-                        if((status = LoadWord(address & 0xFFFFFFFC, temp)) != HAL_OK)
+                        if((status = LoadWord(address & 0xFFFFFFFCUL, temp)) != HAL_OK)
                             break;
                     if(address % 64U)
-                        status = StartFastProgram(address & 0xFFFFFFC0);
+                        status = StartFastProgram(address & 0xFFFFFFC0UL);
                 }
             }
         } while(0U);

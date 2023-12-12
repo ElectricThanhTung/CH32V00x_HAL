@@ -73,43 +73,43 @@ typedef enum IRQn {
 #include "core_riscv.h"
 
 /* Peripheral memory map */
-#define FLASH_BASE                              ((uint32_t)0x08000000) /* FLASH base address in the alias region */
-#define SRAM_BASE                               ((uint32_t)0x20000000) /* SRAM base address in the alias region */
-#define PERIPH_BASE                             ((uint32_t)0x40000000) /* Peripheral base address in the alias region */
+#define FLASH_BASE                              ((uint32_t)0x08000000UL) /* FLASH base address in the alias region */
+#define SRAM_BASE                               ((uint32_t)0x20000000UL) /* SRAM base address in the alias region */
+#define PERIPH_BASE                             ((uint32_t)0x40000000UL) /* Peripheral base address in the alias region */
 
 #define APB1PERIPH_BASE                         (PERIPH_BASE)
-#define APB2PERIPH_BASE                         (PERIPH_BASE + 0x10000)
-#define AHBPERIPH_BASE                          (PERIPH_BASE + 0x20000)
+#define APB2PERIPH_BASE                         (PERIPH_BASE + 0x10000UL)
+#define AHBPERIPH_BASE                          (PERIPH_BASE + 0x20000UL)
 
-#define TIM2_BASE                               (APB1PERIPH_BASE + 0x0000)
-#define WWDG_BASE                               (APB1PERIPH_BASE + 0x2C00)
-#define IWDG_BASE                               (APB1PERIPH_BASE + 0x3000)
-#define I2C1_BASE                               (APB1PERIPH_BASE + 0x5400)
-#define PWR_BASE                                (APB1PERIPH_BASE + 0x7000)
+#define TIM2_BASE                               (APB1PERIPH_BASE + 0x0000UL)
+#define WWDG_BASE                               (APB1PERIPH_BASE + 0x2C00UL)
+#define IWDG_BASE                               (APB1PERIPH_BASE + 0x3000UL)
+#define I2C1_BASE                               (APB1PERIPH_BASE + 0x5400UL)
+#define PWR_BASE                                (APB1PERIPH_BASE + 0x7000UL)
 
-#define AFIO_BASE                               (APB2PERIPH_BASE + 0x0000)
-#define EXTI_BASE                               (APB2PERIPH_BASE + 0x0400)
-#define GPIOA_BASE                              (APB2PERIPH_BASE + 0x0800)
-#define GPIOC_BASE                              (APB2PERIPH_BASE + 0x1000)
-#define GPIOD_BASE                              (APB2PERIPH_BASE + 0x1400)
-#define ADC1_BASE                               (APB2PERIPH_BASE + 0x2400)
-#define TIM1_BASE                               (APB2PERIPH_BASE + 0x2C00)
-#define SPI1_BASE                               (APB2PERIPH_BASE + 0x3000)
-#define USART1_BASE                             (APB2PERIPH_BASE + 0x3800)
+#define AFIO_BASE                               (APB2PERIPH_BASE + 0x0000UL)
+#define EXTI_BASE                               (APB2PERIPH_BASE + 0x0400UL)
+#define GPIOA_BASE                              (APB2PERIPH_BASE + 0x0800UL)
+#define GPIOC_BASE                              (APB2PERIPH_BASE + 0x1000UL)
+#define GPIOD_BASE                              (APB2PERIPH_BASE + 0x1400UL)
+#define ADC1_BASE                               (APB2PERIPH_BASE + 0x2400UL)
+#define TIM1_BASE                               (APB2PERIPH_BASE + 0x2C00UL)
+#define SPI1_BASE                               (APB2PERIPH_BASE + 0x3000UL)
+#define USART1_BASE                             (APB2PERIPH_BASE + 0x3800UL)
 
-#define DMA1_BASE                               (AHBPERIPH_BASE + 0x0000)
-#define DMA1_Channel1_BASE                      (AHBPERIPH_BASE + 0x0008)
-#define DMA1_Channel2_BASE                      (AHBPERIPH_BASE + 0x001C)
-#define DMA1_Channel3_BASE                      (AHBPERIPH_BASE + 0x0030)
-#define DMA1_Channel4_BASE                      (AHBPERIPH_BASE + 0x0044)
-#define DMA1_Channel5_BASE                      (AHBPERIPH_BASE + 0x0058)
-#define DMA1_Channel6_BASE                      (AHBPERIPH_BASE + 0x006C)
-#define DMA1_Channel7_BASE                      (AHBPERIPH_BASE + 0x0080)
-#define RCC_BASE                                (AHBPERIPH_BASE + 0x1000)
+#define DMA1_BASE                               (AHBPERIPH_BASE + 0x0000UL)
+#define DMA1_Channel1_BASE                      (AHBPERIPH_BASE + 0x0008UL)
+#define DMA1_Channel2_BASE                      (AHBPERIPH_BASE + 0x001CUL)
+#define DMA1_Channel3_BASE                      (AHBPERIPH_BASE + 0x0030UL)
+#define DMA1_Channel4_BASE                      (AHBPERIPH_BASE + 0x0044UL)
+#define DMA1_Channel5_BASE                      (AHBPERIPH_BASE + 0x0058UL)
+#define DMA1_Channel6_BASE                      (AHBPERIPH_BASE + 0x006CUL)
+#define DMA1_Channel7_BASE                      (AHBPERIPH_BASE + 0x0080UL)
+#define RCC_BASE                                (AHBPERIPH_BASE + 0x1000UL)
 
-#define FLASH_R_BASE                            (AHBPERIPH_BASE + 0x2000) /* Flash registers base address */
-#define UOB_BASE                                ((uint32_t)0x1FFFF800)    /* Flash Option Bytes base address */
-#define EXTEND_BASE                             ((uint32_t)0x40023800)
+#define FLASH_R_BASE                            (AHBPERIPH_BASE + 0x2000UL) /* Flash registers base address */
+#define UOB_BASE                                ((uint32_t)0x1FFFF800UL)    /* Flash Option Bytes base address */
+#define EXTEND_BASE                             ((uint32_t)0x40023800UL)
 
 /******************************************************************************/
 /*                    Peripheral Registers Bits Definition                    */
@@ -172,7 +172,7 @@ typedef enum IRQn {
 #define ADC_CTLR1_AWDEN_Msk                     (0x01UL << ADC_CTLR1_AWDEN_Pos)
 #define ADC_CTLR1_AWDEN                         ADC_CTLR1_AWDEN_Msk
 #define ADC_CTLR1_CALVOL_Pos                    (25U)
-#define ADC_CTLR1_CALVOL_Msk                    (0x03 << ADC_CTLR1_CALVOL_Pos)
+#define ADC_CTLR1_CALVOL_Msk                    (0x03UL << ADC_CTLR1_CALVOL_Pos)
 #define ADC_CTLR1_CALVOL                        ADC_CTLR1_CALVOL_Msk
 
 /******************  Bit definition for ADC_CTLR2 register  *******************/
@@ -354,16 +354,16 @@ typedef enum IRQn {
 
 /******************  Bit definition for ADC_ISQR register  ********************/
 #define ADC_ISQR_JSQ1_Pos                       (0U)
-#define ADC_ISQR_JSQ1_Msk                       (0x1F << ADC_ISQR_JSQ1_Pos)
+#define ADC_ISQR_JSQ1_Msk                       (0x1FUL << ADC_ISQR_JSQ1_Pos)
 #define ADC_ISQR_JSQ1                           ADC_ISQR_JSQ1_Msk
 #define ADC_ISQR_JSQ2_Pos                       (5U)
-#define ADC_ISQR_JSQ2_Msk                       (0x1F << ADC_ISQR_JSQ2_Pos)
+#define ADC_ISQR_JSQ2_Msk                       (0x1FUL << ADC_ISQR_JSQ2_Pos)
 #define ADC_ISQR_JSQ2                           ADC_ISQR_JSQ2_Msk
 #define ADC_ISQR_JSQ3_Pos                       (10U)
-#define ADC_ISQR_JSQ3_Msk                       (0x1F << ADC_ISQR_JSQ3_Pos)
+#define ADC_ISQR_JSQ3_Msk                       (0x1FUL << ADC_ISQR_JSQ3_Pos)
 #define ADC_ISQR_JSQ3                           ADC_ISQR_JSQ3_Msk
 #define ADC_ISQR_JSQ4_Pos                       (15U)
-#define ADC_ISQR_JSQ4_Msk                       (0x1F << ADC_ISQR_JSQ4_Pos)
+#define ADC_ISQR_JSQ4_Msk                       (0x1FUL << ADC_ISQR_JSQ4_Pos)
 #define ADC_ISQR_JSQ4                           ADC_ISQR_JSQ4_Msk
 #define ADC_ISQR_JL_Pos                         (20U)
 #define ADC_ISQR_JL_Msk                         (0x03UL << ADC_ISQR_JL_Pos)
@@ -1594,7 +1594,7 @@ typedef enum IRQn {
 
 /******************  Bit definition for I2C_OAR1 register  ********************/
 #define I2C_OAR1_ADD_Pos                        (0U)
-#define I2C_OAR1_ADD_Msk                        (0x03FF << I2C_OAR1_ADD_Pos)
+#define I2C_OAR1_ADD_Msk                        (0x03FFUL << I2C_OAR1_ADD_Pos)
 #define I2C_OAR1_ADD                            I2C_OAR1_ADD_Msk
 #define I2C_OAR1_ADDMODE_Pos                    (15U)
 #define I2C_OAR1_ADDMODE_Msk                    (0x01UL << I2C_OAR1_ADDMODE_Pos)

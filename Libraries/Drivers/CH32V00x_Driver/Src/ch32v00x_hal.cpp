@@ -62,7 +62,7 @@ void HAL_TypeDef::DelayMs(uint32_t time) {
  */
 __INTERRUPT void SysTick_Handler(void) {
     uint32_t tick = SysTick->CNT;
-    SysTick->SR = 0x00;
+    SysTick->SR = 0x00U;
     SysTick->CMP = tick + __HAL_GetTickInterval();
 }
 

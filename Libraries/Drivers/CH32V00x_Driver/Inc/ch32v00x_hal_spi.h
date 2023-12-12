@@ -105,13 +105,13 @@ public:
     void Enable(void);
     void Disable(void);
     SPI_StateTypeDef GetState(void);
-    HAL_StatusTypeDef Transmit(uint8_t *txData, uint16_t txLength, uint8_t *rxData, uint16_t rxLength, uint32_t timeout = 0xFFFFFFFF);
-    HAL_StatusTypeDef Transmit(uint16_t *txData, uint16_t txLength, uint16_t *rxData, uint16_t rxLength, uint32_t timeout = 0xFFFFFFFF);
-    HAL_StatusTypeDef Transmit(uint8_t *txData, uint16_t txLength, uint32_t timeout = 0xFFFFFFFF);
-    HAL_StatusTypeDef Transmit(uint16_t *txData, uint16_t txLength, uint32_t timeout = 0xFFFFFFFF);
+    HAL_StatusTypeDef Transmit(uint8_t *txData, uint16_t txLength, uint8_t *rxData, uint16_t rxLength, uint32_t timeout = 0xFFFFFFFFUL);
+    HAL_StatusTypeDef Transmit(uint16_t *txData, uint16_t txLength, uint16_t *rxData, uint16_t rxLength, uint32_t timeout = 0xFFFFFFFFUL);
+    HAL_StatusTypeDef Transmit(uint8_t *txData, uint16_t txLength, uint32_t timeout = 0xFFFFFFFFUL);
+    HAL_StatusTypeDef Transmit(uint16_t *txData, uint16_t txLength, uint32_t timeout = 0xFFFFFFFFUL);
     HAL_StatusTypeDef Transmit(uint16_t data, uint32_t timeout);
-    HAL_StatusTypeDef Receive(uint8_t *rxData, uint16_t rxLength, uint32_t timeout = 0xFFFFFFFF);
-    HAL_StatusTypeDef Receive(uint16_t *rxData, uint16_t rxLength, uint32_t timeout = 0xFFFFFFFF);
+    HAL_StatusTypeDef Receive(uint8_t *rxData, uint16_t rxLength, uint32_t timeout = 0xFFFFFFFFUL);
+    HAL_StatusTypeDef Receive(uint16_t *rxData, uint16_t rxLength, uint32_t timeout = 0xFFFFFFFFUL);
     void DeInit(void);
 private:
     SPI_TypeDef(void);

@@ -13,6 +13,6 @@ private:
     SRAM_TypeDef(SRAM_TypeDef &);
 };
 
-#define SRAM            (*(SRAM_TypeDef *)0x20000000)
+#define SRAM            (*(SRAM_TypeDef *)0x20000000UL)
 
 #endif /* __CH32V00x_HAL_SRAM_H */

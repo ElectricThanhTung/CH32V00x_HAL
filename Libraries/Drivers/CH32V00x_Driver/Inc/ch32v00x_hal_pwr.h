@@ -5,7 +5,7 @@
 #include "ch32v00x_hal.h"
 
 typedef enum {
-    PWR_PVD_LEVEL_NONE = 0xFF,
+    PWR_PVD_LEVEL_NONE = 0xFFU,
     PWR_PVD_LEVEL_2V9 = 0U,
     PWR_PVD_LEVEL_3V1 = 1U,
     PWR_PVD_LEVEL_3V3 = 2U,
@@ -17,7 +17,7 @@ typedef enum {
 } PWR_PvdLevelTypeDef;
 
 typedef enum {
-    PWR_AWU_DIV_NONE = 0xFF,
+    PWR_AWU_DIV_NONE = 0xFFU,
     PWR_AWU_DIV_1 = 0U,
     PWR_AWU_DIV_2 = 2U,
     PWR_AWU_DIV_4 = 3U,
@@ -53,7 +53,7 @@ public:
     void EnableClock(void);
     void DisableClock(void);
     void SetPVD(PWR_PvdLevelTypeDef level);
-    void SetAWU(PWR_AwuDivTypeDef div, uint8_t windowValue = 0x3F);
+    void SetAWU(PWR_AwuDivTypeDef div, uint8_t windowValue = 0x3FU);
     void EnterStandbyMode(PWR_StanbyModeTypeDef mode);
     HAL_FlagStatusTypeDef GetPVD0(void);
     void DeInit(void);

@@ -21,28 +21,28 @@ typedef enum {
 
 /* memory mapped structure for Program Fast Interrupt Controller (PFIC) */
 typedef struct {
-    __I  uint32_t ISR[8];
-    __I  uint32_t IPR[8];
+    __I  uint32_t ISR[8U];
+    __I  uint32_t IPR[8U];
     __IO uint32_t ITHRESDR;
     __IO uint32_t RESERVED;
     __IO uint32_t CFGR;
     __I  uint32_t GISR;
-    __IO uint8_t VTFIDR[4];
-    uint8_t RESERVED0[12];
-    __IO uint32_t VTFADDR[4];
-    uint8_t RESERVED1[0x90];
-    __O  uint32_t IENR[8];
-    uint8_t RESERVED2[0x60];
-    __O  uint32_t IRER[8];
-    uint8_t RESERVED3[0x60];
-    __O  uint32_t IPSR[8];
-    uint8_t RESERVED4[0x60];
-    __O  uint32_t IPRR[8];
-    uint8_t RESERVED5[0x60];
-    __IO uint32_t IACTR[8];
-    uint8_t RESERVED6[0xE0];
-    __IO uint8_t IPRIOR[256];
-    uint8_t RESERVED7[0x810];
+    __IO uint8_t VTFIDR[4U];
+    uint8_t RESERVED0[12U];
+    __IO uint32_t VTFADDR[4U];
+    uint8_t RESERVED1[0x90U];
+    __O  uint32_t IENR[8U];
+    uint8_t RESERVED2[0x60U];
+    __O  uint32_t IRER[8U];
+    uint8_t RESERVED3[0x60U];
+    __O  uint32_t IPSR[8U];
+    uint8_t RESERVED4[0x60U];
+    __O  uint32_t IPRR[8U];
+    uint8_t RESERVED5[0x60U];
+    __IO uint32_t IACTR[8U];
+    uint8_t RESERVED6[0xE0U];
+    __IO uint8_t IPRIOR[256U];
+    uint8_t RESERVED7[0x810U];
     __IO uint32_t SCTLR;
 } PFIC_Type;
 
@@ -56,13 +56,13 @@ typedef struct {
     uint32_t RESERVED1;
 } SysTick_Type;
 
-#define PFIC                            ((PFIC_Type *)0xE000E000)
+#define PFIC                            ((PFIC_Type *)0xE000E000UL)
 #define NVIC                            PFIC
-#define NVIC_KEY1                       ((uint32_t)0xFA050000)
-#define	NVIC_KEY2                       ((uint32_t)0xBCAF0000)
-#define	NVIC_KEY3                       ((uint32_t)0xBEEF0000)
+#define NVIC_KEY1                       ((uint32_t)0xFA050000UL)
+#define	NVIC_KEY2                       ((uint32_t)0xBCAF0000UL)
+#define	NVIC_KEY3                       ((uint32_t)0xBEEF0000UL)
 
-#define SysTick                         ((SysTick_Type *) 0xE000F000)
+#define SysTick                         ((SysTick_Type *) 0xE000F000UL)
 
 /******************************************************************************/
 /*                                System Timer                                */
@@ -148,8 +148,8 @@ typedef struct {
 __STATIC_FORCEINLINE void __enable_irq(void) {
     uint32_t result;
     __asm volatile("csrr %0, mstatus" : "=r"(result));
-    result |= 0x88;
-    __asm volatile ("csrw mstatus, %0" : : "r" (result) );
+    result |= 0x88U;
+    __asm volatile ("csrw mstatus, %0" : : "r" (result));
 }
 
 /**
@@ -159,8 +159,8 @@ __STATIC_FORCEINLINE void __enable_irq(void) {
 __STATIC_FORCEINLINE void __disable_irq(void) {
     uint32_t result;
     __asm volatile("csrr %0, mstatus" : "=r"(result));
-    result &= ~0x88;
-    __asm volatile ("csrw mstatus, %0" : : "r" (result) );
+    result &= ~0x88U;
+    __asm volatile ("csrw mstatus, %0" : : "r" (result));
 }
 
 /**
@@ -177,7 +177,7 @@ __STATIC_FORCEINLINE void __NOP(void) {
  * @return None.
  */
 __STATIC_FORCEINLINE void NVIC_EnableIRQ(IRQn_Type IRQn) {
-    NVIC->IENR[(uint32_t)IRQn >> 5U] = 1UL << ((uint32_t)IRQn & 0x1F);
+    NVIC->IENR[(uint32_t)IRQn >> 5U] = 1UL << ((uint32_t)IRQn & 0x1FU);
 }
 
 /**
@@ -186,7 +186,7 @@ __STATIC_FORCEINLINE void NVIC_EnableIRQ(IRQn_Type IRQn) {
  * @return None.
  */
 __STATIC_FORCEINLINE void NVIC_DisableIRQ(IRQn_Type IRQn) {
-    NVIC->IRER[(uint32_t)IRQn >> 5U] = 1UL << ((uint32_t)IRQn & 0x1F);
+    NVIC->IRER[(uint32_t)IRQn >> 5U] = 1UL << ((uint32_t)IRQn & 0x1FU);
 }
 
 /**
@@ -196,7 +196,7 @@ __STATIC_FORCEINLINE void NVIC_DisableIRQ(IRQn_Type IRQn) {
  *         0 - Interrupt pending disable.
  */
 __STATIC_FORCEINLINE ITStatus NVIC_GetStatusIRQ(IRQn_Type IRQn) {
-    return (NVIC->ISR[(uint32_t)IRQn >> 5U] & (1UL << ((uint32_t)IRQn & 0x1F))) ? SET : RESET;
+    return (NVIC->ISR[(uint32_t)IRQn >> 5U] & (1UL << ((uint32_t)IRQn & 0x1FU))) ? SET : RESET;
 }
 
 /**
@@ -206,7 +206,7 @@ __STATIC_FORCEINLINE ITStatus NVIC_GetStatusIRQ(IRQn_Type IRQn) {
  *         0 - Interrupt pending disable.
  */
 __STATIC_FORCEINLINE ITStatus NVIC_GetPendingIRQ(IRQn_Type IRQn) {
-    return (NVIC->IPR[(uint32_t)IRQn >> 5U] & (1UL << ((uint32_t)IRQn & 0x1F))) ? SET : RESET;
+    return (NVIC->IPR[(uint32_t)IRQn >> 5U] & (1UL << ((uint32_t)IRQn & 0x1FU))) ? SET : RESET;
 }
 
 /**
@@ -215,7 +215,7 @@ __STATIC_FORCEINLINE ITStatus NVIC_GetPendingIRQ(IRQn_Type IRQn) {
  * @return None.
  */
 __STATIC_FORCEINLINE void NVIC_SetPendingIRQ(IRQn_Type IRQn) {
-    NVIC->IPSR[(uint32_t)IRQn >> 5U] = (1UL << ((uint32_t)IRQn & 0x1F));
+    NVIC->IPSR[(uint32_t)IRQn >> 5U] = (1UL << ((uint32_t)IRQn & 0x1FU));
 }
 
 /**
@@ -224,7 +224,7 @@ __STATIC_FORCEINLINE void NVIC_SetPendingIRQ(IRQn_Type IRQn) {
  * @return None.
  */
 __STATIC_FORCEINLINE void NVIC_ClearPendingIRQ(IRQn_Type IRQn) {
-    NVIC->IPRR[(uint32_t)IRQn >> 5U] = (1UL << ((uint32_t)IRQn & 0x1F));
+    NVIC->IPRR[(uint32_t)IRQn >> 5U] = (1UL << ((uint32_t)IRQn & 0x1FU));
 }
 
 /**
@@ -234,7 +234,7 @@ __STATIC_FORCEINLINE void NVIC_ClearPendingIRQ(IRQn_Type IRQn) {
  *         0 - Interrupt no active.
  */
 __STATIC_FORCEINLINE ITStatus NVIC_GetActive(IRQn_Type IRQn) {
-    return (NVIC->IACTR[(uint32_t)IRQn >> 5U] & (1UL << ((uint32_t)IRQn & 0x1F))) ? SET : RESET;
+    return (NVIC->IACTR[(uint32_t)IRQn >> 5U] & (1UL << ((uint32_t)IRQn & 0x1FU))) ? SET : RESET;
 }
 
 /**
@@ -301,11 +301,11 @@ __STATIC_FORCEINLINE void SetVTFIRQ(uint32_t addr, IRQn_Type IRQn, uint8_t num, 
         return;
     if(newState != DISABLE) {
         NVIC->VTFIDR[num] = IRQn;
-        NVIC->VTFADDR[num] = ((addr & 0xFFFFFFFE) | 0x1);
+        NVIC->VTFADDR[num] = ((addr & 0xFFFFFFFEUL) | 0x01U);
     }
     else {
         NVIC->VTFIDR[num] = IRQn;
-        NVIC->VTFADDR[num] = ((addr & 0xFFFFFFFE) & ~0x1);
+        NVIC->VTFADDR[num] = ((addr & 0xFFFFFFFEUL) & ~0x01U);
     }
 }
 

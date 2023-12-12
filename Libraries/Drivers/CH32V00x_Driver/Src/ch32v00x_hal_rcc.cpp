@@ -80,7 +80,7 @@ uint32_t RCC_HsiTypeDef::GetFreq(void) {
  * @retval HAL status.
  */
 HAL_StatusTypeDef RCC_HseTypeDef::Enable(void) {
-    uint32_t timeout = 0xFF;
+    uint32_t timeout = 0xFFU;
     if(GetState() == ENABLE)
         return HAL_OK;
     AFIO.REGS.PCFR1 |= AFIO_PCFR1_PA12_RM;
@@ -132,7 +132,7 @@ uint32_t RCC_HseTypeDef::GetFreq(void) {
  * @retval HAL status.
  */
 HAL_StatusTypeDef RCC_PllTypeDef::SetState(HAL_StateTypeDef state) {
-    uint32_t timeout = 0xFF;
+    uint32_t timeout = 0xFFU;
     if(state == DISABLE) {
         REGS.CTLR &= ~RCC_CTLR_PLLON;
         return HAL_OK;
@@ -194,7 +194,7 @@ uint32_t RCC_PllTypeDef::GetFreq(void) {
  * @retval HAL status.
  */
 HAL_StatusTypeDef RCC_SysClkTypeDef::SetSource(RCC_SysClkSrcTypeDef source) {
-    uint32_t timeout = 0xFF;
+    uint32_t timeout = 0xFFU;
     REGS.CFGR0 = (REGS.CFGR0 & ~RCC_CFGR0_SW) | (source << RCC_CFGR0_SW_Pos);
     while(((REGS.CFGR0 & RCC_CFGR0_SWS) != (uint32_t)(source << RCC_CFGR0_SWS_Pos)) && (timeout--));
     CoreClockUpdate();
@@ -223,7 +223,7 @@ uint32_t RCC_SysClkTypeDef::GetFreq(void) {
         case RCC_SYSCLKSRC_HSE:
             return HSE_VALUE;
         case RCC_SYSCLKSRC_PLL:
-            return ((REGS.CFGR0 & RCC_CFGR0_PLLSRC) == 0x00) ? (HSI_VALUE * 2U) : (HSE_VALUE * 2U);
+            return ((REGS.CFGR0 & RCC_CFGR0_PLLSRC) == 0x00U) ? (HSI_VALUE * 2U) : (HSE_VALUE * 2U);
         default:
             return HSI_VALUE;
     }
@@ -300,11 +300,11 @@ uint32_t RCC_OutClkTypeDef::GetFreq(void) {
  * @retval None.
  */
 void RCC_TypeDef::DeInit(void) {
-    REGS.CTLR |= (uint32_t)0x00000001;
-    REGS.CFGR0 &= (uint32_t)0xFCFF0000;
-    REGS.CTLR &= (uint32_t)0xFEF6FFFF;
-    REGS.CTLR &= (uint32_t)0xFFFBFFFF;
-    REGS.CFGR0 &= (uint32_t)0xFFFEFFFF;
-    REGS.INTR = 0x009F0000;
+    REGS.CTLR |= (uint32_t)0x00000001UL;
+    REGS.CFGR0 &= (uint32_t)0xFCFF0000UL;
+    REGS.CTLR &= (uint32_t)0xFEF6FFFFUL;
+    REGS.CTLR &= (uint32_t)0xFFFBFFFFUL;
+    REGS.CFGR0 &= (uint32_t)0xFFFEFFFFUL;
+    REGS.INTR = 0x009F0000UL;
     SystemCoreClock = HSI_VALUE;
 }

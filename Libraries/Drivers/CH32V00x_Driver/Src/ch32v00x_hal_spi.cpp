@@ -192,7 +192,7 @@ HAL_StatusTypeDef SPI_TypeDef::Transmit(uint8_t *txData, uint16_t txLength, uint
                 txLength--;
             }
             else
-                REGS.DATAR = 0xFF;
+                REGS.DATAR = 0xFFU;
         }
         if(rxLength && (REGS.STATR & SPI_STATR_RXNE)) {
             *rxData = REGS.DATAR;
@@ -232,7 +232,7 @@ HAL_StatusTypeDef SPI_TypeDef::Transmit(uint16_t *txData, uint16_t txLength, uin
                 txLength--;
             }
             else
-                REGS.DATAR = 0xFFFF;
+                REGS.DATAR = 0xFFFFU;
         }
         if(rxLength && (REGS.STATR & SPI_STATR_RXNE)) {
             *rxData = REGS.DATAR;
