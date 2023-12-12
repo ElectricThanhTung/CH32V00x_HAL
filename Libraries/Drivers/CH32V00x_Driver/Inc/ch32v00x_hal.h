@@ -57,5 +57,6 @@ private:
 #include "ch32v00x_hal_i2c.h"
 #include "ch32v00x_hal_dma.h"
 #include "ch32v00x_hal_pwr.h"
+#include "ch32v00x_hal_iwdg.h"
 
 #endif /* __CH32V00x_HAL_H */
