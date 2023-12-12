@@ -73,9 +73,9 @@ typedef enum IRQn {
 #include "core_riscv.h"
 
 /* Peripheral memory map */
-#define FLASH_BASE                              ((uint32_t)0x08000000UL) /* FLASH base address in the alias region */
-#define SRAM_BASE                               ((uint32_t)0x20000000UL) /* SRAM base address in the alias region */
-#define PERIPH_BASE                             ((uint32_t)0x40000000UL) /* Peripheral base address in the alias region */
+#define FLASH_BASE                              (0x08000000UL) /* FLASH base address in the alias region */
+#define SRAM_BASE                               (0x20000000UL) /* SRAM base address in the alias region */
+#define PERIPH_BASE                             (0x40000000UL) /* Peripheral base address in the alias region */
 
 #define APB1PERIPH_BASE                         (PERIPH_BASE)
 #define APB2PERIPH_BASE                         (PERIPH_BASE + 0x10000UL)
@@ -108,8 +108,9 @@ typedef enum IRQn {
 #define RCC_BASE                                (AHBPERIPH_BASE + 0x1000UL)
 
 #define FLASH_R_BASE                            (AHBPERIPH_BASE + 0x2000UL) /* Flash registers base address */
-#define UOB_BASE                                ((uint32_t)0x1FFFF800UL)    /* Flash Option Bytes base address */
-#define EXTEND_BASE                             ((uint32_t)0x40023800UL)
+#define UOB_BASE                                (0x1FFFF800UL)    /* Flash Option Bytes base address */
+#define EXTEND_BASE                             (0x40023800UL)
+#define ESIG_BASE                               (0x1FFFF7E0UL)
 
 /******************************************************************************/
 /*                    Peripheral Registers Bits Definition                    */
