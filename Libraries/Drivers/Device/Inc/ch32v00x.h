@@ -1592,21 +1592,21 @@ typedef enum IRQn {
 #define I2C_CTLR2_LAST_Msk                      (0x01UL << I2C_CTLR2_LAST_Pos)
 #define I2C_CTLR2_LAST                          I2C_CTLR2_LAST_Msk
 
-/******************  Bit definition for I2C_OAR1 register  ********************/
-#define I2C_OAR1_ADD_Pos                        (0U)
-#define I2C_OAR1_ADD_Msk                        (0x03FFUL << I2C_OAR1_ADD_Pos)
-#define I2C_OAR1_ADD                            I2C_OAR1_ADD_Msk
-#define I2C_OAR1_ADDMODE_Pos                    (15U)
-#define I2C_OAR1_ADDMODE_Msk                    (0x01UL << I2C_OAR1_ADDMODE_Pos)
-#define I2C_OAR1_ADDMODE                        I2C_OAR1_ADDMODE_Msk
+/******************  Bit definition for I2C_OADDR1 register  ********************/
+#define I2C_OADDR1_ADD_Pos                      (0U)
+#define I2C_OADDR1_ADD_Msk                      (0x03FFUL << I2C_OADDR1_ADD_Pos)
+#define I2C_OADDR1_ADD                          I2C_OADDR1_ADD_Msk
+#define I2C_OADDR1_ADDMODE_Pos                  (15U)
+#define I2C_OADDR1_ADDMODE_Msk                  (0x01UL << I2C_OADDR1_ADDMODE_Pos)
+#define I2C_OADDR1_ADDMODE                      I2C_OADDR1_ADDMODE_Msk
 
-/******************  Bit definition for I2C_OAR2 register  ********************/
-#define I2C_OAR2_ENDUAL_Pos                     (0U)
-#define I2C_OAR2_ENDUAL_Msk                     (0x01UL << I2C_OAR2_ENDUAL_Pos)
-#define I2C_OAR2_ENDUAL                         I2C_OAR2_ENDUAL_Msk
-#define I2C_OAR2_ADD2_Pos                       (1U)
-#define I2C_OAR2_ADD2_Msk                       (0x7FUL << I2C_OAR2_ADD2_Pos)
-#define I2C_OAR2_ADD2                           I2C_OAR2_ADD2_Msk
+/******************  Bit definition for I2C_OADDR2 register  ********************/
+#define I2C_OADDR2_ENDUAL_Pos                   (0U)
+#define I2C_OADDR2_ENDUAL_Msk                   (0x01UL << I2C_OADDR2_ENDUAL_Pos)
+#define I2C_OADDR2_ENDUAL                       I2C_OADDR2_ENDUAL_Msk
+#define I2C_OADDR2_ADD2_Pos                     (1U)
+#define I2C_OADDR2_ADD2_Msk                     (0x7FUL << I2C_OADDR2_ADD2_Pos)
+#define I2C_OADDR2_ADD2                         I2C_OADDR2_ADD2_Msk
 
 /******************  Bit definition for I2C_DATAR register  *******************/
 #define I2C_DATAR_DR_Pos                        (0U)
