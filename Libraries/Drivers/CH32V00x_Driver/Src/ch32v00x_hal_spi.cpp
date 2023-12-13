@@ -1,6 +1,193 @@
 
 #include "ch32v00x_hal_spi.h"
 
+#define SPI_MODE_SLAVE_FULL_DUPLEX      (0U)
+#define SPI_MODE_SLAVE_RECEIVE          (SPI_CTLR1_BIDIMODE | SPI_CTLR1_RXONLY)
+#define SPI_MODE_MASTER_FULL_DUPLEX     (SPI_CTLR1_MSTR)
+#define SPI_MODE_MASTER_HALF_DUPLEX     (SPI_CTLR1_BIDIMODE)
+#define SPI_MODE_MASTER_TRANSMIT        (SPI_CTLR1_BIDIMODE | SPI_CTLR1_BIDIOE | SPI_CTLR1_MSTR)
+
+/**
+ * @brief  Set mode for SPI according to the specified parameters in the mode.
+ * @param  mode specifies the mode to be set for SPI.
+ * @retval None.
+ */
+void SPI_ModeTypeDef::SetMode(uint32_t mode) {
+    REGS.CTLR1 &= ~(SPI_CTLR1_BIDIMODE | SPI_CTLR1_BIDIOE | SPI_CTLR1_RXONLY | SPI_CTLR1_MSTR);
+    REGS.CTLR1 |= mode & (SPI_CTLR1_BIDIMODE | SPI_CTLR1_BIDIOE | SPI_CTLR1_RXONLY | SPI_CTLR1_MSTR);
+}
+
+/**
+ * @brief  Set SPI to slave full duplex mode.
+ * @retval None.
+ */
+void SPI_ModeTypeDef::SlaveFullDuplex(void) {
+    SetMode(SPI_MODE_SLAVE_FULL_DUPLEX);
+}
+
+/**
+ * @brief  Set SPI to slave receive only mode.
+ * @retval None.
+ */
+void SPI_ModeTypeDef::SlaveReceive(void) {
+    SetMode(SPI_MODE_SLAVE_RECEIVE);
+}
+
+/**
+ * @brief  Set SPI to master full duplex mode.
+ * @retval None.
+ */
+void SPI_ModeTypeDef::MasterFullDuplex(void) {
+    SetMode(SPI_MODE_MASTER_FULL_DUPLEX);
+}
+
+/**
+ * @brief  Set SPI to master half duplex mode.
+ * @retval None.
+ */
+void SPI_ModeTypeDef::MasterHalfDuplex(void) {
+    SetMode(SPI_MODE_MASTER_HALF_DUPLEX);
+}
+
+/**
+ * @brief  Set SPI to master transmit only mode.
+ * @retval None.
+ */
+void SPI_ModeTypeDef::MasterTransmit(void) {
+    SetMode(SPI_MODE_MASTER_TRANSMIT);
+}
+
+/**
+ * @brief  Set 8 bits mode data size when transmitting and receiving for SPI.
+ * @retval None.
+ */
+void SPI_DataSizeTypeDef::Mode8Bit(void) {
+    REGS.CTLR1 &= ~SPI_CTLR1_DFF;
+}
+
+/**
+ * @brief  Set 16 bits mode data size when transmitting and receiving for SPI.
+ * @retval None.
+ */
+void SPI_DataSizeTypeDef::Mode16Bit(void) {
+    REGS.CTLR1 |= SPI_CTLR1_DFF;
+}
+
+/**
+ * @brief  Check whether the current SPI configuration is 8-bit mode or not.
+ * @retval Boolean.
+ */
+bool SPI_DataSizeTypeDef::IsMode8Bit(void) {
+    return (REGS.CTLR1 & SPI_CTLR1_DFF) == 0U;
+}
+
+/**
+ * @brief  Check whether the current SPI configuration is 16-bit mode or not.
+ * @retval Boolean.
+ */
+bool SPI_DataSizeTypeDef::IsMode16Bit(void) {
+    return (REGS.CTLR1 & SPI_CTLR1_DFF) == SPI_CTLR1_DFF;
+}
+
+/**
+ * @brief  Set polarity for SPI clock signal.
+ * @param  polarity specifies the polarity (CLK idle state) to be set for SPI.
+ * @retval None.
+ */
+void SPI_ClkTypeDef::SetPolarity(SPI_PolarityTypeDef polarity) {
+    REGS.CTLR1 = (REGS.CTLR1 & ~SPI_CTLR1_CPOL) | (polarity << SPI_CTLR1_CPOL_Pos);
+}
+
+/**
+ * @brief  Set phase for SPI clock signal.
+ * @param  phase specifies the phase (sampling point) to be set for SPI.
+ * @retval None.
+ */
+void SPI_ClkTypeDef::SetPhase(SPI_PhaseTypeDef phase) {
+    uint32_t polarity = (REGS.CTLR1 & SPI_CTLR1_CPOL) >> SPI_CTLR1_CPOL_Pos;
+    REGS.CTLR1 = (REGS.CTLR1 & ~SPI_CTLR1_CPHA) | ((polarity ^ phase) << SPI_CTLR1_CPHA_Pos);
+}
+
+/**
+ * @brief  Set baudrate for SPI clock signal.
+ * @param  baudRate specifies the baudRate to be set for SPI.
+ * @retval None.
+ */
+void SPI_ClkTypeDef::SetBaudRate(SPI_BaudRateTypeDef baudRate) {
+    REGS.CTLR1 = (REGS.CTLR1 & ~SPI_CTLR1_BR) | (baudRate << SPI_CTLR1_BR_Pos);
+}
+
+/**
+ * @brief  Disable SPI NSS PIN.
+ * @retval None.
+ */
+void SPI_NssTypeDef::Disable(void) {
+    REGS.CTLR1 |= SPI_CTLR1_SSM;
+    REGS.CTLR2 &= ~SPI_CTLR2_SSOE;
+}
+
+/**
+ * @brief  Set active logic low level for SPI NSS PIN.
+ * @retval None.
+ */
+void SPI_NssTypeDef::ActiveLow(void) {
+    REGS.CTLR1 &= ~SPI_CTLR1_SSM;
+    REGS.CTLR2 |= SPI_CTLR2_SSOE;
+    REGS.CTLR1 &= ~SPI_CTLR1_SSI;
+}
+
+/**
+ * @brief  Set active logic hight level for SPI NSS PIN.
+ * @retval None.
+ */
+void SPI_NssTypeDef::ActiveHight(void) {
+    REGS.CTLR1 &= ~SPI_CTLR1_SSM;
+    REGS.CTLR2 |= SPI_CTLR2_SSOE;
+    REGS.CTLR1 |= SPI_CTLR1_SSI;
+}
+
+/**
+ * @brief  Set MSB will be sent first.
+ * @retval None.
+ */
+void SPI_FirstBitTypeDef::MSBFirst(void) {
+    REGS.CTLR1 &= ~SPI_CTLR1_LSBFIRST;
+}
+
+/**
+ * @brief  Set LSB will be sent first.
+ * @retval None.
+ */
+void SPI_FirstBitTypeDef::LSBFirst(void) {
+    REGS.CTLR1 |= SPI_CTLR1_LSBFIRST;
+}
+
+/**
+ * @brief  Enable hardware CRC checksum.
+ * @param  polynomial specifies the polynomial for the CRC calculation.
+ * @retval None.
+ */
+void SPI_CrcTypeDef::Enable(uint32_t polynomial) {
+    REGS.CTLR1 |= SPI_CTLR1_CRCEN;
+    REGS.CRCR = polynomial;
+}
+
+/**
+ * @brief  Disabe hardware CRC checksum.
+ * @retval None.
+ */
+void SPI_CrcTypeDef::Disable(void) {
+    REGS.CTLR1 &= ~SPI_CTLR1_CRCEN;
+}
+
+/**
+ * @brief  Return state of CRC.
+ * @retval Boolean.
+ */
+bool SPI_CrcTypeDef::IsEnable(void) {
+    return (REGS.CTLR1 & SPI_CTLR1_CRCEN) == SPI_CTLR1_CRCEN;
+}
+
 /**
  * @brief  Enable the SPI peripheral clock.
  * @note   This function will use RCC module to enable clock for SPI peripheral.
@@ -22,86 +209,6 @@ void SPI_TypeDef::DisableClock(void) {
 }
 
 /**
- * @brief  Set mode for SPI according to the specified parameters in the mode.
- * @param  mode specifies the mode to be set for SPI.
- * @retval None.
- */
-void SPI_TypeDef::SetMode(SPI_ModeTypeDef mode) {
-    REGS.CTLR1 &= ~(SPI_CTLR1_BIDIMODE | SPI_CTLR1_BIDIOE | SPI_CTLR1_RXONLY | SPI_CTLR1_MSTR);
-    REGS.CTLR1 |= mode & (SPI_CTLR1_BIDIMODE | SPI_CTLR1_BIDIOE | SPI_CTLR1_RXONLY | SPI_CTLR1_MSTR);
-}
-
-/**
- * @brief  Set data size when transmitting and receiving for SPI according to the
- *         specified parameters in the dataSize.
- * @param  dataSize specifies the data size to be set for SPI when transmitting and
- *         receiving.
- * @retval None.
- */
-void SPI_TypeDef::SetDataSize(SPI_DataSizeTypeDef dataSize) {
-    REGS.CTLR1 = (REGS.CTLR1 & ~SPI_CTLR1_DFF) | (dataSize << SPI_CTLR1_DFF_Pos);
-}
-
-/**
- * @brief  Set parameters for SPI clock signal.
- * @param  polarity specifies the polarity (CLK idle state) to be set for SPI.
- * @param  phase specifies the phase (sampling point) to be set for SPI.
- * @param  baudRate specifies the baudRate to be set for SPI.
- * @retval None.
- */
-void SPI_TypeDef::SetCLK(SPI_PolarityTypeDef polarity, SPI_PhaseTypeDef phase, SPI_BaudRateTypeDef baudRate) {
-    uint32_t temp = REGS.CTLR1 & ~(SPI_CTLR1_BR | SPI_CTLR1_CPOL | SPI_CTLR1_CPHA);
-    temp |= ((polarity << SPI_CTLR1_CPOL_Pos) & SPI_CTLR1_CPOL);
-    temp |= (((polarity ^ phase) << SPI_CTLR1_CPHA_Pos) & SPI_CTLR1_CPHA);
-    temp |= (baudRate << SPI_CTLR1_BR_Pos) & SPI_CTLR1_BR;
-    REGS.CTLR1 = temp;
-}
-
-/**
- * @brief  Set logic level for SPI NSS PIN.
- * @param  nss specifies the logic level to be set for SPI NSS PIN.
- * @retval None.
- */
-void SPI_TypeDef::SetNSS(SPI_NSSTypeDef nss) {
-    if(nss != SPI_NSS_DISABLE) {
-        REGS.CTLR1 &= ~SPI_CTLR1_SSM;
-        REGS.CTLR2 |= SPI_CTLR2_SSOE;
-        if(nss == SPI_NSS_HIGHT)
-            REGS.CTLR1 |= SPI_CTLR1_SSI;
-        else
-            REGS.CTLR1 &= ~SPI_CTLR1_SSI;
-    }
-    else {
-        REGS.CTLR1 |= SPI_CTLR1_SSM;
-        REGS.CTLR2 &= ~SPI_CTLR2_SSOE;
-    }
-}
-
-/**
- * @brief  Decide which bit will be transmitted first.
- * @param  firstBit specifies MSB or LBS will be transmitted first.
- * @retval None.
- */
-void SPI_TypeDef::SetFirstBit(SPI_FirstBitTypeDef firstBit) {
-    REGS.CTLR1 = (REGS.CTLR1 & ~SPI_CTLR1_LSBFIRST) | (firstBit << SPI_CTLR1_LSBFIRST_Pos);
-}
-
-/**
- * @brief  Enable or disabe hardware CRC checksum.
- * @param  state specifies the state enable or disabe for CRC.
- * @param  polynomial specifies the polynomial for the CRC calculation.
- * @retval None.
- */
-void SPI_TypeDef::SetCRC(HAL_StateTypeDef state, uint32_t polynomial) {
-    if(state != DISABLE) {
-        REGS.CTLR1 |= SPI_CTLR1_CRCEN;
-        REGS.CRCR = polynomial;
-    }
-    else
-        REGS.CTLR1 &= ~SPI_CTLR1_CRCEN;
-}
-
-/**
  * @brief  Enable SPI.
  * @note   To be able to transmit and receive data, SPI must be enabled.
  * @retval None.
@@ -119,10 +226,10 @@ void SPI_TypeDef::Disable(void) {
 }
 
 /**
- * @brief  Get current SPI state.
- * @retval SPI state.
+ * @brief  Get current SPI status.
+ * @retval SPI status.
  */
-SPI_StateTypeDef SPI_TypeDef::GetState(void) {
+SPI_StatusTypeDef SPI_TypeDef::GetStatus(void) {
     if(REGS.STATR & SPI_STATR_BSY)
         return HAL_SPI_STATE_BUSY;
     if(!(REGS.CTLR1 & SPI_CTLR1_SPE))
@@ -131,20 +238,11 @@ SPI_StateTypeDef SPI_TypeDef::GetState(void) {
 }
 
 /**
- * @brief  Get the current SPI data size configuration according to the
- *         internal SPI configuration registers.
- * @retval SPI data size.
- */
-SPI_DataSizeTypeDef SPI_TypeDef::GetDataSize(void) {
-    return (REGS.CTLR1 & SPI_CTLR1_DFF) ? SPI_DATAWIDTH_16BIT : SPI_DATAWIDTH_8BIT;
-}
-
-/**
  * @brief  Transmit an amount of uint8_t data in blocking mode.
  * @param  txData pointer to transmission data buffer.
  * @param  txLength the length of the data array to be transmitted.
  * @param  timeout timeout duration.
- * @note   The data size for SPI must be set to SPI_DATAWIDTH_8BIT. Otherwise,
+ * @note   The data size for SPI must be set to 8-bit mode. Otherwise,
  *         this function cannot be executed and will return HAL_ERROR.
  * @retval HAL status.
  */
@@ -157,7 +255,7 @@ HAL_StatusTypeDef SPI_TypeDef::Transmit(uint8_t *txData, uint16_t txLength, uint
  * @param  txData pointer to transmission data buffer.
  * @param  txLength the length of the data array to be transmitted.
  * @param  timeout timeout duration.
- * @note   The data size for SPI must be set to SPI_DATAWIDTH_16BIT. Otherwise,
+ * @note   The data size for SPI must be set to 16-bit mode. Otherwise,
  *         this function cannot be executed and will return HAL_ERROR.
  * @retval HAL status.
  */
@@ -172,13 +270,13 @@ HAL_StatusTypeDef SPI_TypeDef::Transmit(uint16_t *txData, uint16_t txLength, uin
  * @param  rxData pointer to reception data buffer.
  * @param  rxLength the length of the data array to be received.
  * @param  timeout timeout duration.
- * @note   The data size for SPI must be set to SPI_DATAWIDTH_8BIT. Otherwise,
+ * @note   The data size for SPI must be set to 8-bit mode. Otherwise,
  *         this function cannot be executed and will return HAL_ERROR.
  * @retval HAL status.
  */
 HAL_StatusTypeDef SPI_TypeDef::Transmit(uint8_t *txData, uint16_t txLength, uint8_t *rxData, uint16_t rxLength, uint32_t timeout) {
     uint32_t startTick = HAL.GetTickMs();
-    if((GetDataSize() != SPI_DATAWIDTH_8BIT) || ((txData == NULL_PTR) && (rxData == NULL_PTR)) || (txLength == 0U) | (timeout == 0U))
+    if(!DataSize.IsMode8Bit() || ((txData == NULL_PTR) && (rxData == NULL_PTR)) || (txLength == 0U) | (timeout == 0U))
         return HAL_ERROR;
     if(txData == 0U)
         txLength = 0;
@@ -212,13 +310,13 @@ HAL_StatusTypeDef SPI_TypeDef::Transmit(uint8_t *txData, uint16_t txLength, uint
  * @param  rxData pointer to reception data buffer.
  * @param  rxLength the length of the data array to be received.
  * @param  timeout timeout duration.
- * @note   The data size for SPI must be set to SPI_DATAWIDTH_16BIT. Otherwise,
+ * @note   The data size for SPI must be set to 16-bit mode. Otherwise,
  *         this function cannot be executed and will return HAL_ERROR.
  * @retval HAL status.
  */
 HAL_StatusTypeDef SPI_TypeDef::Transmit(uint16_t *txData, uint16_t txLength, uint16_t *rxData, uint16_t rxLength, uint32_t timeout) {
     uint32_t startTick = HAL.GetTickMs();
-    if((GetDataSize() != SPI_DATAWIDTH_16BIT) || ((txData == NULL_PTR) && (rxData == NULL_PTR)) || (txLength == 0U) | (timeout == 0U))
+    if(!DataSize.IsMode16Bit() || ((txData == NULL_PTR) && (rxData == NULL_PTR)) || (txLength == 0U) | (timeout == 0U))
         return HAL_ERROR;
     if(txData == 0U)
         txLength = 0;
@@ -268,6 +366,8 @@ HAL_StatusTypeDef SPI_TypeDef::Transmit(uint16_t data, uint32_t timeout) {
  * @param  rxData pointer to reception data buffer.
  * @param  rxLength the length of the data array to be received.
  * @param  timeout timeout duration.
+ * @note   The data size for SPI must be set to 8-bit mode. Otherwise,
+ *         this function cannot be executed and will return HAL_ERROR.
  * @retval HAL status.
  */
 HAL_StatusTypeDef SPI_TypeDef::Receive(uint8_t *rxData, uint16_t rxLength, uint32_t timeout) {
@@ -279,6 +379,8 @@ HAL_StatusTypeDef SPI_TypeDef::Receive(uint8_t *rxData, uint16_t rxLength, uint3
  * @param  rxData pointer to reception data buffer.
  * @param  rxLength the length of the data array to be received.
  * @param  timeout timeout duration.
+ * @note   The data size for SPI must be set to 16-bit mode. Otherwise,
+ *         this function cannot be executed and will return HAL_ERROR.
  * @retval HAL status.
  */
 HAL_StatusTypeDef SPI_TypeDef::Receive(uint16_t *rxData, uint16_t rxLength, uint32_t timeout) {
