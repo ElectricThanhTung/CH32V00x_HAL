@@ -80,17 +80,27 @@ private:
     HAL_StatusTypeDef SendByte(uint8_t data, uint32_t startTick, uint32_t timeout);
 };
 
+class I2C_ClockTypeDef {
+private:
+    I2C_RegsTypeDef REGS;
+public:
+    void SetBaudRate(I2C_BaudRateTypeDef baudrate);
+private:
+    I2C_ClockTypeDef(void);
+    I2C_ClockTypeDef(I2C_ClockTypeDef &);
+};
+
 class I2C_TypeDef {
 public:
     union {
         I2C_RegsTypeDef REGS;
         I2C_MasterTypeDef Master;
         I2C_SlaveTypeDef Slave;
+        I2C_ClockTypeDef Clock;
     };
 public:
     void EnableClock(void);
     void DisableClock(void);
-    void SetCLK(I2C_BaudRateTypeDef baudRate);
     void Enable(void);
     void Disable(void);
     void Reset(void);

@@ -79,7 +79,7 @@ void I2C_TypeDef::Disable(void) {
  * @param  baudRate specifies the baudRate to be set for I2C.
  * @retval None.
  */
-void I2C_TypeDef::SetCLK(I2C_BaudRateTypeDef baudRate) {
+void I2C_ClockTypeDef::SetBaudRate(I2C_BaudRateTypeDef baudRate) {
     uint32_t hclk = RCC.HCLK.GetFreq();
     REGS.CTLR2 = (REGS.CTLR2 & ~I2C_CTLR2_FREQ) | ((hclk / 1000000) << I2C_CTLR2_FREQ_Pos);
     REGS.CKCFGR = (uint16_t)(hclk / (baudRate << 1));
