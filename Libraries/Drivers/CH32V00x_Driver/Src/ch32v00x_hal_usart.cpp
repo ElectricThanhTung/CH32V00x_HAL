@@ -113,8 +113,8 @@ void USART_ParityTypeDef::Odd(void) {
 }
 
 /**
- * @brief  Enable the USART1 peripheral clock.
- * @note   This function will use RCC module to enable clock for USART1 peripheral.
+ * @brief  Enable the USART peripheral clock.
+ * @note   This function will use RCC module to enable clock for USART peripheral.
  * @retval None.
  */
 void USART_TypeDef::EnableClock(void) {
@@ -123,8 +123,8 @@ void USART_TypeDef::EnableClock(void) {
 }
 
 /**
- * @brief  Disable the USART1 peripheral clock.
- * @note   This function will use RCC module to disable clock for USART1 peripheral.
+ * @brief  Disable the USART peripheral clock.
+ * @note   This function will use RCC module to disable clock for USART peripheral.
  * @retval None.
  */
 void USART_TypeDef::DisableClock(void) {
