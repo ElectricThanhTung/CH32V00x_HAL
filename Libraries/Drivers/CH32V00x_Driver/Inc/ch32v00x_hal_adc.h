@@ -98,7 +98,7 @@ public:
 public:
     void EnableClock(void);
     void DisableClock(void);
-    void SetCLK(ADC_ClkDivTypeDef div);
+    void SetPrescaler(ADC_ClkDivTypeDef div);
     void DeInit(void);
 private:
     ADC_TypeDef(void);

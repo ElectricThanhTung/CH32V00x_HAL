@@ -29,7 +29,7 @@ void ADC_TypeDef::DisableClock(void) {
  *         for ADC peripheral.
  * @retval None.
  */
-void ADC_TypeDef::SetCLK(ADC_ClkDivTypeDef div) {
+void ADC_TypeDef::SetPrescaler(ADC_ClkDivTypeDef div) {
     if(this == &ADC1) {
         if(div <= ADC_CLK_AHB_DIV128) {
             RCC.REGS.CFGR0 = (RCC.REGS.CFGR0 & ~RCC_CFGR0_ADCPRE) | (div << RCC_CFGR0_ADCPRE_Pos);
