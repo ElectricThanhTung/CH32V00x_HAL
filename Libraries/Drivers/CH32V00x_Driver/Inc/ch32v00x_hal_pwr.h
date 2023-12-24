@@ -59,7 +59,7 @@ public:
     void DeInit(void);
 private:
     PWR_TypeDef(void);
-    PWR_TypeDef(PWR_TypeDef &);
+    PWR_TypeDef(const PWR_TypeDef &);
 };
 
 #define PWR             (*(PWR_TypeDef *)PWR_BASE)

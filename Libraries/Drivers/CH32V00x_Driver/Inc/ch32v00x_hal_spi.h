@@ -79,7 +79,7 @@ public:
     void MasterTransmit(void);
 private:
     SPI_ModeTypeDef(void);
-    SPI_ModeTypeDef(SPI_ModeTypeDef &);
+    SPI_ModeTypeDef(const SPI_ModeTypeDef &);
 
     void SetMode(uint32_t mode);
 };
@@ -106,7 +106,7 @@ public:
     void SetBaudRate(SPI_BaudRateTypeDef baudRate);
 private:
     SPI_ClkTypeDef(void);
-    SPI_ClkTypeDef(SPI_ClkTypeDef &);
+    SPI_ClkTypeDef(const SPI_ClkTypeDef &);
 };
 
 class SPI_NssTypeDef {
@@ -129,7 +129,7 @@ public:
     void LSBFirst(void);
 private:
     SPI_FirstBitTypeDef(void);
-    SPI_FirstBitTypeDef(SPI_FirstBitTypeDef &);
+    SPI_FirstBitTypeDef(const SPI_FirstBitTypeDef &);
 };
 
 class SPI_CrcTypeDef {
@@ -141,7 +141,7 @@ public:
     bool IsEnable(void);
 private:
     SPI_CrcTypeDef(void);
-    SPI_CrcTypeDef(SPI_CrcTypeDef &);
+    SPI_CrcTypeDef(const SPI_CrcTypeDef &);
 };
 
 class SPI_TypeDef {
@@ -170,7 +170,7 @@ public:
     void DeInit(void);
 private:
     SPI_TypeDef(void);
-    SPI_TypeDef(SPI_TypeDef &);
+    SPI_TypeDef(const SPI_TypeDef &);
 };
 
 #define SPI1            (*(SPI_TypeDef *)SPI1_BASE)

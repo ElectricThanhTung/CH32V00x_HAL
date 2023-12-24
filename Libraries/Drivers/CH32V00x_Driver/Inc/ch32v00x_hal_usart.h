@@ -43,7 +43,7 @@ public:
     void Disable(void);
 private:
     USART_RxModeTypeDef(void);
-    USART_RxModeTypeDef(USART_RxModeTypeDef &);
+    USART_RxModeTypeDef(const USART_RxModeTypeDef &);
 };
 
 class USART_TxModeTypeDef {
@@ -54,7 +54,7 @@ public:
     void Disable(void);
 private:
     USART_TxModeTypeDef(void);
-    USART_TxModeTypeDef(USART_TxModeTypeDef &);
+    USART_TxModeTypeDef(const USART_TxModeTypeDef &);
 };
 
 class USART_BaudrateTypeDef {
@@ -65,7 +65,7 @@ public:
     uint32_t GetValue(void);
 private:
     USART_BaudrateTypeDef(void);
-    USART_BaudrateTypeDef(USART_BaudrateTypeDef &);
+    USART_BaudrateTypeDef(const USART_BaudrateTypeDef &);
 };
 
 class USART_WordLengthTypeDef {
@@ -78,7 +78,7 @@ public:
     bool IsMode9Bit(void);
 private:
     USART_WordLengthTypeDef(void);
-    USART_WordLengthTypeDef(USART_WordLengthTypeDef &);
+    USART_WordLengthTypeDef(const USART_WordLengthTypeDef &);
 };
 
 class USART_ParityTypeDef {
@@ -90,7 +90,7 @@ public:
     void Odd(void);
 private:
     USART_ParityTypeDef(void);
-    USART_ParityTypeDef(USART_ParityTypeDef &);
+    USART_ParityTypeDef(const USART_ParityTypeDef &);
 };
 
 class USART_TypeDef {
@@ -112,7 +112,7 @@ public:
     void DeInit(void);
 private:
     USART_TypeDef(void);
-    USART_TypeDef(USART_TypeDef &);
+    USART_TypeDef(const USART_TypeDef &);
 };
 
 #define USART1          (*(USART_TypeDef *)USART1_BASE)

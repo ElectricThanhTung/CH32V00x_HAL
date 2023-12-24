@@ -22,7 +22,7 @@ public:
     uint32_t GetUID(uint32_t *uid = NULL_PTR);
 private:
     ESIG_TypeDef(void);
-    ESIG_TypeDef(ESIG_TypeDef &);
+    ESIG_TypeDef(const ESIG_TypeDef &);
 };
 
 #define ESIG            (*(ESIG_TypeDef *)ESIG_BASE)

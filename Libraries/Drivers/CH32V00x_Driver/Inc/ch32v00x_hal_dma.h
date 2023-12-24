@@ -44,7 +44,7 @@ public:
     void DeInit(void);
 private:
     DMA_ChannelTypeDef(void);
-    DMA_ChannelTypeDef(DMA_ChannelTypeDef &);
+    DMA_ChannelTypeDef(const DMA_ChannelTypeDef &);
 
     HAL_StatusTypeDef Setup(void *src, uint8_t sSize, void *dest, uint8_t dSize, uint32_t count);
 };
@@ -70,7 +70,7 @@ public:
     void DeInit(void);
 private:
     DMA_TypeDef(void);
-    DMA_TypeDef(DMA_TypeDef &);
+    DMA_TypeDef(const DMA_TypeDef &);
 };
 
 #define DMA1            (*(DMA_TypeDef *)DMA1_BASE)

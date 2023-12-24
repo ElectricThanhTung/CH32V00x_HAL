@@ -54,7 +54,7 @@ public:
     void DeInit(void);
 private:
     AFIO_TypeDef(void);
-    AFIO_TypeDef(AFIO_TypeDef &);
+    AFIO_TypeDef(const AFIO_TypeDef &);
 };
 
 #define AFIO            (*(AFIO_TypeDef *)AFIO_BASE)

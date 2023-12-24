@@ -30,7 +30,7 @@ public:
     void Start(void);
 private:
     IWDG_TypeDef(void);
-    IWDG_TypeDef(IWDG_TypeDef &);
+    IWDG_TypeDef(const IWDG_TypeDef &);
 };
 
 #define IWDG            ((IWDG_TypeDef *)IWDG_BASE)

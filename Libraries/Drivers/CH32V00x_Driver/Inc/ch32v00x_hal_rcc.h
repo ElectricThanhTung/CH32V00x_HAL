@@ -66,7 +66,7 @@ public:
     uint32_t GetFreq(void);
 private:
     RCC_HsiTypeDef(void);
-    RCC_HsiTypeDef(RCC_HsiTypeDef &);
+    RCC_HsiTypeDef(const RCC_HsiTypeDef &);
 };
 
 class RCC_HseTypeDef {
@@ -79,7 +79,7 @@ public:
     uint32_t GetFreq(void);
 private:
     RCC_HseTypeDef(void);
-    RCC_HseTypeDef(RCC_HseTypeDef &);
+    RCC_HseTypeDef(const RCC_HseTypeDef &);
 };
 
 class RCC_PllTypeDef {
@@ -91,7 +91,7 @@ public:
     uint32_t GetFreq(void);
 private:
     RCC_PllTypeDef(void);
-    RCC_PllTypeDef(RCC_PllTypeDef &);
+    RCC_PllTypeDef(const RCC_PllTypeDef &);
 
     HAL_StatusTypeDef SetState(HAL_StateTypeDef state);
 };
@@ -105,7 +105,7 @@ public:
     uint32_t GetFreq(void);
 private:
     RCC_SysClkTypeDef(void);
-    RCC_SysClkTypeDef(RCC_SysClkTypeDef &);
+    RCC_SysClkTypeDef(const RCC_SysClkTypeDef &);
 };
 
 class RCC_HclkTypeDef {
@@ -117,7 +117,7 @@ public:
     uint32_t GetFreq(void);
 private:
     RCC_HclkTypeDef(void);
-    RCC_HclkTypeDef(RCC_HclkTypeDef &);
+    RCC_HclkTypeDef(const RCC_HclkTypeDef &);
 };
 
 class RCC_OutClkTypeDef {
@@ -129,7 +129,7 @@ public:
     uint32_t GetFreq(void);
 private:
     RCC_OutClkTypeDef(void);
-    RCC_OutClkTypeDef(RCC_OutClkTypeDef &);
+    RCC_OutClkTypeDef(const RCC_OutClkTypeDef &);
 };
 
 class RCC_TypeDef {
@@ -147,7 +147,7 @@ public:
     void DeInit(void);
 private:
     RCC_TypeDef(void);
-    RCC_TypeDef(RCC_TypeDef &);
+    RCC_TypeDef(const RCC_TypeDef &);
 };
 
 #define RCC             (*(RCC_TypeDef *)RCC_BASE)

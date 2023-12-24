@@ -32,7 +32,7 @@ public:
     HAL_StatusTypeDef WriteData(uint32_t address, void *data, uint32_t size);
 private:
     FLASH_TypeDef(void);
-    FLASH_TypeDef(FLASH_TypeDef &);
+    FLASH_TypeDef(const FLASH_TypeDef &);
 
     void Lock(void);
     HAL_StatusTypeDef Unlock(void);

@@ -76,7 +76,7 @@ public:
     int16_t GetValue(ADC_InjectedIndexTypeDef index);
 private:
     ADC_InjectedTypeDef(void);
-    ADC_InjectedTypeDef(ADC_InjectedTypeDef &);
+    ADC_InjectedTypeDef(const ADC_InjectedTypeDef &);
 };
 
 class ADC_RegularTypeDef {
@@ -102,7 +102,7 @@ public:
     void DeInit(void);
 private:
     ADC_TypeDef(void);
-    ADC_TypeDef(ADC_TypeDef &);
+    ADC_TypeDef(const ADC_TypeDef &);
 };
 
 #define ADC1            (*(ADC_TypeDef *)ADC1_BASE)

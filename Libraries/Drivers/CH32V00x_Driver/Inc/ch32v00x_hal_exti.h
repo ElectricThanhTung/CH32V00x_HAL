@@ -52,7 +52,7 @@ public:
     void DeInit(uint32_t line = EXTI_LINE_ALL);
 private:
     EXTI_TypeDef(void);
-    EXTI_TypeDef(EXTI_TypeDef &);
+    EXTI_TypeDef(const EXTI_TypeDef &);
 };
 
 #define EXTI            (*(EXTI_TypeDef *)EXTI_BASE)
