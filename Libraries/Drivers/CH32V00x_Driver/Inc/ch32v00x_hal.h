@@ -48,7 +48,6 @@ private:
 #include "ch32v00x_hal_rcc.h"
 #include "ch32v00x_hal_gpio.h"
 #include "ch32v00x_hal_adc.h"
-#include "ch32v00x_hal_tim.h"
 #include "ch32v00x_hal_afio.h"
 #include "ch32v00x_hal_exti.h"
 #include "ch32v00x_hal_flash.h"

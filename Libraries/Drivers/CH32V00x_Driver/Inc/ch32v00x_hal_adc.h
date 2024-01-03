@@ -94,6 +94,7 @@ public:
     union {
         ADC_RegsTypeDef REGS;
         ADC_InjectedTypeDef Injected;
+        ADC_RegularTypeDef Regular;
     };
 public:
     void EnableClock(void);
