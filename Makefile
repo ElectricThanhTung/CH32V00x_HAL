@@ -61,7 +61,7 @@ vpath %.c $(sort $(dir $(C_SOURCES)))
 OBJECTS         +=  $(addprefix $(OBJECT_DIR)/,$(CPP_SOURCES:.cpp=.o))
 vpath %.cpp $(sort $(dir $(CPP_SOURCES)))
 
-BUILD_DIRS      =   $(sort $(realpath $(dir $(OBJECTS)))) $(BIN_DIR)
+BUILD_DIRS      =   $(sort $(dir $(OBJECTS))) $(BIN_DIR)
 
 all: $(BIN_DIR)/$(PROJECT_NAME).elf $(BIN_DIR)/$(PROJECT_NAME).hex $(BIN_DIR)/$(PROJECT_NAME).bin
 
