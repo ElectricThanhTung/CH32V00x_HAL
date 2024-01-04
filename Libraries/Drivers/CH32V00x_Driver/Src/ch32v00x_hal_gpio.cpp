@@ -69,7 +69,7 @@ void GPIO_TypeDef::SetMode(uint32_t pin, GPIO_ModeTypeDef mode, GPIO_SpeedTypeDe
         uint32_t mask = HAL_GPIO_GetCfgMask(pin);
         REGS.CFGLR = (REGS.CFGLR & ~mask) | (pinMode & mask);
     }
-    else if(pin & 0xFF00U) {
+    if(pin & 0xFF00U) {
         uint32_t mask = HAL_GPIO_GetCfgMask(pin >> 8U);
         REGS.CFGHR = (REGS.CFGHR & ~mask) | (pinMode & mask);
     }
@@ -170,7 +170,7 @@ void GPIO_TypeDef::DeInit(uint32_t pin) {
         uint32_t mask = HAL_GPIO_GetCfgMask(pin);
         REGS.CFGLR = (REGS.CFGLR & ~mask) | (0x44444444UL & mask);
     }
-    else if(pin & 0xFF00U) {
+    if(pin & 0xFF00U) {
         uint32_t mask = HAL_GPIO_GetCfgMask(pin >> 8U);
         REGS.CFGHR = (REGS.CFGHR & ~mask) | (0x44444444UL & mask);
     }

@@ -17,10 +17,10 @@ SOURCE_DIRS     =   User                                                    \
                     Libraries/Drivers/Core                                  \
                     Libraries/Drivers/Device                                \
                     Libraries/Drivers/CH32V00x_Driver						\
-					Libraries/Middleware/Stopwatch
+                    Libraries/Middleware/Stopwatch
 
-OBJECT_DIR      = 	$(BUILD_DIR)/Obj
-BIN_DIR         = 	$(BUILD_DIR)/Bin
+OBJECT_DIR      =   $(BUILD_DIR)/Obj
+BIN_DIR         =   $(BUILD_DIR)/Bin
 
 C_INCLUDES      =   $(addprefix -I,$(addsuffix /Inc,$(SOURCE_DIRS)))
 
@@ -46,10 +46,9 @@ LDSCRIPT        =   Linker/ch32v00x_flash.ld
 LIBS            =   -lc -lm -lnosys
 LDFLAGS         =   -march=rv32ec                                           \
                     -mabi=ilp32e                                            \
-                    -nostartfiles -Xlinker                                  \
-                    --gc-sections                                           \
+                    -nostartfiles -Xlinker --gc-sections                    \
                     -Wl,-Map,$(BIN_DIR)/$(PROJECT_NAME).map                 \
-                    --specs=nano.specs                                      \
+                    -specs=nano.specs                                       \
                     -T$(LDSCRIPT) $(LIBS) $(OPT)
 
 OBJECTS         +=  $(addprefix $(OBJECT_DIR)/,$(A_SOURCES:.s=.o))
