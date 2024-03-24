@@ -51,8 +51,8 @@ public:
     void Init(EXTI_PortTypeDef port, uint32_t line, EXTI_ModeTypeDef mode = EXTI_MODE_INTERRUPT, EXTI_TriggerTypeDef trigger = EXTI_TRIGGER_CHANGE);
     void DeInit(uint32_t line = EXTI_LINE_ALL);
 private:
-    EXTI_TypeDef(void);
-    EXTI_TypeDef(const EXTI_TypeDef &);
+    EXTI_TypeDef(void) = delete;
+    EXTI_TypeDef(const EXTI_TypeDef &) = delete;
 };
 
 #define EXTI            (*(EXTI_TypeDef *)EXTI_BASE)

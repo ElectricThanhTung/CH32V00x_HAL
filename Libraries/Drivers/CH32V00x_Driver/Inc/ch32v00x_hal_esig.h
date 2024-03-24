@@ -21,8 +21,8 @@ public:
     uint32_t GetFlashCapacity(void);
     uint32_t GetUID(uint32_t *uid = NULL_PTR);
 private:
-    ESIG_TypeDef(void);
-    ESIG_TypeDef(const ESIG_TypeDef &);
+    ESIG_TypeDef(void) = delete;
+    ESIG_TypeDef(const ESIG_TypeDef &) = delete;
 };
 
 #define ESIG            (*(ESIG_TypeDef *)ESIG_BASE)

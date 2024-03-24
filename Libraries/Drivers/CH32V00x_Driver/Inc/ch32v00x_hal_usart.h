@@ -111,8 +111,8 @@ public:
     HAL_StatusTypeDef Transmit(uint16_t txData, uint32_t timeout = 0xFFFFFFFFUL);
     void DeInit(void);
 private:
-    USART_TypeDef(void);
-    USART_TypeDef(const USART_TypeDef &);
+    USART_TypeDef(void) = delete;
+    USART_TypeDef(const USART_TypeDef &) = delete;
 };
 
 #define USART1          (*(USART_TypeDef *)USART1_BASE)

@@ -75,8 +75,8 @@ public:
     HAL_FlagStatusTypeDef GetStatus(void);
     int16_t GetValue(ADC_InjectedIndexTypeDef index);
 private:
-    ADC_InjectedTypeDef(void);
-    ADC_InjectedTypeDef(const ADC_InjectedTypeDef &);
+    ADC_InjectedTypeDef(void) = delete;
+    ADC_InjectedTypeDef(const ADC_InjectedTypeDef &) = delete;
 };
 
 class ADC_RegularTypeDef {
@@ -85,8 +85,8 @@ private:
 public:
     int16_t Convert(ADC_ChannelTypeDef channel);
 private:
-    ADC_RegularTypeDef(void);
-    ADC_RegularTypeDef(ADC_InjectedTypeDef &);
+    ADC_RegularTypeDef(void) = delete;
+    ADC_RegularTypeDef(ADC_InjectedTypeDef &) = delete;
 };
 
 class ADC_TypeDef {
@@ -102,8 +102,8 @@ public:
     void SetPrescaler(ADC_ClkDivTypeDef div);
     void DeInit(void);
 private:
-    ADC_TypeDef(void);
-    ADC_TypeDef(const ADC_TypeDef &);
+    ADC_TypeDef(void) = delete;
+    ADC_TypeDef(const ADC_TypeDef &) = delete;
 };
 
 #define ADC1            (*(ADC_TypeDef *)ADC1_BASE)

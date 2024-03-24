@@ -57,8 +57,8 @@ public:
     HAL_StatusTypeDef MemWrite(uint8_t slaveAddr, uint8_t memAddr, uint8_t *data, uint16_t length, uint32_t timeout = 0xFFFFFFFFUL);
     HAL_StatusTypeDef MemRead(uint8_t slaveAddr, uint8_t memAddr, uint8_t *data, uint16_t length, uint32_t timeout = 0xFFFFFFFFUL);
 private:
-    I2C_MasterTypeDef(void);
-    I2C_MasterTypeDef(const I2C_MasterTypeDef &);
+    I2C_MasterTypeDef(void) = delete;
+    I2C_MasterTypeDef(const I2C_MasterTypeDef &) = delete;
 
     HAL_StatusTypeDef Start(uint32_t startTick, uint32_t timeout);
     HAL_StatusTypeDef SendByte(uint8_t data, uint32_t startTick, uint32_t timeout);
@@ -74,8 +74,8 @@ public:
     HAL_StatusTypeDef Transmit(uint8_t *txData, uint16_t length, uint32_t timeout = 0xFFFFFFFFUL);
     HAL_StatusTypeDef Receive(uint8_t *rxData, uint16_t length, uint32_t timeout = 0xFFFFFFFFUL);
 private:
-    I2C_SlaveTypeDef(void);
-    I2C_SlaveTypeDef(const I2C_SlaveTypeDef &);
+    I2C_SlaveTypeDef(void) = delete;
+    I2C_SlaveTypeDef(const I2C_SlaveTypeDef &) = delete;
 
     HAL_StatusTypeDef SendByte(uint8_t data, uint32_t startTick, uint32_t timeout);
 };
@@ -86,8 +86,8 @@ private:
 public:
     void SetBaudRate(I2C_BaudRateTypeDef baudrate);
 private:
-    I2C_ClockTypeDef(void);
-    I2C_ClockTypeDef(const I2C_ClockTypeDef &);
+    I2C_ClockTypeDef(void) = delete;
+    I2C_ClockTypeDef(const I2C_ClockTypeDef &) = delete;
 };
 
 class I2C_TypeDef {
@@ -106,8 +106,8 @@ public:
     void Reset(void);
     void DeInit(void);
 private:
-    I2C_TypeDef(void);
-    I2C_TypeDef(const I2C_TypeDef &);
+    I2C_TypeDef(void) = delete;
+    I2C_TypeDef(const I2C_TypeDef &) = delete;
 };
 
 #define I2C1            (*(I2C_TypeDef *)I2C1_BASE)

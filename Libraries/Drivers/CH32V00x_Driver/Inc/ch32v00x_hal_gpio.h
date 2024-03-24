@@ -71,8 +71,8 @@ public:
     void LockPin(uint32_t pin);
     void DeInit(uint32_t pin = GPIO_PIN_ALL);
 private:
-    GPIO_TypeDef(void);
-    GPIO_TypeDef(const GPIO_TypeDef &);
+    GPIO_TypeDef(void) = delete;
+    GPIO_TypeDef(const GPIO_TypeDef &) = delete;
 };
 
 #define GPIOA           (*(GPIO_TypeDef *)GPIOA_BASE)

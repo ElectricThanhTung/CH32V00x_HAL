@@ -78,8 +78,8 @@ public:
     void MasterHalfDuplex(void);
     void MasterTransmit(void);
 private:
-    SPI_ModeTypeDef(void);
-    SPI_ModeTypeDef(const SPI_ModeTypeDef &);
+    SPI_ModeTypeDef(void) = delete;
+    SPI_ModeTypeDef(const SPI_ModeTypeDef &) = delete;
 
     void SetMode(uint32_t mode);
 };
@@ -93,8 +93,8 @@ public:
     bool IsMode8Bit(void);
     bool IsMode16Bit(void);
 private:
-    SPI_DataSizeTypeDef(void);
-    SPI_DataSizeTypeDef(SPI_DataSizeTypeDef &);
+    SPI_DataSizeTypeDef(void) = delete;
+    SPI_DataSizeTypeDef(SPI_DataSizeTypeDef &) = delete;
 };
 
 class SPI_ClkTypeDef {
@@ -105,8 +105,8 @@ public:
     void SetPhase(SPI_PhaseTypeDef phase);
     void SetBaudRate(SPI_BaudRateTypeDef baudRate);
 private:
-    SPI_ClkTypeDef(void);
-    SPI_ClkTypeDef(const SPI_ClkTypeDef &);
+    SPI_ClkTypeDef(void) = delete;
+    SPI_ClkTypeDef(const SPI_ClkTypeDef &) = delete;
 };
 
 class SPI_NssTypeDef {
@@ -117,8 +117,8 @@ public:
     void ActiveLow(void);
     void ActiveHight(void);
 private:
-    SPI_NssTypeDef(void);
-    SPI_NssTypeDef(SPI_NssTypeDef &);
+    SPI_NssTypeDef(void) = delete;
+    SPI_NssTypeDef(SPI_NssTypeDef &) = delete;
 };
 
 class SPI_FirstBitTypeDef {
@@ -128,8 +128,8 @@ public:
     void MSBFirst(void);
     void LSBFirst(void);
 private:
-    SPI_FirstBitTypeDef(void);
-    SPI_FirstBitTypeDef(const SPI_FirstBitTypeDef &);
+    SPI_FirstBitTypeDef(void) = delete;
+    SPI_FirstBitTypeDef(const SPI_FirstBitTypeDef &) = delete;
 };
 
 class SPI_CrcTypeDef {
@@ -140,8 +140,8 @@ public:
     void Disable(void);
     bool IsEnable(void);
 private:
-    SPI_CrcTypeDef(void);
-    SPI_CrcTypeDef(const SPI_CrcTypeDef &);
+    SPI_CrcTypeDef(void) = delete;
+    SPI_CrcTypeDef(const SPI_CrcTypeDef &) = delete;
 };
 
 class SPI_TypeDef {
@@ -169,8 +169,8 @@ public:
     HAL_StatusTypeDef Receive(uint16_t *rxData, uint16_t rxLength, uint32_t timeout = 0xFFFFFFFFUL);
     void DeInit(void);
 private:
-    SPI_TypeDef(void);
-    SPI_TypeDef(const SPI_TypeDef &);
+    SPI_TypeDef(void) = delete;
+    SPI_TypeDef(const SPI_TypeDef &) = delete;
 };
 
 #define SPI1            (*(SPI_TypeDef *)SPI1_BASE)

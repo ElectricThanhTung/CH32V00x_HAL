@@ -58,8 +58,8 @@ public:
     HAL_FlagStatusTypeDef GetPVD0(void);
     void DeInit(void);
 private:
-    PWR_TypeDef(void);
-    PWR_TypeDef(const PWR_TypeDef &);
+    PWR_TypeDef(void) = delete;
+    PWR_TypeDef(const PWR_TypeDef &) = delete;
 };
 
 #define PWR             (*(PWR_TypeDef *)PWR_BASE)

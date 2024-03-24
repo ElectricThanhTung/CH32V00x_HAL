@@ -9,8 +9,8 @@ public:
     void EnableClockInSleepMode(void);
     void DisableClockInSleepMode(void);
 private:
-    SRAM_TypeDef(void);
-    SRAM_TypeDef(const SRAM_TypeDef &);
+    SRAM_TypeDef(void) = delete;
+    SRAM_TypeDef(const SRAM_TypeDef &) = delete;
 };
 
 #define SRAM            (*(SRAM_TypeDef *)0x20000000UL)

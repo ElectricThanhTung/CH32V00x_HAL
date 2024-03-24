@@ -31,8 +31,8 @@ public:
     HAL_StatusTypeDef ErasePage(uint32_t address, FLASH_EraseModeTypeDef eraseMode);
     HAL_StatusTypeDef WriteData(uint32_t address, void *data, uint32_t size);
 private:
-    FLASH_TypeDef(void);
-    FLASH_TypeDef(const FLASH_TypeDef &);
+    FLASH_TypeDef(void) = delete;
+    FLASH_TypeDef(const FLASH_TypeDef &) = delete;
 
     void Lock(void);
     HAL_StatusTypeDef Unlock(void);
