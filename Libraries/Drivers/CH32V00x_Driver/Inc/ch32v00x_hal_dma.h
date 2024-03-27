@@ -45,6 +45,7 @@ public:
 private:
     DMA_ChannelTypeDef(void) = delete;
     DMA_ChannelTypeDef(const DMA_ChannelTypeDef &) = delete;
+    void operator=(const DMA_ChannelTypeDef &) = delete;
 
     HAL_StatusTypeDef Setup(void *src, uint8_t sSize, void *dest, uint8_t dSize, uint32_t count);
 };
@@ -71,6 +72,7 @@ public:
 private:
     DMA_TypeDef(void) = delete;
     DMA_TypeDef(const DMA_TypeDef &) = delete;
+    void operator=(const DMA_TypeDef &) = delete;
 };
 
 #define DMA1            (*(DMA_TypeDef *)DMA1_BASE)

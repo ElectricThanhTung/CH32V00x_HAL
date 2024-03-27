@@ -11,6 +11,7 @@ public:
 private:
     SRAM_TypeDef(void) = delete;
     SRAM_TypeDef(const SRAM_TypeDef &) = delete;
+    void operator=(const SRAM_TypeDef &) = delete;
 };
 
 #define SRAM            (*(SRAM_TypeDef *)0x20000000UL)

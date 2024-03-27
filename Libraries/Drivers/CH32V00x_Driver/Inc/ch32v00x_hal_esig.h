@@ -23,6 +23,7 @@ public:
 private:
     ESIG_TypeDef(void) = delete;
     ESIG_TypeDef(const ESIG_TypeDef &) = delete;
+    void operator=(const ESIG_TypeDef &) = delete;
 };
 
 #define ESIG            (*(ESIG_TypeDef *)ESIG_BASE)

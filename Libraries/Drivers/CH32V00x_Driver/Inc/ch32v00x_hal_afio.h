@@ -55,6 +55,7 @@ public:
 private:
     AFIO_TypeDef(void) = delete;
     AFIO_TypeDef(const AFIO_TypeDef &) = delete;
+    void operator=(const AFIO_TypeDef &) = delete;
 };
 
 #define AFIO            (*(AFIO_TypeDef *)AFIO_BASE)

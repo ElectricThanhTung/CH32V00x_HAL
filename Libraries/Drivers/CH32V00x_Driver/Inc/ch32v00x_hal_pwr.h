@@ -60,6 +60,7 @@ public:
 private:
     PWR_TypeDef(void) = delete;
     PWR_TypeDef(const PWR_TypeDef &) = delete;
+    void operator=(const PWR_TypeDef &) = delete;
 };
 
 #define PWR             (*(PWR_TypeDef *)PWR_BASE)

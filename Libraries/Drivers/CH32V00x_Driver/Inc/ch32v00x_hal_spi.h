@@ -80,6 +80,7 @@ public:
 private:
     SPI_ModeTypeDef(void) = delete;
     SPI_ModeTypeDef(const SPI_ModeTypeDef &) = delete;
+    void operator=(const SPI_ModeTypeDef &) = delete;
 
     void SetMode(uint32_t mode);
 };
@@ -95,6 +96,7 @@ public:
 private:
     SPI_DataSizeTypeDef(void) = delete;
     SPI_DataSizeTypeDef(SPI_DataSizeTypeDef &) = delete;
+    void operator=(const SPI_DataSizeTypeDef &) = delete;
 };
 
 class SPI_ClkTypeDef {
@@ -107,6 +109,7 @@ public:
 private:
     SPI_ClkTypeDef(void) = delete;
     SPI_ClkTypeDef(const SPI_ClkTypeDef &) = delete;
+    void operator=(const SPI_ClkTypeDef &) = delete;
 };
 
 class SPI_NssTypeDef {
@@ -119,6 +122,7 @@ public:
 private:
     SPI_NssTypeDef(void) = delete;
     SPI_NssTypeDef(SPI_NssTypeDef &) = delete;
+    void operator=(const SPI_NssTypeDef &) = delete;
 };
 
 class SPI_FirstBitTypeDef {
@@ -130,6 +134,7 @@ public:
 private:
     SPI_FirstBitTypeDef(void) = delete;
     SPI_FirstBitTypeDef(const SPI_FirstBitTypeDef &) = delete;
+    void operator=(const SPI_FirstBitTypeDef &) = delete;
 };
 
 class SPI_CrcTypeDef {
@@ -142,6 +147,7 @@ public:
 private:
     SPI_CrcTypeDef(void) = delete;
     SPI_CrcTypeDef(const SPI_CrcTypeDef &) = delete;
+    void operator=(const SPI_CrcTypeDef &) = delete;
 };
 
 class SPI_TypeDef {
@@ -171,6 +177,7 @@ public:
 private:
     SPI_TypeDef(void) = delete;
     SPI_TypeDef(const SPI_TypeDef &) = delete;
+    void operator=(const SPI_TypeDef &) = delete;
 };
 
 #define SPI1            (*(SPI_TypeDef *)SPI1_BASE)

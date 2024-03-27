@@ -37,6 +37,7 @@ private:
     uint32_t TickIntervalMs;
     HAL_TypeDef(void) = delete;
     HAL_TypeDef(const HAL_TypeDef &) = delete;
+    void operator=(const HAL_TypeDef &) = delete;
 };
 
 #define HAL             (*(HAL_TypeDef *)0U)

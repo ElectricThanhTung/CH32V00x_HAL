@@ -31,6 +31,7 @@ public:
 private:
     IWDG_TypeDef(void) = delete;
     IWDG_TypeDef(const IWDG_TypeDef &) = delete;
+    void operator=(const IWDG_TypeDef &) = delete;
 };
 
 #define IWDG            ((IWDG_TypeDef *)IWDG_BASE)

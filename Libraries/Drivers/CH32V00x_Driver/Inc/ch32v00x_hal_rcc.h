@@ -67,6 +67,7 @@ public:
 private:
     RCC_HsiTypeDef(void) = delete;
     RCC_HsiTypeDef(const RCC_HsiTypeDef &) = delete;
+    void operator=(const RCC_HsiTypeDef &) = delete;
 };
 
 class RCC_HseTypeDef {
@@ -80,6 +81,7 @@ public:
 private:
     RCC_HseTypeDef(void) = delete;
     RCC_HseTypeDef(const RCC_HseTypeDef &) = delete;
+    void operator=(const RCC_HseTypeDef &) = delete;
 };
 
 class RCC_PllTypeDef {
@@ -92,6 +94,7 @@ public:
 private:
     RCC_PllTypeDef(void) = delete;
     RCC_PllTypeDef(const RCC_PllTypeDef &) = delete;
+    void operator=(const RCC_PllTypeDef &) = delete;
 
     HAL_StatusTypeDef SetState(HAL_StateTypeDef state);
 };
@@ -106,6 +109,7 @@ public:
 private:
     RCC_SysClkTypeDef(void) = delete;
     RCC_SysClkTypeDef(const RCC_SysClkTypeDef &) = delete;
+    void operator=(const RCC_SysClkTypeDef &) = delete;
 };
 
 class RCC_HclkTypeDef {
@@ -118,6 +122,7 @@ public:
 private:
     RCC_HclkTypeDef(void);
     RCC_HclkTypeDef(const RCC_HclkTypeDef &);
+    void operator=(const RCC_HclkTypeDef &) = delete;
 };
 
 class RCC_OutClkTypeDef {
@@ -130,6 +135,7 @@ public:
 private:
     RCC_OutClkTypeDef(void);
     RCC_OutClkTypeDef(const RCC_OutClkTypeDef &);
+    void operator=(const RCC_OutClkTypeDef &) = delete;
 };
 
 class RCC_TypeDef {
@@ -148,6 +154,7 @@ public:
 private:
     RCC_TypeDef(void);
     RCC_TypeDef(const RCC_TypeDef &);
+    void operator=(const RCC_TypeDef &) = delete;
 };
 
 #define RCC             (*(RCC_TypeDef *)RCC_BASE)

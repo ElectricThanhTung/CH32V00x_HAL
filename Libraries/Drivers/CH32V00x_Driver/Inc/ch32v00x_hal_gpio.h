@@ -73,6 +73,7 @@ public:
 private:
     GPIO_TypeDef(void) = delete;
     GPIO_TypeDef(const GPIO_TypeDef &) = delete;
+    void operator=(const GPIO_TypeDef &) = delete;
 };
 
 #define GPIOA           (*(GPIO_TypeDef *)GPIOA_BASE)

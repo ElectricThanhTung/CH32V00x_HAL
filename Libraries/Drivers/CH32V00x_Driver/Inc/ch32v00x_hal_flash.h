@@ -33,6 +33,7 @@ public:
 private:
     FLASH_TypeDef(void) = delete;
     FLASH_TypeDef(const FLASH_TypeDef &) = delete;
+    void operator=(const FLASH_TypeDef &) = delete;
 
     void Lock(void);
     HAL_StatusTypeDef Unlock(void);

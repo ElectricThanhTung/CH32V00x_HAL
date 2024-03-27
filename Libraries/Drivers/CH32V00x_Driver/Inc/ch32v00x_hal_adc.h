@@ -77,6 +77,7 @@ public:
 private:
     ADC_InjectedTypeDef(void) = delete;
     ADC_InjectedTypeDef(const ADC_InjectedTypeDef &) = delete;
+    void operator=(const ADC_InjectedTypeDef &) = delete;
 };
 
 class ADC_RegularTypeDef {
@@ -87,6 +88,7 @@ public:
 private:
     ADC_RegularTypeDef(void) = delete;
     ADC_RegularTypeDef(ADC_InjectedTypeDef &) = delete;
+    void operator=(const ADC_RegularTypeDef &) = delete;
 };
 
 class ADC_TypeDef {
@@ -104,6 +106,7 @@ public:
 private:
     ADC_TypeDef(void) = delete;
     ADC_TypeDef(const ADC_TypeDef &) = delete;
+    void operator=(const ADC_TypeDef &) = delete;
 };
 
 #define ADC1            (*(ADC_TypeDef *)ADC1_BASE)

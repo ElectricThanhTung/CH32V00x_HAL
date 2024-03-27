@@ -53,6 +53,7 @@ public:
 private:
     EXTI_TypeDef(void) = delete;
     EXTI_TypeDef(const EXTI_TypeDef &) = delete;
+    void operator=(const EXTI_TypeDef &) = delete;
 };
 
 #define EXTI            (*(EXTI_TypeDef *)EXTI_BASE)

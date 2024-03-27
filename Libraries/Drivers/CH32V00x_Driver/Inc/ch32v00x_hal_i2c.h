@@ -59,6 +59,7 @@ public:
 private:
     I2C_MasterTypeDef(void) = delete;
     I2C_MasterTypeDef(const I2C_MasterTypeDef &) = delete;
+    void operator=(const I2C_MasterTypeDef &) = delete;
 
     HAL_StatusTypeDef Start(uint32_t startTick, uint32_t timeout);
     HAL_StatusTypeDef SendByte(uint8_t data, uint32_t startTick, uint32_t timeout);
@@ -76,6 +77,7 @@ public:
 private:
     I2C_SlaveTypeDef(void) = delete;
     I2C_SlaveTypeDef(const I2C_SlaveTypeDef &) = delete;
+    void operator=(const I2C_SlaveTypeDef &) = delete;
 
     HAL_StatusTypeDef SendByte(uint8_t data, uint32_t startTick, uint32_t timeout);
 };
@@ -88,6 +90,7 @@ public:
 private:
     I2C_ClockTypeDef(void) = delete;
     I2C_ClockTypeDef(const I2C_ClockTypeDef &) = delete;
+    void operator=(const I2C_ClockTypeDef &) = delete;
 };
 
 class I2C_TypeDef {
@@ -108,6 +111,7 @@ public:
 private:
     I2C_TypeDef(void) = delete;
     I2C_TypeDef(const I2C_TypeDef &) = delete;
+    void operator=(const I2C_TypeDef &) = delete;
 };
 
 #define I2C1            (*(I2C_TypeDef *)I2C1_BASE)

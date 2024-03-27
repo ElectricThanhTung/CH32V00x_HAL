@@ -42,8 +42,9 @@ public:
     void Enable(void);
     void Disable(void);
 private:
-    USART_RxModeTypeDef(void);
-    USART_RxModeTypeDef(const USART_RxModeTypeDef &);
+    USART_RxModeTypeDef(void) = delete;
+    USART_RxModeTypeDef(const USART_RxModeTypeDef &) = delete;
+    void operator=(const USART_RxModeTypeDef &) = delete;
 };
 
 class USART_TxModeTypeDef {
@@ -53,8 +54,9 @@ public:
     void Enable(void);
     void Disable(void);
 private:
-    USART_TxModeTypeDef(void);
-    USART_TxModeTypeDef(const USART_TxModeTypeDef &);
+    USART_TxModeTypeDef(void) = delete;
+    USART_TxModeTypeDef(const USART_TxModeTypeDef &) = delete;
+    void operator=(const USART_TxModeTypeDef &) = delete;
 };
 
 class USART_BaudrateTypeDef {
@@ -64,8 +66,9 @@ public:
     uint32_t SetValue(uint32_t baudRate);
     uint32_t GetValue(void);
 private:
-    USART_BaudrateTypeDef(void);
-    USART_BaudrateTypeDef(const USART_BaudrateTypeDef &);
+    USART_BaudrateTypeDef(void) = delete;
+    USART_BaudrateTypeDef(const USART_BaudrateTypeDef &) = delete;
+    void operator=(const USART_BaudrateTypeDef &) = delete;
 };
 
 class USART_WordLengthTypeDef {
@@ -77,8 +80,9 @@ public:
     bool IsMode8Bit(void);
     bool IsMode9Bit(void);
 private:
-    USART_WordLengthTypeDef(void);
-    USART_WordLengthTypeDef(const USART_WordLengthTypeDef &);
+    USART_WordLengthTypeDef(void) = delete;
+    USART_WordLengthTypeDef(const USART_WordLengthTypeDef &) = delete;
+    void operator=(const USART_WordLengthTypeDef &) = delete;
 };
 
 class USART_ParityTypeDef {
@@ -89,8 +93,9 @@ public:
     void Even(void);
     void Odd(void);
 private:
-    USART_ParityTypeDef(void);
-    USART_ParityTypeDef(const USART_ParityTypeDef &);
+    USART_ParityTypeDef(void) = delete;
+    USART_ParityTypeDef(const USART_ParityTypeDef &) = delete;
+    void operator=(const USART_ParityTypeDef &) = delete;
 };
 
 class USART_TypeDef {
@@ -113,6 +118,7 @@ public:
 private:
     USART_TypeDef(void) = delete;
     USART_TypeDef(const USART_TypeDef &) = delete;
+    void operator=(const USART_TypeDef &) = delete;
 };
 
 #define USART1          (*(USART_TypeDef *)USART1_BASE)
