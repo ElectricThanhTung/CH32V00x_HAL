@@ -16,7 +16,7 @@ BUILD_DIR       =   Build
 SOURCE_DIRS     =   User                                                    \
                     Libraries/Drivers/Core                                  \
                     Libraries/Drivers/Device                                \
-                    Libraries/Drivers/CH32V00x_Driver						\
+                    Libraries/Drivers/CH32V00x_Driver                       \
                     Libraries/Middleware/Stopwatch
 
 OBJECT_DIR      =   $(BUILD_DIR)/Obj
